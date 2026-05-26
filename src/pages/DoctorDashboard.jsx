@@ -1,11 +1,11 @@
 import { API_BASE_URL } from '../config';
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   FaWallet, FaShoppingBag, FaChartLine, FaCopy,
   FaCheckCircle, FaClock, FaSignOutAlt, FaCamera,
-  FaChevronRight, FaFilter, FaFileInvoiceDollar
+  FaFileInvoiceDollar
 } from 'react-icons/fa';
 
 const DoctorDashboard = () => {
@@ -49,7 +49,7 @@ const DoctorDashboard = () => {
         setStats(statsData);
         setOrders(data.data.orders);
 
-        // Update edit form data with EVERYTHING from the database
+        // Update edit form data
         setEditFormData({
           name: statsData.name || '',
           specialty: statsData.specialty || '',
@@ -114,7 +114,7 @@ const DoctorDashboard = () => {
   };
 
   const copyToClipboard = () => {
-    const link = `http://localhost:5173/dr/${stats?.referral_code || doctor?.referral_code}`;
+    const link = `${window.location.origin}/dr/${stats?.referral_code || doctor?.referral_code}`;
     navigator.clipboard.writeText(link).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -122,7 +122,7 @@ const DoctorDashboard = () => {
   };
 
   if (loading) return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center bg-[#faf9f6]">
       <div className="flex flex-col items-center gap-4">
         <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
         <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">Loading Dashboard...</p>
@@ -131,23 +131,23 @@ const DoctorDashboard = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[#fcfcfc] pb-20">
+    <div className="min-h-screen bg-[#faf9f6] pb-20">
       {/* Top Banner */}
       <div className="bg-black py-3">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white text-center">
-            Professional Partner Dashboard <span className="text-primary ml-2">v2.0</span>
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+          <p className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.25em] text-white text-center">
+            Professional Partner Dashboard <span className="text-accent-gold ml-2">v2.0</span>
           </p>
         </div>
       </div>
 
-      <div className="container mx-auto px-6 max-w-7xl mt-10">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl mt-6 sm:mt-10">
 
         {/* Header Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-12">
-          <div className="flex items-center gap-6">
+        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-center gap-6 sm:gap-8 mb-8 sm:mb-12 text-center lg:text-left bg-white p-6 sm:p-8 rounded-[2rem] border border-primary/5 shadow-xs">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
             <div className="relative group cursor-pointer" onClick={() => !photoUploading && fileInputRef.current.click()}>
-              <div className="w-24 h-24 rounded-full border-4 border-white shadow-xl overflow-hidden bg-gray-100 flex items-center justify-center">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-white shadow-xl overflow-hidden bg-gray-100 flex items-center justify-center relative">
                 {photoUploading ? (
                   <div className="w-full h-full flex items-center justify-center bg-black/50 absolute inset-0 z-10 text-white">
                     <i className="fa-solid fa-spinner fa-spin text-xl"></i>
@@ -155,119 +155,122 @@ const DoctorDashboard = () => {
                 ) : doctor?.image_url ? (
                   <img src={`${API_BASE_URL}admin/${doctor.image_url}`} className="w-full h-full object-cover" alt="" />
                 ) : (
-                  <span className="text-2xl font-black text-gray-300">{doctor?.name?.charAt(0)}</span>
+                  <span className="text-xl sm:text-2xl font-black text-gray-300">{doctor?.name?.charAt(0)}</span>
                 )}
               </div>
               <div className="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <FaCamera className="text-white text-xl" />
+                <FaCamera className="text-white text-base sm:text-xl" />
               </div>
               <input type="file" ref={fileInputRef} className="hidden" onChange={handlePhotoUpload} />
             </div>
             <div>
-              <div className="flex items-center gap-3 mb-1">
-                <h1 className="text-4xl font-black uppercase tracking-tighter text-black">{stats?.name}</h1>
+              <div className="flex flex-row items-center justify-center lg:justify-start gap-2.5 mb-1.5">
+                <h1 className="text-2xl sm:text-4xl font-black uppercase tracking-tighter text-black">{stats?.name}</h1>
                 {Number(doctor?.is_verified) === 1 ? (
-                  <FaCheckCircle className="text-primary" />
+                  <FaCheckCircle className="text-primary text-base sm:text-xl shrink-0" />
                 ) : (
-                  <FaClock className="text-yellow-500" />
+                  <FaClock className="text-yellow-500 text-base sm:text-xl shrink-0" />
                 )}
               </div>
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">{doctor?.specialty}</p>
+              <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-stone-400">{doctor?.specialty || 'Nutrition Specialist'}</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-row items-center gap-3 w-full sm:w-auto justify-center">
             <button
               onClick={copyToClipboard}
-              className={`px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] flex items-center gap-3 transition-all ${copied ? 'bg-primary text-white shadow-primary/20' : 'bg-white text-black border border-gray-100 shadow-sm hover:shadow-md'}`}
+              className={`flex-1 sm:flex-none px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-black uppercase tracking-widest text-[9px] sm:text-[10px] flex items-center justify-center gap-2.5 transition-all cursor-pointer ${copied ? 'bg-primary text-white' : 'bg-[#f4f3ee] text-stone-850 hover:bg-[#eaeae2]'}`}
             >
               {copied ? <FaCheckCircle /> : <FaCopy />}
               {copied ? 'Copied Link' : 'Referral Link'}
             </button>
-            <button onClick={handleLogout} className="p-4 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-red-500 transition-colors shadow-sm">
+            <button onClick={handleLogout} className="p-3 sm:p-4 bg-[#f4f3ee] rounded-xl sm:rounded-2xl text-stone-400 hover:text-red-500 transition-colors cursor-pointer shrink-0">
               <FaSignOutAlt />
             </button>
           </div>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-12">
           {[
             {
               label: 'Approved Earnings',
-              value: `₹${Number(stats?.approved_commissions || 0).toFixed(2)}`,
+              value: `₹${Number(stats?.approved_commissions || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
               icon: FaWallet,
-              color: 'text-green-600'
+              color: 'text-green-600 bg-green-50'
             },
             {
               label: 'Pending Balance',
-              value: `₹${Number(stats?.pending_commissions || 0).toFixed(2)}`,
+              value: `₹${Number(stats?.pending_commissions || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
               icon: FaClock,
-              color: 'text-yellow-600'
+              color: 'text-yellow-600 bg-yellow-50'
             },
-            { label: 'Total Referrals', value: stats?.total_orders, icon: FaShoppingBag, color: 'text-black' },
-            { label: 'Comm. Rate', value: `${stats?.commission_rate}%`, icon: FaChartLine, color: 'text-blue-500' },
+            { label: 'Total Referrals', value: stats?.total_orders || '0', icon: FaShoppingBag, color: 'text-black bg-stone-50' },
+            { label: 'Comm. Rate', value: `${stats?.commission_rate || 0}%`, icon: FaChartLine, color: 'text-blue-500 bg-blue-50/50' },
           ].map((item, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.08 }}
               key={i}
-              className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm"
+              className="bg-white p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-primary/5 shadow-xs flex flex-col justify-between"
             >
-              <div className={`w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center mb-6 ${item.color}`}>
-                <item.icon size={20} />
+              <div>
+                <div className={`w-8 h-8 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 ${item.color} shrink-0`}>
+                  <item.icon className="text-sm sm:text-lg" />
+                </div>
+                <p className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.15em] text-stone-400 mb-1">{item.label}</p>
               </div>
-              <p className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1">{item.label}</p>
-              <h3 className="text-2xl font-black text-black">{item.value || '0'}</h3>
+              <h3 className="text-base sm:text-2xl font-black text-stone-900 truncate">{item.value}</h3>
             </motion.div>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10">
 
           {/* Main Dashboard: Orders Table */}
-          <div className="lg:col-span-2 space-y-8">
-            <div className="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm overflow-hidden">
-              <div className="p-8 border-b border-gray-50 flex justify-between items-center">
-                <h2 className="text-xl font-black uppercase tracking-widest text-black flex items-center gap-3">
+          <div className="lg:col-span-2 space-y-6 sm:space-y-8">
+            <div className="bg-white rounded-2xl sm:rounded-[2.5rem] border border-primary/5 shadow-xs overflow-hidden">
+              <div className="p-5 sm:p-8 border-b border-primary/5 flex justify-between items-center">
+                <h2 className="text-xs sm:text-sm font-black uppercase tracking-widest text-black flex items-center gap-2.5">
                   <FaFileInvoiceDollar className="text-primary" />
                   Recent Referrals
                 </h2>
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full text-left">
-                  <thead className="bg-gray-50/50">
+                <table className="w-full text-left min-w-[500px] sm:min-w-0">
+                  <thead className="bg-[#faf9f6]">
                     <tr>
-                      <th className="px-8 py-4 text-[9px] font-black uppercase tracking-widest text-gray-400">Order ID</th>
-                      <th className="px-8 py-4 text-[9px] font-black uppercase tracking-widest text-gray-400">Products</th>
-                      <th className="px-8 py-4 text-[9px] font-black uppercase tracking-widest text-gray-400">Status</th>
-                      <th className="px-8 py-4 text-[9px] font-black uppercase tracking-widest text-gray-400">Comm.</th>
+                      <th className="px-5 sm:px-8 py-3 sm:py-4 text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-stone-400">Order ID</th>
+                      <th className="px-5 sm:px-8 py-3 sm:py-4 text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-stone-400">Products</th>
+                      <th className="px-5 sm:px-8 py-3 sm:py-4 text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-stone-400">Status</th>
+                      <th className="px-5 sm:px-8 py-3 sm:py-4 text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-stone-400">Comm.</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-50">
+                  <tbody className="divide-y divide-primary/5">
                     {orders.length > 0 ? orders.map((order) => (
-                      <tr key={order.id} className="hover:bg-gray-50/30 transition-colors">
-                        <td className="px-8 py-5">
-                          <p className="text-[11px] font-black text-black">#{order.id}</p>
-                          <p className="text-[9px] font-bold text-gray-300 uppercase">{new Date(order.created_at).toLocaleDateString()}</p>
+                      <tr key={order.id} className="hover:bg-[#faf9f6]/30 transition-colors">
+                        <td className="px-5 sm:px-8 py-4">
+                          <p className="text-[10px] sm:text-[11px] font-black text-black">#{order.id}</p>
+                          <p className="text-[8px] sm:text-[9px] font-bold text-stone-300 uppercase">{new Date(order.created_at).toLocaleDateString()}</p>
                         </td>
-                        <td className="px-8 py-5">
-                          <p className="text-[10px] font-bold text-gray-500 truncate max-w-[200px]">{order.products}</p>
+                        <td className="px-5 sm:px-8 py-4">
+                          <p className="text-[9px] sm:text-[10px] font-bold text-stone-500 truncate max-w-[150px] sm:max-w-[200px]">{order.products}</p>
                         </td>
-                        <td className="px-8 py-5">
-                          <span className={`px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest ${order.commission_status === 'approved' ? 'bg-green-50 text-green-600' : 'bg-yellow-50 text-yellow-600'
-                            }`}>
+                        <td className="px-5 sm:px-8 py-4">
+                          <span className={`px-2.5 py-0.5 rounded-full text-[7px] sm:text-[8px] font-black uppercase tracking-widest ${
+                            order.commission_status === 'approved' ? 'bg-green-50 text-green-600' : 'bg-yellow-50 text-yellow-600'
+                          }`}>
                             {order.commission_status}
                           </span>
                         </td>
-                        <td className="px-8 py-5 text-black font-black text-[11px]">
+                        <td className="px-5 sm:px-8 py-4 text-black font-black text-[10px] sm:text-[11px]">
                           ₹{Number(order.commission_earned).toFixed(2)}
                         </td>
                       </tr>
                     )) : (
                       <tr>
-                        <td colSpan="4" className="px-8 py-16 text-center text-[10px] font-black uppercase tracking-widest text-gray-300">
+                        <td colSpan="4" className="px-5 sm:px-8 py-12 sm:py-16 text-center text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-stone-300">
                           No referrals recorded yet
                         </td>
                       </tr>
@@ -275,71 +278,70 @@ const DoctorDashboard = () => {
                   </tbody>
                 </table>
               </div>
-
             </div>
           </div>
 
           {/* Sidebar Actions */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* Quick Edit Card */}
-            <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm space-y-6">
-              <h3 className="text-sm font-black uppercase tracking-[0.2em] text-black">Account Settings</h3>
+            <div className="bg-white p-5 sm:p-8 rounded-2xl sm:rounded-[2.5rem] border border-primary/5 shadow-xs space-y-5 sm:space-y-6">
+              <h3 className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-black">Account Settings</h3>
 
               {editMessage.text && (
-                <div className={`p-4 rounded-xl text-[10px] font-bold tracking-widest uppercase text-center ${editMessage.type === 'success' ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+                <div className={`p-3.5 sm:p-4 rounded-xl text-[9px] sm:text-[10px] font-bold tracking-widest uppercase text-center ${editMessage.type === 'success' ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
                   {editMessage.text}
                 </div>
               )}
 
-              <div className="space-y-5">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">Full Name</label>
+              <div className="space-y-4 sm:space-y-5">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-stone-400">Full Name</label>
                     <input
                       type="text"
                       value={editFormData.name}
                       onChange={(e) => setEditFormData({ ...editFormData, name: e.target.value })}
-                      className="w-full bg-gray-50 border border-transparent p-3.5 rounded-2xl text-xs font-bold focus:bg-white focus:border-primary transition-all outline-none"
+                      className="w-full bg-[#f4f3ee]/50 border border-transparent p-3 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-bold focus:bg-white focus:border-primary transition-all outline-none"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">Specialty</label>
+                  <div className="space-y-1.5">
+                    <label className="text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-stone-400">Specialty</label>
                     <input
                       type="text"
                       value={editFormData.specialty}
                       onChange={(e) => setEditFormData({ ...editFormData, specialty: e.target.value })}
-                      className="w-full bg-gray-50 border border-transparent p-3.5 rounded-2xl text-xs font-bold focus:bg-white focus:border-primary transition-all outline-none"
+                      className="w-full bg-[#f4f3ee]/50 border border-transparent p-3 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-bold focus:bg-white focus:border-primary transition-all outline-none"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">Age</label>
+                <div className="space-y-1.5">
+                  <label className="text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-stone-400">Age</label>
                   <input
                     type="number"
                     value={editFormData.age}
                     onChange={(e) => setEditFormData({ ...editFormData, age: e.target.value })}
-                    className="w-full bg-gray-50 border border-transparent p-3.5 rounded-2xl text-xs font-bold focus:bg-white focus:border-primary transition-all outline-none"
+                    className="w-full bg-[#f4f3ee]/50 border border-transparent p-3 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-bold focus:bg-white focus:border-primary transition-all outline-none"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">Key Achievements</label>
+                <div className="space-y-1.5">
+                  <label className="text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-stone-400">Key Achievements</label>
                   <textarea
                     value={editFormData.achievements}
                     onChange={(e) => setEditFormData({ ...editFormData, achievements: e.target.value })}
                     rows="2"
-                    className="w-full bg-gray-50 border border-transparent p-3.5 rounded-2xl text-xs font-bold focus:bg-white focus:border-primary transition-all outline-none resize-none"
+                    className="w-full bg-[#f4f3ee]/50 border border-transparent p-3 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-bold focus:bg-white focus:border-primary transition-all outline-none resize-none"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">Professional Bio</label>
+                <div className="space-y-1.5">
+                  <label className="text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-stone-400">Professional Bio</label>
                   <textarea
                     value={editFormData.bio}
                     onChange={(e) => setEditFormData({ ...editFormData, bio: e.target.value })}
                     rows="3"
-                    className="w-full bg-gray-50 border border-transparent p-3.5 rounded-2xl text-xs font-bold focus:bg-white focus:border-primary transition-all outline-none resize-none"
+                    className="w-full bg-[#f4f3ee]/50 border border-transparent p-3 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-bold focus:bg-white focus:border-primary transition-all outline-none resize-none"
                   />
                 </div>
               </div>
@@ -348,27 +350,27 @@ const DoctorDashboard = () => {
         </div>
 
         {/* Manage Recommendations Section */}
-        <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 mt-10 shadow-sm">
-          <div className="mb-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div className="bg-white p-5 sm:p-10 rounded-2xl sm:rounded-[2.5rem] border border-primary/5 mt-6 sm:mt-10 shadow-xs">
+          <div className="mb-6 sm:mb-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6">
             <div>
-              <h2 className="text-2xl font-black uppercase tracking-widest text-black mb-2">Featured Products</h2>
-              <p className="text-xs text-gray-400 font-medium leading-relaxed">
+              <h2 className="text-base sm:text-2xl font-black uppercase tracking-widest text-black mb-1 sm:mb-2">Featured Products</h2>
+              <p className="text-[10px] sm:text-xs text-stone-400 font-medium leading-relaxed">
                 Select the products you want to feature on your public portfolio page.
               </p>
             </div>
-            <div className="px-6 py-3 bg-gray-50 rounded-full text-[10px] font-black uppercase tracking-widest text-gray-400">
+            <div className="px-4.5 py-2 sm:px-6 sm:py-3 bg-[#f4f3ee] rounded-full text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-stone-500">
               {selectedProducts.length} Items Selected
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 max-h-[500px] overflow-y-auto pr-4 custom-scrollbar">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-6 max-h-[400px] sm:max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
             {allProducts.map(product => {
               const isSelected = selectedProducts.includes(Number(product.id));
               const imageUrl = product.image_url
                 ? (product.image_url.startsWith('http')
                   ? product.image_url
                   : `${API_BASE_URL}admin/${product.image_url}`)
-                : 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600';
+                : 'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&q=80&w=600';
 
               return (
                 <div
@@ -381,18 +383,18 @@ const DoctorDashboard = () => {
                       setSelectedProducts([...selectedProducts, idNum]);
                     }
                   }}
-                  className={`relative cursor-pointer rounded-3xl overflow-hidden border-2 transition-all duration-300 ${isSelected ? 'border-primary bg-primary/5 shadow-lg' : 'border-gray-50 hover:border-gray-200 bg-white'}`}
+                  className={`relative cursor-pointer rounded-2xl sm:rounded-3xl overflow-hidden border-2 transition-all duration-300 ${isSelected ? 'border-primary bg-primary/5 shadow-xs' : 'border-primary/5 hover:border-stone-200 bg-white'}`}
                 >
-                  <div className="aspect-square p-6">
+                  <div className="aspect-square p-4 sm:p-6 bg-stone-50 flex items-center justify-center">
                     <img
                       src={imageUrl}
                       alt={product.name}
-                      className="w-full h-full object-contain mix-blend-multiply"
+                      className="w-[85%] h-[85%] object-contain mix-blend-multiply"
                     />
                   </div>
-                  <div className="p-4 border-t border-gray-50 flex items-center justify-between">
-                    <p className="truncate text-[10px] font-black uppercase text-gray-800 flex-1">{product.name}</p>
-                    {isSelected && <FaCheckCircle className="text-primary shrink-0" />}
+                  <div className="p-3 sm:p-4 border-t border-primary/5 flex items-center justify-between gap-2">
+                    <p className="truncate text-[8px] sm:text-[10px] font-black uppercase text-stone-800 flex-1">{product.name}</p>
+                    {isSelected && <FaCheckCircle className="text-primary shrink-0 text-xs sm:text-sm" />}
                   </div>
                 </div>
               );
@@ -401,7 +403,7 @@ const DoctorDashboard = () => {
         </div>
 
         {/* Global Save Action */}
-        <div className="flex justify-end mt-10">
+        <div className="flex justify-end mt-6 sm:mt-10">
           <button
             onClick={async (e) => {
               e.preventDefault();
@@ -431,7 +433,7 @@ const DoctorDashboard = () => {
               }
             }}
             disabled={editLoading}
-            className={`px-16 py-6 bg-black text-white rounded-[2rem] font-black uppercase tracking-[0.3em] text-[10px] shadow-2xl hover:bg-primary hover:-translate-y-1 transition-all ${editLoading ? 'opacity-50' : ''}`}
+            className={`w-full sm:w-auto px-8 sm:px-16 py-4 sm:py-6 bg-black text-white rounded-xl sm:rounded-[2rem] font-black uppercase tracking-[0.25em] text-[9px] sm:text-[10px] shadow-2xl hover:bg-primary hover:-translate-y-0.5 active:scale-98 transition-all cursor-pointer ${editLoading ? 'opacity-50' : ''}`}
           >
             {editLoading ? 'Synchronizing...' : 'Save All Changes'}
           </button>

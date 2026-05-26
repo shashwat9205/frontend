@@ -92,7 +92,7 @@ const Shop = () => {
       </section>
 
       {/* Compact Header Section */}
-      <section className="pt-8 pb-4 md:pt-10 md:pb-6">
+      <section className="pt-4 pb-2 md:pt-10 md:pb-6">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="max-w-xl space-y-2.5">
@@ -142,7 +142,7 @@ const Shop = () => {
         </div>
       </section>
 
-      <section className="py-12 md:py-20">
+      <section className="py-6 md:py-20">
         <div className="container mx-auto px-6 max-w-7xl">
           <ProductList category={selectedCategory} search={searchQuery} priceRange={priceRange} />
         </div>

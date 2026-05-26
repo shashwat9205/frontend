@@ -70,10 +70,10 @@ const Home = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-20px" }}
             variants={revealVariants}
-            className="py-12 md:py-16 bg-white border-y border-primary/5 shadow-xs"
+            className="py-6 md:py-16 bg-white border-y border-primary/5 shadow-xs"
           >
             <div className="container mx-auto px-6 max-w-7xl">
-              <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-8">
+              <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-8 md:mb-16 gap-4 md:gap-8">
                 <div className="flex flex-col items-center md:items-start space-y-3 text-center md:text-left">
                   <h4 className="text-accent-gold font-bold uppercase tracking-wider text-[10px] font-sans">
                     Fresh Drop
@@ -116,7 +116,7 @@ const Home = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-20px" }}
             variants={revealVariants}
-            className="bg-[#faf9f6] py-12 md:py-16 border-b border-primary/5"
+            className="bg-[#faf9f6] py-6 md:py-16 border-b border-primary/5"
           >
             <div className="container mx-auto px-6 max-w-7xl">
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8">
@@ -150,7 +150,7 @@ const Home = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-20px" }}
             variants={revealVariants}
-            className="py-12 md:py-16 bg-gradient-to-br from-[#102517] via-[#0c1810] to-[#060b07] text-white overflow-hidden relative border-y border-accent-gold/10"
+            className="py-8 md:py-16 bg-gradient-to-br from-[#102517] via-[#0c1810] to-[#060b07] text-white overflow-hidden relative border-y border-accent-gold/10"
           >
             <div className="absolute inset-0 opacity-15">
               <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover" alt="Newsletter Background" />
@@ -174,7 +174,7 @@ const Home = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-20px" }}
             variants={revealVariants}
-            className="py-12 md:py-16 bg-white"
+            className="py-8 md:py-16 bg-white"
           >
             <div className="container mx-auto px-6 max-w-5xl text-center">
               <FaQuoteLeft className="text-[#f4f3ee] w-20 h-20 mx-auto mb-8" />
@@ -196,10 +196,10 @@ const Home = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-20px" }}
             variants={revealVariants}
-            className="py-12 md:py-16 bg-[#faf9f6] border-t border-primary/5"
+            className="py-8 md:py-16 bg-[#faf9f6] border-t border-primary/5"
           >
             <div className="container mx-auto px-6 max-w-3xl">
-              <div className="text-center mb-16">
+              <div className="text-center mb-8 md:mb-16">
                 <h4 className="text-accent-gold font-bold uppercase tracking-wider text-[10px] mb-3 font-sans">Support</h4>
                 <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#1e2925] font-serif leading-none">
                   Frequently Asked Questions
@@ -237,7 +237,7 @@ const Home = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-20px" }}
             variants={revealVariants}
-            className="bg-white py-12 md:py-16"
+            className="bg-white py-8 md:py-16"
           >
             <div className="container mx-auto px-6 max-w-7xl">
               <div className="flex items-center justify-between mb-12">

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const BrandGateway = ({ activeBrand, onBrandChange, brand2Status }) => {
   return (
-    <div className="bg-[#faf9f6] py-16 md:py-24 px-6 max-w-7xl mx-auto w-full h-full">
+    <div className="bg-[#faf9f6] py-6 md:py-24 px-4 sm:px-6 max-w-7xl mx-auto w-full h-full">
       <div className="flex flex-col md:flex-row gap-8 h-full w-full overflow-hidden rounded-[2.5rem] shadow-xl">
         {/* Brand 1 Side */}
         <motion.div 
@@ -21,7 +21,7 @@ const BrandGateway = ({ activeBrand, onBrandChange, brand2Status }) => {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0f1b11] via-black/30 to-transparent"></div>
           </div>
           
-          <div className="relative z-10 h-full flex flex-col items-center justify-center p-12 text-center gap-6">
+          <div className="relative z-10 h-full flex flex-col items-center justify-center p-6 sm:p-12 text-center gap-6">
             <h4 className="text-accent-gold font-bold uppercase tracking-wider text-[10px] font-sans">Collection 01</h4>
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white leading-tight font-serif italic drop-shadow-md">
               PURE <br /> PERFORMANCE
@@ -48,7 +48,7 @@ const BrandGateway = ({ activeBrand, onBrandChange, brand2Status }) => {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0f1b11] via-black/30 to-transparent"></div>
           </div>
           
-          <div className="relative z-10 h-full flex flex-col items-center justify-center p-12 text-center gap-6">
+          <div className="relative z-10 h-full flex flex-col items-center justify-center p-6 sm:p-12 text-center gap-6">
             <h4 className="text-accent-gold font-bold uppercase tracking-wider text-[10px] font-sans">Collection 02</h4>
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white leading-tight font-serif italic drop-shadow-md">
               ULTIMATE <br /> RECOVERY

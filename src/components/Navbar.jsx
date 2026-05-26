@@ -89,18 +89,29 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="glassmorphism-light border-b border-primary/5 h-20 flex items-center sticky top-0 z-50 shadow-xs transition-all duration-350">
-      <div className="container mx-auto px-6 flex justify-between items-center max-w-7xl">
-        {/* Logo */}
-        <div className="flex items-center gap-8">
-          <Link to="/" className="text-2xl tracking-tight no-underline hover:opacity-90 transition-opacity flex items-center">
+    <nav 
+      className="glassmorphism-light border-b border-primary/5 flex items-center sticky top-0 z-50 shadow-xs transition-all duration-350"
+      style={{ height: '80px' }}
+    >
+      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center max-w-7xl w-full">
+        {/* Left Block: Logo + Navigation Links */}
+        <div className="flex items-center gap-6 lg:gap-10 shrink-0">
+          {/* Logo */}
+          <Link to="/" className="text-2xl tracking-tight no-underline hover:opacity-90 transition-opacity flex items-center shrink-0 border-none">
             <span className="text-primary font-bold font-sans tracking-wide">PURE</span>
             <span className="text-accent-gold font-serif italic font-light ml-1">PLANT</span>
           </Link>
+
+          {/* Desktop Links */}
+          <div className="hidden md:flex gap-6 lg:gap-8 text-xs font-medium tracking-wide shrink-0">
+            <Link to="/shop" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/shop' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>Shop</Link>
+            <Link to="/about" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/about' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>About</Link>
+            <Link to="/contact" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/contact' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>Contact</Link>
+          </div>
         </div>
 
         {/* Global Search Bar */}
-        <div className="hidden lg:flex flex-1 max-w-md mx-8 relative" ref={searchRef}>
+        <div className="hidden lg:flex flex-1 max-w-md mx-6 lg:mx-8 relative" ref={searchRef}>
           <form onSubmit={onSearchSubmit} className="relative w-full group">
             <input 
               type="text" 
@@ -164,13 +175,6 @@ const Navbar = () => {
               </Link>
             </div>
           )}
-        </div>
-
-        {/* Desktop Links */}
-        <div className="hidden md:flex gap-8 text-xs font-medium tracking-wide">
-          <Link to="/shop" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/shop' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>Shop</Link>
-          <Link to="/about" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/about' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>About</Link>
-          <Link to="/contact" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/contact' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>Contact</Link>
         </div>
 
         {/* Icons */}
