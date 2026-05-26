@@ -16,7 +16,7 @@ const Home = () => {
   const featuredRef = useRef(null);
 
   useEffect(() => {
-    fetch('http://localhost/E-commerce/backend/api/settings.php')
+    fetch('http://localhost/E-commerce/backendDR/api/settings.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {

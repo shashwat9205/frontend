@@ -38,7 +38,7 @@ const Profile = () => {
 
   const fetchOrders = async (userId) => {
     try {
-      const res = await fetch(`http://localhost/E-commerce/backend/api/customer_orders.php?user_id=${userId}`);
+      const res = await fetch(`http://localhost/E-commerce/backendDR/api/customer_orders.php?user_id=${userId}`);
       const data = await res.json();
       if (data.status === 'success') {
         setOrders(data.data);
@@ -60,7 +60,7 @@ const Profile = () => {
     setUpdateMessage({ type: '', text: '' });
 
     try {
-      const response = await fetch('http://localhost/E-commerce/backend/api/customer_update.php', {
+      const response = await fetch('http://localhost/E-commerce/backendDR/api/customer_update.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, id: user.id }),
@@ -180,7 +180,7 @@ const Profile = () => {
 
                           <div className="space-y-4">
                             {order.items && order.items.map((item, idx) => {
-                              const imgUrl = item.image_url ? (item.image_url.startsWith('http') ? item.image_url : `http://localhost/E-commerce/backend/admin/${item.image_url}`) : 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600';
+                              const imgUrl = item.image_url ? (item.image_url.startsWith('http') ? item.image_url : `http://localhost/E-commerce/backendDR/admin/${item.image_url}`) : 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600';
                               return (
                                 <div key={idx} className="flex items-center gap-4">
                                   <div className="w-16 h-16 bg-gray-50 rounded-xl p-2 border border-gray-100">

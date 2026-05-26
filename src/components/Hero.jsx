@@ -10,7 +10,7 @@ const Hero = () => {
 
   useEffect(() => {
     // Fetch Hero Banner Content
-    fetch('http://localhost/E-commerce/backend/api/hero.php')
+    fetch('http://localhost/E-commerce/backendDR/api/hero.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success' && data.data) {
@@ -24,7 +24,7 @@ const Hero = () => {
       });
 
     // Fetch dynamic categories fromcategories.php
-    fetch('http://localhost/E-commerce/backend/api/categories.php')
+    fetch('http://localhost/E-commerce/backendDR/api/categories.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -65,7 +65,7 @@ const Hero = () => {
       }
 
       const bgImage = cat.image_url 
-        ? `http://localhost/E-commerce/backend/admin/${cat.image_url}`
+        ? `http://localhost/E-commerce/backendDR/admin/${cat.image_url}`
         : 'https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&q=80&w=150';
 
       return {

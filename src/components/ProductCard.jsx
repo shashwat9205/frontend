@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
   const imageUrl = product.image_url 
     ? (product.image_url.startsWith('http') 
         ? product.image_url 
-        : `http://localhost/E-commerce/backend/admin/${product.image_url}`)
+        : `http://localhost/E-commerce/backendDR/admin/${product.image_url}`)
     : 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600';
 
   const isOutOfStock = parseInt(product.stock) <= 0;

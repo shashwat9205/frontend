@@ -43,7 +43,7 @@ const Chatbot = () => {
 
     try {
       // POST to the secure local PHP API
-      const response = await fetch('http://localhost/E-commerce/backend/api/chat.php', {
+      const response = await fetch('http://localhost/E-commerce/backendDR/api/chat.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

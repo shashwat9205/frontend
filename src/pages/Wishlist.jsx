@@ -65,7 +65,7 @@ const Wishlist = () => {
 
                 {/* Image */}
                 <Link to={`/product/${item.slug}`} className="block h-48 bg-gray-50 rounded-xl mb-4 overflow-hidden relative">
-                  <img src={`http://localhost/E-commerce/backend/${item.image_url}`} alt={item.name} className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500" />
+                  <img src={`http://localhost/E-commerce/backendDR/${item.image_url}`} alt={item.name} className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500" />
                 </Link>
 
                 {/* Details */}

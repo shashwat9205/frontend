@@ -17,7 +17,7 @@ const Register = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost/E-commerce/backend/api/auth.php', {
+      const response = await fetch('http://localhost/E-commerce/backendDR/api/auth.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

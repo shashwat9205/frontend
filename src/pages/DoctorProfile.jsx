@@ -45,7 +45,7 @@ const DoctorProfile = () => {
       localStorage.setItem('doctor_referral', referralCode);
     }
 
-    fetch(`http://localhost/E-commerce/backend/api/doctor.php?code=${referralCode}`)
+    fetch(`http://localhost/E-commerce/backendDR/api/doctor.php?code=${referralCode}`)
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -65,7 +65,7 @@ const DoctorProfile = () => {
   useEffect(() => {
     if (doctor && doctor.recommended_products) {
       setProductsLoading(true);
-      fetch(`http://localhost/E-commerce/backend/api/products.php?ids=${doctor.recommended_products}`)
+      fetch(`http://localhost/E-commerce/backendDR/api/products.php?ids=${doctor.recommended_products}`)
         .then(res => res.json())
         .then(data => {
           if (data.status === 'success') {
@@ -149,7 +149,7 @@ const DoctorProfile = () => {
               <div className="w-full h-full bg-white border border-slate-200 rounded-[2rem] shadow-xl overflow-hidden z-10">
                 {doctor.image_url ? (
                   <img
-                    src={`http://localhost/E-commerce/backend/admin/${doctor.image_url}`}
+                    src={`http://localhost/E-commerce/backendDR/admin/${doctor.image_url}`}
                     alt={doctor.name}
                     className="w-full h-full object-cover object-top"
                   />

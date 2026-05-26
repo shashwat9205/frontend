@@ -31,7 +31,7 @@ const MobileBottomNav = () => {
     const delayDebounceFn = setTimeout(() => {
       if (searchQuery.trim().length > 1) {
         setIsSearching(true);
-        fetch(`http://localhost/E-commerce/backend/api/products.php?brand=${encodeURIComponent(activeBrand)}&search=${encodeURIComponent(searchQuery)}`)
+        fetch(`http://localhost/E-commerce/backendDR/api/products.php?brand=${encodeURIComponent(activeBrand)}&search=${encodeURIComponent(searchQuery)}`)
           .then(res => res.json())
           .then(data => {
             if (data.status === 'success') {
@@ -241,7 +241,7 @@ const MobileBottomNav = () => {
                   const itemImageUrl = product.image_url 
                     ? (product.image_url.startsWith('http') 
                         ? product.image_url 
-                        : `http://localhost/E-commerce/backend/admin/${product.image_url}`)
+                        : `http://localhost/E-commerce/backendDR/admin/${product.image_url}`)
                     : 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600';
 
                   return (

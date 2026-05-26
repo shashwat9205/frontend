@@ -22,7 +22,7 @@ const DoctorJoin = () => {
     setMessage({ type: '', text: '' });
 
     try {
-      const response = await fetch('http://localhost/E-commerce/backend/api/doctor_register.php', {
+      const response = await fetch('http://localhost/E-commerce/backendDR/api/doctor_register.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

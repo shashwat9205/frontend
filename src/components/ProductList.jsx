@@ -8,7 +8,7 @@ const ProductList = ({ limit, category, search, priceRange }) => {
   const activeBrand = localStorage.getItem('activeBrand') || 'Brand 1';
 
   useEffect(() => {
-    let url = `http://localhost/E-commerce/backend/api/products.php?brand=${encodeURIComponent(activeBrand)}`;
+    let url = `http://localhost/E-commerce/backendDR/api/products.php?brand=${encodeURIComponent(activeBrand)}`;
     if (category && category !== 'all') {
       url += `&category=${encodeURIComponent(category)}`;
     }

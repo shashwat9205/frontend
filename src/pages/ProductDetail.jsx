@@ -19,7 +19,7 @@ const ProductDetail = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost/E-commerce/backend/api/products.php?slug=${slug}`)
+    fetch(`http://localhost/E-commerce/backendDR/api/products.php?slug=${slug}`)
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -54,7 +54,7 @@ const ProductDetail = () => {
 
   const formatImageUrl = (url) => {
     if (!url) return 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600';
-    return url.startsWith('http') ? url : `http://localhost/E-commerce/backend/admin/${url}`;
+    return url.startsWith('http') ? url : `http://localhost/E-commerce/backendDR/admin/${url}`;
   };
 
   const isOutOfStock = parseInt(product.stock_quantity || product.stock) <= 0;

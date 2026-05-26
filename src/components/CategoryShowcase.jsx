@@ -7,7 +7,7 @@ const CategoryShowcase = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost/E-commerce/backend/api/categories.php')
+    fetch('http://localhost/E-commerce/backendDR/api/categories.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -44,7 +44,7 @@ const CategoryShowcase = () => {
             >
               {/* Background Image - Fallback to a placeholder if user hasn't uploaded one yet */}
               <img 
-                src={cat.image_url ? `http://localhost/E-commerce/backend/admin/${cat.image_url}` : "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&q=80&w=800"} 
+                src={cat.image_url ? `http://localhost/E-commerce/backendDR/admin/${cat.image_url}` : "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&q=80&w=800"} 
                 alt={cat.name}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />

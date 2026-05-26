@@ -17,7 +17,7 @@ const DoctorLogin = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost/E-commerce/backend/api/doctor_auth.php', {
+      const response = await fetch('http://localhost/E-commerce/backendDR/api/doctor_auth.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -43,7 +43,7 @@ const Navbar = () => {
     if (navSearch.trim().length > 1) {
       setIsSearching(true);
       const timer = setTimeout(() => {
-        fetch(`http://localhost/E-commerce/backend/api/products.php?search=${encodeURIComponent(navSearch)}&limit=5`)
+        fetch(`http://localhost/E-commerce/backendDR/api/products.php?search=${encodeURIComponent(navSearch)}&limit=5`)
           .then(res => res.json())
           .then(data => {
             if (data.status === 'success') {

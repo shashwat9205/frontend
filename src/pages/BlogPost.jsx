@@ -8,7 +8,7 @@ const BlogPost = () => {
   const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost/E-commerce/backend/api/blogs.php?id=${id}`)
+    fetch(`http://localhost/E-commerce/backendDR/api/blogs.php?id=${id}`)
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -48,7 +48,7 @@ const BlogPost = () => {
     // ignore
   }
   
-  const imageUrls = images.map(img => `http://localhost/E-commerce/backend/admin/${img}`);
+  const imageUrls = images.map(img => `http://localhost/E-commerce/backendDR/admin/${img}`);
 
   return (
     <div className="bg-white min-h-screen">

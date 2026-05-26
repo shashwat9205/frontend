@@ -23,7 +23,7 @@ const Shop = () => {
 
   useEffect(() => {
     // Fetch Brand 2 Status
-    fetch('http://localhost/E-commerce/backend/api/settings.php')
+    fetch('http://localhost/E-commerce/backendDR/api/settings.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -33,7 +33,7 @@ const Shop = () => {
       .catch(err => console.error('Error fetching settings:', err));
 
     // Fetch Categories for Filter
-    fetch('http://localhost/E-commerce/backend/api/categories.php')
+    fetch('http://localhost/E-commerce/backendDR/api/categories.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {

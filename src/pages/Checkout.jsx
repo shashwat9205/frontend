@@ -83,7 +83,7 @@ const Checkout = () => {
     };
 
     try {
-      const response = await fetch('http://localhost/E-commerce/backend/api/checkout_react.php', {
+      const response = await fetch('http://localhost/E-commerce/backendDR/api/checkout_react.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -120,7 +120,7 @@ const Checkout = () => {
     const user = userStr ? JSON.parse(userStr) : null;
 
     try {
-      const res = await fetch('http://localhost/E-commerce/backend/api/apply_coupon.php', {
+      const res = await fetch('http://localhost/E-commerce/backendDR/api/apply_coupon.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -312,7 +312,7 @@ const Checkout = () => {
                 {cart.map(item => (
                   <div key={item.id} className="flex gap-4 items-center">
                     <div className="w-16 h-16 bg-gray-50 rounded-xl p-2 shrink-0 border border-gray-100">
-                      <img src={item.image_url ? (item.image_url.startsWith('http') ? item.image_url : `http://localhost/E-commerce/backend/admin/${item.image_url}`) : 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600'} alt={item.name} className="w-full h-full object-contain mix-blend-multiply" />
+                      <img src={item.image_url ? (item.image_url.startsWith('http') ? item.image_url : `http://localhost/E-commerce/backendDR/admin/${item.image_url}`) : 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600'} alt={item.name} className="w-full h-full object-contain mix-blend-multiply" />
                     </div>
                     <div className="flex-1">
                       <p className="text-xs font-black uppercase truncate">{item.name}</p>

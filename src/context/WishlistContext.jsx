@@ -13,7 +13,7 @@ export const WishlistProvider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost/E-commerce/backend/api/wishlist.php?user_id=${user.id}`)
+      fetch(`http://localhost/E-commerce/backendDR/api/wishlist.php?user_id=${user.id}`)
         .then(res => res.json())
         .then(data => {
           if (data.status === 'success') {
@@ -42,7 +42,7 @@ export const WishlistProvider = ({ children }) => {
     }
 
     // API Call
-    fetch('http://localhost/E-commerce/backend/api/wishlist.php', {
+    fetch('http://localhost/E-commerce/backendDR/api/wishlist.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
