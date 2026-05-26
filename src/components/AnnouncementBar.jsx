@@ -19,7 +19,7 @@ const AnnouncementBar = () => {
   }, [messages.length]);
 
   return (
-    <div className="bg-black text-white h-10 flex items-center justify-center overflow-hidden border-b border-white/10 relative">
+    <div className="hidden md:flex bg-black text-white h-10 items-center justify-center overflow-hidden border-b border-white/10 relative">
       <AnimatePresence mode="wait">
         <motion.p
           key={index}
