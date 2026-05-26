@@ -103,7 +103,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex gap-6 lg:gap-8 text-xs font-medium tracking-wide shrink-0">
+          <div className="hidden lg:flex gap-6 lg:gap-8 text-xs font-medium tracking-wide shrink-0">
             <Link to="/shop" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/shop' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>Shop</Link>
             <Link to="/about" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/about' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>About</Link>
             <Link to="/contact" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/contact' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>Contact</Link>
@@ -239,7 +239,7 @@ const Navbar = () => {
               {cartCount}
             </span>
           </Link>
-          <button className="md:hidden text-[#1e2925] hover:text-primary transition-colors" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="lg:hidden text-[#1e2925] hover:text-primary transition-colors" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
@@ -247,7 +247,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="absolute top-20 left-0 w-screen h-[calc(100vh-120px)] bg-white/95 backdrop-blur-md z-[9999] md:hidden p-6 flex flex-col items-center overflow-y-auto animate-in fade-in slide-in-from-top-5 duration-300">
+        <div className="absolute top-20 left-0 w-screen h-[calc(100vh-120px)] bg-white/95 backdrop-blur-md z-[9999] lg:hidden p-6 flex flex-col items-center overflow-y-auto animate-in fade-in slide-in-from-top-5 duration-300">
           
           {/* Mobile Search Bar */}
           <div className="w-full max-w-sm mb-8 relative" ref={searchRef}>
