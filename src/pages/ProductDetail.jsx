@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -19,7 +20,7 @@ const ProductDetail = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost/E-commerce/backendDR/api/products.php?slug=${slug}`)
+    fetch(`${API_BASE_URL}api/products.php?slug=${slug}`)
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -54,7 +55,7 @@ const ProductDetail = () => {
 
   const formatImageUrl = (url) => {
     if (!url) return 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600';
-    return url.startsWith('http') ? url : `http://localhost/E-commerce/backendDR/admin/${url}`;
+    return url.startsWith('http') ? url : `${API_BASE_URL}admin/${url}`;
   };
 
   const isOutOfStock = parseInt(product.stock_quantity || product.stock) <= 0;

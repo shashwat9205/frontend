@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -55,7 +56,7 @@ const Cart = () => {
             <AnimatePresence>
               {cart.map((item, index) => {
                 const imageUrl = item.image_url 
-                  ? (item.image_url.startsWith('http') ? item.image_url : `http://localhost/E-commerce/backendDR/admin/${item.image_url}`)
+                  ? (item.image_url.startsWith('http') ? item.image_url : `${API_BASE_URL}admin/${item.image_url}`)
                   : 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600';
 
                 return (

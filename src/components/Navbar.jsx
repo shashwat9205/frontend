@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 // src/components/Navbar.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -43,7 +44,7 @@ const Navbar = () => {
     if (navSearch.trim().length > 1) {
       setIsSearching(true);
       const timer = setTimeout(() => {
-        fetch(`http://localhost/E-commerce/backendDR/api/products.php?search=${encodeURIComponent(navSearch)}&limit=5`)
+        fetch(`${API_BASE_URL}api/products.php?search=${encodeURIComponent(navSearch)}&limit=5`)
           .then(res => res.json())
           .then(data => {
             if (data.status === 'success') {
@@ -120,7 +121,7 @@ const Navbar = () => {
 
           {/* Search Results Dropdown */}
           {showResults && searchResults.length > 0 && (
-            <div className="absolute top-full left-0 w-full bg-white mt-2 rounded-2xl shadow-xl border border-primary/5 overflow-hidden z-[200] animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="absolute top-full left-0 w-full bg-white mt-2 rounded-2xl shadow-xl border border-primary/5 overflow-hidden z-200 animate-in fade-in slide-in-from-top-2 duration-200">
               <div className="p-4 border-b border-gray-50 bg-[#faf9f6]">
                 <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-gray-400">Quick Results</span>
               </div>
@@ -190,7 +191,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Hover Dropdown */}
-                <div className="absolute right-0 top-full pt-4 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[200] translate-y-2 group-hover:translate-y-0">
+                <div className="absolute right-0 top-full pt-4 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-200 translate-y-2 group-hover:translate-y-0">
                   <div className="bg-white border border-primary/5 rounded-2xl shadow-xl overflow-hidden relative">
                     {/* Tiny arrow pointing up */}
                     <div className="absolute -top-2 right-4 w-4 h-4 bg-white border-t border-l border-primary/5 transform rotate-45"></div>

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 // src/components/Chatbot.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -43,7 +44,7 @@ const Chatbot = () => {
 
     try {
       // POST to the secure local PHP API
-      const response = await fetch('http://localhost/E-commerce/backendDR/api/chat.php', {
+      const response = await fetch(API_BASE_URL + 'api/chat.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 // src/pages/Home.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import Hero from '../components/Hero';
@@ -16,7 +17,7 @@ const Home = () => {
   const featuredRef = useRef(null);
 
   useEffect(() => {
-    fetch('http://localhost/E-commerce/backendDR/api/settings.php')
+    fetch(API_BASE_URL + 'api/settings.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {

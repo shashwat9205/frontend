@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const WishlistContext = createContext();
@@ -13,7 +14,7 @@ export const WishlistProvider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost/E-commerce/backendDR/api/wishlist.php?user_id=${user.id}`)
+      fetch(`${API_BASE_URL}api/wishlist.php?user_id=${user.id}`)
         .then(res => res.json())
         .then(data => {
           if (data.status === 'success') {
@@ -42,7 +43,7 @@ export const WishlistProvider = ({ children }) => {
     }
 
     // API Call
-    fetch('http://localhost/E-commerce/backendDR/api/wishlist.php', {
+    fetch(API_BASE_URL + 'api/wishlist.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,7 +7,7 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost/E-commerce/backendDR/api/blogs.php')
+    fetch(API_BASE_URL + 'api/blogs.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -59,7 +60,7 @@ const Blog = () => {
                 } catch (e) {
                   // ignore
                 }
-                const firstImg = images && images.length > 0 ? `http://localhost/E-commerce/backendDR/admin/${images[0]}` : 'https://placehold.co/600x400/eeeeee/cccccc?text=No+Image';
+                const firstImg = images && images.length > 0 ? `${API_BASE_URL}admin/${images[0]}` : 'https://placehold.co/600x400/eeeeee/cccccc?text=No+Image';
 
                 return (
                   <Link to={`/blog/${blog.id}`} key={blog.id} className="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 transform hover:-translate-y-2">

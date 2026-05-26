@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
@@ -45,7 +46,7 @@ const DoctorProfile = () => {
       localStorage.setItem('doctor_referral', referralCode);
     }
 
-    fetch(`http://localhost/E-commerce/backendDR/api/doctor.php?code=${referralCode}`)
+    fetch(`${API_BASE_URL}api/doctor.php?code=${referralCode}`)
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -65,7 +66,7 @@ const DoctorProfile = () => {
   useEffect(() => {
     if (doctor && doctor.recommended_products) {
       setProductsLoading(true);
-      fetch(`http://localhost/E-commerce/backendDR/api/products.php?ids=${doctor.recommended_products}`)
+      fetch(`${API_BASE_URL}api/products.php?ids=${doctor.recommended_products}`)
         .then(res => res.json())
         .then(data => {
           if (data.status === 'success') {
@@ -149,7 +150,7 @@ const DoctorProfile = () => {
               <div className="w-full h-full bg-white border border-slate-200 rounded-[2rem] shadow-xl overflow-hidden z-10">
                 {doctor.image_url ? (
                   <img
-                    src={`http://localhost/E-commerce/backendDR/admin/${doctor.image_url}`}
+                    src={`${API_BASE_URL}admin/${doctor.image_url}`}
                     alt={doctor.name}
                     className="w-full h-full object-cover object-top"
                   />

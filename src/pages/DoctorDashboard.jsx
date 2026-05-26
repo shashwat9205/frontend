@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -41,7 +42,7 @@ const DoctorDashboard = () => {
 
   const fetchDashboardData = async (docId) => {
     try {
-      const response = await fetch(`http://localhost/E-commerce/backendDR/api/doctor_dashboard.php?doctor_id=${docId}`);
+      const response = await fetch(`${API_BASE_URL}api/doctor_dashboard.php?doctor_id=${docId}`);
       const data = await response.json();
       if (data.status === 'success') {
         const statsData = data.data.stats;
@@ -70,7 +71,7 @@ const DoctorDashboard = () => {
   };
 
   const fetchProducts = () => {
-    fetch('http://localhost/E-commerce/backendDR/api/products.php')
+    fetch(API_BASE_URL + 'api/products.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') setAllProducts(data.data);
@@ -94,7 +95,7 @@ const DoctorDashboard = () => {
     formData.append('id', doctor.id);
 
     try {
-      const response = await fetch('http://localhost/E-commerce/backendDR/api/doctor_upload_photo.php', {
+      const response = await fetch(API_BASE_URL + 'api/doctor_upload_photo.php', {
         method: 'POST',
         body: formData,
       });
@@ -152,7 +153,7 @@ const DoctorDashboard = () => {
                     <i className="fa-solid fa-spinner fa-spin text-xl"></i>
                   </div>
                 ) : doctor?.image_url ? (
-                  <img src={`http://localhost/E-commerce/backendDR/admin/${doctor.image_url}`} className="w-full h-full object-cover" alt="" />
+                  <img src={`${API_BASE_URL}admin/${doctor.image_url}`} className="w-full h-full object-cover" alt="" />
                 ) : (
                   <span className="text-2xl font-black text-gray-300">{doctor?.name?.charAt(0)}</span>
                 )}
@@ -366,7 +367,7 @@ const DoctorDashboard = () => {
               const imageUrl = product.image_url
                 ? (product.image_url.startsWith('http')
                   ? product.image_url
-                  : `http://localhost/E-commerce/backendDR/admin/${product.image_url}`)
+                  : `${API_BASE_URL}admin/${product.image_url}`)
                 : 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600';
 
               return (
@@ -411,7 +412,7 @@ const DoctorDashboard = () => {
                   recommended_products: selectedProducts.join(','),
                   id: doctor.id
                 };
-                const res = await fetch('http://localhost/E-commerce/backendDR/api/doctor_update.php', {
+                const res = await fetch(API_BASE_URL + 'api/doctor_update.php', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify(payload),

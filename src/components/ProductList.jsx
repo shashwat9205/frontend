@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 // src/components/ProductList.jsx
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
@@ -8,7 +9,7 @@ const ProductList = ({ limit, category, search, priceRange }) => {
   const activeBrand = localStorage.getItem('activeBrand') || 'Brand 1';
 
   useEffect(() => {
-    let url = `http://localhost/E-commerce/backendDR/api/products.php?brand=${encodeURIComponent(activeBrand)}`;
+    let url = `${API_BASE_URL}api/products.php?brand=${encodeURIComponent(activeBrand)}`;
     if (category && category !== 'all') {
       url += `&category=${encodeURIComponent(category)}`;
     }

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -22,7 +23,7 @@ const DoctorJoin = () => {
     setMessage({ type: '', text: '' });
 
     try {
-      const response = await fetch('http://localhost/E-commerce/backendDR/api/doctor_register.php', {
+      const response = await fetch(API_BASE_URL + 'api/doctor_register.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

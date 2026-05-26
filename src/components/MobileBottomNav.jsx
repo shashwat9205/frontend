@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 // src/components/MobileBottomNav.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -31,7 +32,7 @@ const MobileBottomNav = () => {
     const delayDebounceFn = setTimeout(() => {
       if (searchQuery.trim().length > 1) {
         setIsSearching(true);
-        fetch(`http://localhost/E-commerce/backendDR/api/products.php?brand=${encodeURIComponent(activeBrand)}&search=${encodeURIComponent(searchQuery)}`)
+        fetch(`${API_BASE_URL}api/products.php?brand=${encodeURIComponent(activeBrand)}&search=${encodeURIComponent(searchQuery)}`)
           .then(res => res.json())
           .then(data => {
             if (data.status === 'success') {
@@ -141,7 +142,7 @@ const MobileBottomNav = () => {
             to="/cart"
             className="flex-1 flex flex-col items-center justify-center h-full relative group no-underline"
             onClick={() => setIsSearchOpen(false)}
-          >
+          > 
             <div className={`relative flex items-center justify-center p-1 transition-all duration-300 ${
               isActive('/cart') ? 'text-[#1b4332]' : 'text-stone-500'
             }`}>
@@ -241,7 +242,7 @@ const MobileBottomNav = () => {
                   const itemImageUrl = product.image_url 
                     ? (product.image_url.startsWith('http') 
                         ? product.image_url 
-                        : `http://localhost/E-commerce/backendDR/admin/${product.image_url}`)
+                        : `${API_BASE_URL}admin/${product.image_url}`)
                     : 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600';
 
                   return (

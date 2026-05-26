@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 // src/pages/Shop.jsx
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
@@ -23,7 +24,7 @@ const Shop = () => {
 
   useEffect(() => {
     // Fetch Brand 2 Status
-    fetch('http://localhost/E-commerce/backendDR/api/settings.php')
+    fetch(API_BASE_URL + 'api/settings.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -33,7 +34,7 @@ const Shop = () => {
       .catch(err => console.error('Error fetching settings:', err));
 
     // Fetch Categories for Filter
-    fetch('http://localhost/E-commerce/backendDR/api/categories.php')
+    fetch(API_BASE_URL + 'api/categories.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {

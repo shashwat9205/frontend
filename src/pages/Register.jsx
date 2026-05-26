@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -17,7 +18,7 @@ const Register = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost/E-commerce/backendDR/api/auth.php', {
+      const response = await fetch(API_BASE_URL + 'api/auth.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

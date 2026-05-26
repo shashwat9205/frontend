@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
@@ -8,7 +9,7 @@ const BlogPost = () => {
   const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost/E-commerce/backendDR/api/blogs.php?id=${id}`)
+    fetch(`${API_BASE_URL}api/blogs.php?id=${id}`)
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -48,7 +49,7 @@ const BlogPost = () => {
     // ignore
   }
   
-  const imageUrls = images.map(img => `http://localhost/E-commerce/backendDR/admin/${img}`);
+  const imageUrls = images.map(img => `${API_BASE_URL}admin/${img}`);
 
   return (
     <div className="bg-white min-h-screen">
