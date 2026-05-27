@@ -221,7 +221,7 @@ const DoctorDashboard = () => {
                 </div>
                 <p className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.15em] text-stone-400 mb-1">{item.label}</p>
               </div>
-              <h3 className="text-base sm:text-2xl font-black text-stone-900 truncate">{item.value}</h3>
+              <p className="text-base sm:text-2xl font-black text-stone-900 font-sans truncate">{item.value}</p>
             </motion.div>
           ))}
         </div>
@@ -258,9 +258,8 @@ const DoctorDashboard = () => {
                           <p className="text-[9px] sm:text-[10px] font-bold text-stone-500 truncate max-w-[150px] sm:max-w-[200px]">{order.products}</p>
                         </td>
                         <td className="px-5 sm:px-8 py-4">
-                          <span className={`px-2.5 py-0.5 rounded-full text-[7px] sm:text-[8px] font-black uppercase tracking-widest ${
-                            order.commission_status === 'approved' ? 'bg-green-50 text-green-600' : 'bg-yellow-50 text-yellow-600'
-                          }`}>
+                          <span className={`px-2.5 py-0.5 rounded-full text-[7px] sm:text-[8px] font-black uppercase tracking-widest ${order.commission_status === 'approved' ? 'bg-green-50 text-green-600' : 'bg-yellow-50 text-yellow-600'
+                            }`}>
                             {order.commission_status}
                           </span>
                         </td>

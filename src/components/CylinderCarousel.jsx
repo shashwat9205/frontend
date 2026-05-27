@@ -22,7 +22,7 @@ export default function CylinderCarousel() {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
-        setRadius(150);
+        setRadius(200);
       } else if (window.innerWidth < 768) {
         setRadius(220);
       } else {
@@ -112,7 +112,7 @@ export default function CylinderCarousel() {
                   key={index}
                   onMouseEnter={() => { if (isFront) setIsHovered(true); }}
                   onMouseLeave={() => setIsHovered(false)}
-                  className="absolute top-1/2 left-1/2 -mt-24 sm:-mt-45 -ml-16 sm:-ml-32.5 h-48 sm:h-80 w-32 sm:w-55 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
+                  className="absolute top-1/2 left-1/2 -mt-24 sm:-mt-45 -ml-16 sm:-ml-32.5 h-56 sm:h-80 w-36 sm:w-55 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
                   style={{
                     transition: isDragging ? "none" : "all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1)",
                     transform: `rotateY(${angle}deg) translateZ(${radius}px) scale(${isFront ? 1.05 : 0.95})`,
