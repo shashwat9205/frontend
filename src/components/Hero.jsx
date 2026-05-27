@@ -97,7 +97,7 @@ const Hero = () => {
         </div>
 
         {/* Content Layer */}
-        <div className="relative z-10 container mx-auto px-6 max-w-7xl flex flex-col items-center -mt-10">
+        <div className="relative z-10 container mx-auto px-6 max-w-7xl flex flex-col items-center ">
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.15] text-white mb-8 font-serif max-w-4xl mx-auto px-4 drop-shadow-md">
             {displayData.title}
           </h1>
