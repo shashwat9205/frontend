@@ -99,7 +99,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="text-2xl tracking-tight no-underline hover:opacity-90 transition-opacity flex items-center shrink-0 border-none">
             <span className="text-primary font-bold font-sans tracking-wide">PURE</span>
-            <span className="text-accent-gold font-serif italic font-light ml-1">PLANT</span>
+            <span className="text-accent-gold font-sans font-light ml-1">PLANT</span>
           </Link>
 
           {/* Desktop Links */}
