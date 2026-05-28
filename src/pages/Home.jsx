@@ -18,6 +18,7 @@ import {
   FaQuoteLeft,
 } from "react-icons/fa";
 import CylinderCarousel from "@/components/CylinderCarousel";
+import AppDownloadSection from "@/components/AppDownloadSection";
 
 const Home = () => {
   const [brand2Status, setBrand2Status] = useState("coming_soon");
@@ -133,6 +134,13 @@ const Home = () => {
           >
             <CategoryShowcase />
           </motion.div>
+
+
+          {/* Appdownload section  */}
+
+          
+
+
 
           <motion.div
             initial="hidden"
@@ -373,6 +381,16 @@ const Home = () => {
               </div>
             </div>
           </motion.section>
+
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-20px" }}
+            variants={revealVariants}
+          >
+            <AppDownloadSection/>
+          </motion.div>
         </>
       )}
     </div>

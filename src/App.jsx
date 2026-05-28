@@ -56,7 +56,7 @@ function App() {
           <Navbar />
         </header>
         
-        <main className="flex-1 flex flex-col w-full pt-[80px] md:pt-[120px] pb-16 md:pb-0">
+        <main className="flex-1 flex flex-col w-full pt-[80px] md:pt-[120px]  md:pb-0">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Shop />} />

@@ -96,7 +96,7 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-[10000] font-sans">
+    <div className="fixed bottom-20 right-4 sm:bottom-20 sm:right-6 z-[10000] font-sans">
       {/* Floating Toggle Button */}
       {!isOpen && (
         <button

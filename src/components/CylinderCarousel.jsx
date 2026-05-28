@@ -112,13 +112,13 @@ export default function CylinderCarousel() {
                   key={index}
                   onMouseEnter={() => { if (isFront) setIsHovered(true); }}
                   onMouseLeave={() => setIsHovered(false)}
-                  className="absolute top-1/2 left-1/2 -mt-24 sm:-mt-45 -ml-16 sm:-ml-32.5 h-56 sm:h-80 w-36 sm:w-55 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
+                  className="absolute top-1/2 left-1/2 -mt-24 sm:-mt-35 -ml-16 sm:-ml-32.5 h-56 sm:h-80 w-36 sm:w-55 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
                   style={{
                     transition: isDragging ? "none" : "all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1)",
                     transform: `rotateY(${angle}deg) translateZ(${radius}px) scale(${isFront ? 1.05 : 0.95})`,
                     backfaceVisibility: "hidden",
                     WebkitBackfaceVisibility: "hidden",
-                    WebkitBoxReflect: isFront ? "below 10px linear-gradient(transparent, transparent 60%, rgba(255,255,255,0.15))" : "none",
+                    // WebkitBoxReflect: isFront ? "below 10px linear-gradient(transparent, transparent 60%, rgba(255,255,255,0.15))" : "none",
                     opacity: isFront ? 1 : Math.max(0.5, 1 - (distanceFromFront / 200)),
                     filter: isFront ? 'brightness(1) blur(0px)' : `brightness(${Math.max(0.5, 1 - (distanceFromFront / 120))}) blur(${distanceFromFront / 60}px)`,
                     boxShadow: isFront ? "0 0 50px rgba(255,255,255,0.1), 0 20px 40px rgba(0,0,0,0.8)" : "0 0 30px rgba(255,255,255,0.08), 0 10px 20px rgba(0,0,0,0.9)",

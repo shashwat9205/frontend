@@ -103,11 +103,11 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden lg:flex gap-6 lg:gap-8 text-xs font-medium tracking-wide shrink-0">
+          {/* <div className="hidden lg:flex gap-6 lg:gap-8 text-xs font-medium tracking-wide shrink-0">
             <Link to="/shop" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/shop' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>Shop</Link>
             <Link to="/about" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/about' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>About</Link>
             <Link to="/contact" className={`transition-colors no-underline relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100 after:origin-center ${location.pathname === '/contact' ? 'text-primary after:scale-x-100' : 'text-[#1e2925] hover:text-primary'}`}>Contact</Link>
-          </div>
+          </div> */}
         </div>
 
         {/* Global Search Bar */}
