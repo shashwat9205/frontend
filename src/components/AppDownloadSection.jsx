@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 
 import app from "../../public/app.png";
@@ -8,7 +9,7 @@ const AppDownloadSection = () => {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
         
         {/* Left Image */}
-        <div className="flex justify-center w-full lg:w-1/2">
+        <div className=" hidden md:flex justify-center w-full lg:w-1/2">
           <img
             src={app}
             alt="Mobile App"

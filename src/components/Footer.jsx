@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // src/components/Footer.jsx
 import React from 'react';
 import { FaInstagram, FaFacebookF, FaTwitter, FaYoutube } from 'react-icons/fa';

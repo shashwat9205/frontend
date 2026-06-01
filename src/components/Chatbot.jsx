@@ -1,5 +1,6 @@
 import { API_BASE_URL } from '../config';
 // src/components/Chatbot.jsx
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ const Chatbot = () => {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
+  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
 
   // Scroll to bottom when messages update
