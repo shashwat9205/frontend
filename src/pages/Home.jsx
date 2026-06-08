@@ -1,59 +1,24 @@
-import { API_BASE_URL } from "../config";
 // src/pages/Home.jsx
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Hero from "../components/Hero";
-import BrandGateway from "../components/BrandGateway";
 import ProductList from "../components/ProductList";
-import BrandTeaser from "../components/BrandTeaser";
-import CategoryShowcase from "../components/CategoryShowcase";
 import { motion } from "framer-motion";
-import PromoSlider from "../components/PromoSlider";
 import {
+  FaInstagram,
+  FaQuoteLeft,
   FaShieldAlt,
   FaBolt,
   FaHeart,
-  FaTruck,
-  FaInstagram,
-  FaQuoteLeft,
+  FaTruck
 } from "react-icons/fa";
-import CylinderCarousel from "@/components/CylinderCarousel";
-import AppDownloadSection from "@/components/AppDownloadSection";
+import { Shield, Activity, Sparkles, Brain, ArrowRight, Dna, FileText } from "lucide-react";
+import AppDownloadSection from "../components/AppDownloadSection";
 
 const Home = () => {
-  const [brand2Status, setBrand2Status] = useState("coming_soon");
-  const [activeBrand, setActiveBrand] = useState(
-    localStorage.getItem("activeBrand") || "Brand 1",
-  );
   const [activeFaq, setActiveFaq] = useState(null);
-  const featuredRef = useRef(null);
-
-  useEffect(() => {
-    fetch(API_BASE_URL + "api/settings.php")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          setBrand2Status(data.brand2_status);
-        }
-      })
-      .catch((err) => console.error("Error fetching settings:", err));
-  }, []);
-
-  const handleBrandChange = (brand) => {
-    setActiveBrand(brand);
-    localStorage.setItem("activeBrand", brand);
-    if (
-      brand === "Brand 1" ||
-      (brand === "Brand 2" && brand2Status === "live")
-    ) {
-      setTimeout(() => {
-        featuredRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    }
-  };
 
   const revealVariants = {
-    hidden: { opacity: 0, y: 35 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
@@ -61,338 +26,468 @@ const Home = () => {
     },
   };
 
+  const categoriesList = [
+    {
+      title: "NMN & Cellular Energy",
+      desc: "Replenish NAD+ levels, repair DNA, and supercharge mitochondrial output.",
+      icon: <Dna className="w-6 h-6 text-primary" />,
+      link: "/shop?category=NMN",
+      bg: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      title: "Sleep & Circadian Balance",
+      desc: "Maximize deep sleep cycles and accelerate cellular regeneration overnight.",
+      icon: <Brain className="w-6 h-6 text-primary" />,
+      link: "/shop?category=Sleep",
+      bg: "https://images.unsplash.com/photo-1511295742364-92767fa62d9f?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      title: "Skin & Anti-Aging",
+      desc: "Liposomal collagen promoters and cellular antioxidants for dermal longevity.",
+      icon: <Sparkles className="w-6 h-6 text-primary" />,
+      link: "/shop?category=Skin",
+      bg: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      title: "Metabolic Health",
+      desc: "Optimize insulin sensitivity, glucose clearance, and lipolysis pathways.",
+      icon: <Activity className="w-6 h-6 text-primary" />,
+      link: "/shop?category=Metabolic",
+      bg: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      title: "Brain & Focus",
+      desc: "Nootropic formulas designed to upgrade neurotransmission, memory and focus.",
+      icon: <Shield className="w-6 h-6 text-primary" />,
+      link: "/shop?category=Nootropics",
+      bg: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      title: "Muscle & Recovery",
+      desc: "Premium cellular recovery agents to combat exercise-induced inflammation.",
+      icon: <Activity className="w-6 h-6 text-primary" />,
+      link: "/shop?category=Recovery",
+      bg: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=400"
+    }
+  ];
+
   return (
-    <div className="bg-[#faf9f6] min-h-screen">
+    <div className="bg-background min-h-screen text-foreground overflow-x-hidden">
+      
       {/* Hero Section */}
-      <div className="bg-[#0d160e]">
-        <Hero />
-      </div>
+      <Hero />
 
-      {/* Brand Selector Gateway */}
-      <div className="bg-[#faf9f6]">
-        <BrandGateway
-          activeBrand={activeBrand}
-          onBrandChange={handleBrandChange}
-          brand2Status={brand2Status}
-        />
-      </div>
-
-      {activeBrand === "Brand 2" && brand2Status === "coming_soon" ? (
-        <BrandTeaser />
-      ) : (
-        <>
-          {/* Featured Inventory Section */}
-          <motion.section
-            ref={featuredRef}
-            id="featured"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-20px" }}
-            variants={revealVariants}
-            className="py-6 md:py-16 bg-white border-y border-primary/5 shadow-xs"
-          >
-            <div className="container mx-auto px-6 max-w-7xl">
-              <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-8 md:mb-16 gap-4 md:gap-8">
-                <div className="flex flex-col items-center md:items-start space-y-3 text-center md:text-left">
-                  <h4 className="text-accent-gold font-bold uppercase tracking-wider text-[10px] font-sans">
-                    Fresh Drop
-                  </h4>
-                  <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#1e2925] font-serif leading-none">
-                    Recent Additions
-                  </h2>
+      {/* Trust & Science Validation Badges */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-20px" }}
+        variants={revealVariants}
+        className="py-12 bg-secondary/30 border-y border-border"
+      >
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: <FaShieldAlt className="w-5 h-5 text-primary" />,
+                title: "100% Lab Certified",
+                desc: "Every single batch is third-party tested for purity and chemical composition."
+              },
+              {
+                icon: <FaBolt className="w-5 h-5 text-primary" />,
+                title: "Maximum Bioavailability",
+                desc: "Enriched with liposomal technology for maximum cellular absorption."
+              },
+              {
+                icon: <FaHeart className="w-5 h-5 text-primary" />,
+                title: "Physician Formulated",
+                desc: "Developed in collaboration with leading longevity clinicians and experts."
+              },
+              {
+                icon: <FaTruck className="w-5 h-5 text-primary" />,
+                title: "Insured Global Shipping",
+                desc: "Temperature-controlled distribution to safeguard molecular stability."
+              }
+            ].map((badge, i) => (
+              <div key={i} className="flex gap-4 items-start">
+                <div className="p-3 bg-card border border-border rounded-xl text-primary shrink-0">
+                  {badge.icon}
                 </div>
-                <a
-                  href="/shop"
-                  className="text-xs font-bold uppercase tracking-wider text-primary border-b border-accent-gold pb-1.5 hover:text-accent-gold transition-colors no-underline"
-                >
-                  View All Products →
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-1">{badge.title}</h4>
+                  <p className="text-[10px] sm:text-xs text-stone-400 font-medium leading-relaxed">{badge.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Featured Molecular Stacks */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-20px" }}
+        variants={revealVariants}
+        className="py-16 md:py-24 max-w-7xl mx-auto px-6"
+      >
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6">
+          <div>
+            <span className="text-primary font-bold uppercase tracking-widest text-[9px]">CLINICAL INVENTORY</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mt-1 uppercase tracking-tight">Featured Molecular Stacks</h2>
+          </div>
+          <a href="/shop" className="group flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-secondary/80 border border-border px-5 py-3 rounded-full hover:border-primary/45 transition-all no-underline">
+            View All Stacks <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+        </div>
+        <ProductList limit={4} />
+      </motion.section>
+
+      {/* Biohacking Categories Grid */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-20px" }}
+        variants={revealVariants}
+        className="py-16 md:py-24 bg-card/45 border-y border-border"
+      >
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="text-center mb-16 space-y-2">
+            <span className="text-primary font-bold uppercase tracking-widest text-[9px]">TARGETED OPTIMIZATION</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white uppercase tracking-tight">Longevity Categories</h2>
+            <p className="text-xs sm:text-sm text-stone-400 font-medium max-w-lg mx-auto">Address metabolic degradation, cell senescence, and performance decline at the root.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {categoriesList.map((cat, i) => (
+              <a 
+                href={cat.link} 
+                key={i} 
+                className="group relative h-80 rounded-[2rem] overflow-hidden border border-border bg-black flex flex-col justify-end p-8 no-underline"
+              >
+                {/* Background image */}
+                <div className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700" style={{ backgroundImage: `url(${cat.bg})` }}></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent"></div>
+                
+                <div className="relative z-10 space-y-4">
+                  <div className="w-12 h-12 bg-background/90 border border-border rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-all">
+                    {cat.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white uppercase tracking-wider">{cat.title}</h3>
+                    <p className="text-xs text-stone-400 font-medium leading-relaxed mt-2">{cat.desc}</p>
+                  </div>
+                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-primary pt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Initialize Stack <ArrowRight size={12} />
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* How It Works Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-20px" }}
+        variants={revealVariants}
+        className="py-16 md:py-24 max-w-7xl mx-auto px-6"
+      >
+        <div className="text-center mb-16 space-y-2">
+          <span className="text-primary font-bold uppercase tracking-widest text-[9px]">PROTOCOL ENGINE</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white uppercase tracking-tight">How Biohacker's Fuel Works</h2>
+          <p className="text-xs sm:text-sm text-stone-400 font-medium max-w-lg mx-auto">A continuous optimization cycle designed to bridge diagnostic data with high-performance supplementation.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+          
+          {/* Connecting Line (Desktop) */}
+          <div className="hidden lg:block absolute top-16 left-16 right-16 h-0.5 bg-border z-0"></div>
+
+          {[
+            {
+              step: "01",
+              title: "Assess Biomarkers",
+              desc: "Complete the Biohacking Quiz or submit clinic reports to establish your cellular health baseline."
+            },
+            {
+              step: "02",
+              title: "Tailor Supplementation",
+              desc: "Recieve a tailored molecular stack formula targeted to optimize cellular energy and cellular health."
+            },
+            {
+              step: "03",
+              title: "Track Biometrics",
+              desc: "Observe fluctuations in your energy levels, sleep tracking metrics, and overall performance."
+            },
+            {
+              step: "04",
+              title: "Refine & Optimize",
+              desc: "Consult our clinical experts to adapt dosage and target aging hallmarks dynamically."
+            }
+          ].map((item, i) => (
+            <div key={i} className="bg-card/40 border border-border rounded-3xl p-8 relative z-10 flex flex-col gap-4">
+              <span className="text-4xl font-black text-primary/20 font-mono leading-none">{item.step}</span>
+              <h3 className="text-lg font-bold text-white uppercase tracking-wider">{item.title}</h3>
+              <p className="text-xs text-stone-400 leading-relaxed font-medium">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-12 text-center">
+          <a href="/quiz" className="bg-primary hover:opacity-90 text-background px-10 py-4 rounded-full font-bold uppercase tracking-wider text-[10px] transition-all shadow-xl inline-block no-underline duration-300">
+            Take Biohacking Quiz
+          </a>
+        </div>
+      </motion.section>
+
+      {/* Scientific Hub Preview Split Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-20px" }}
+        variants={revealVariants}
+        className="py-16 md:py-24 bg-card border-y border-border"
+      >
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <span className="text-primary font-bold uppercase tracking-widest text-[9px] flex items-center gap-2">
+                <Shield size={12} /> CLINICALLY PROVEN & LAB BACKED
+              </span>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight">
+                Scientifically Formulated.<br/>Clinically Proven.
+              </h2>
+              <p className="text-stone-300 text-sm leading-relaxed font-medium">
+                We believe that longevity is not built on trends, but raw clinical trials and molecular validation. Every batch of our liposomal range and NAD+ precursors undergoes heavy metal, pesticide, and purity assays.
+              </p>
+              <div className="space-y-4">
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                    ✓
+                  </div>
+                  <span className="text-xs font-bold text-white">Liposomal delivery for 15x absorption metrics</span>
+                </div>
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                    ✓
+                  </div>
+                  <span className="text-xs font-bold text-white">99.8% pharmaceutical-grade NMN purity standard</span>
+                </div>
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                    ✓
+                  </div>
+                  <span className="text-xs font-bold text-white">Endorsed by anti-aging clinical boards</span>
+                </div>
+              </div>
+              <div className="pt-4">
+                <a href="/science" className="bg-primary hover:opacity-90 text-background px-10 py-4 rounded-full font-bold uppercase tracking-wider text-[10px] transition-all shadow-xl inline-block no-underline duration-300">
+                  Explore Science Hub
                 </a>
               </div>
-              <ProductList limit={4} />
             </div>
-          </motion.section>
-
-          {/* Slider Promotional Banner */}
-          <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-20px" }}
-            variants={revealVariants}
-            className="w-full"
-          >
-            <PromoSlider />
-          </motion.section>
-
-
-
-          {/* Category Showcase Section */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-20px" }}
-            variants={revealVariants}
-          >
-            <CategoryShowcase />
-          </motion.div>
-
-
-          {/* Appdownload section  */}
-
-          
-
-
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-20px" }}
-            variants={revealVariants}
-          >
-            <CylinderCarousel />
-          </motion.div>
-
-          {/* Benefits Section */}
-          <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-20px" }}
-            variants={revealVariants}
-            className="bg-[#faf9f6] py-6 md:py-16 border-b border-primary/5"
-          >
-            <div className="container mx-auto px-6 max-w-7xl">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8">
-                {[
-                  {
-                    icon: <FaShieldAlt className="w-5 h-5 sm:w-6 sm:h-6" />,
-                    title: "Cleanest Lab Tested",
-                    desc: "No fillers, no heavy metals. Purely science-backed performance.",
-                  },
-                  {
-                    icon: <FaBolt className="w-5 h-5 sm:w-6 sm:h-6" />,
-                    title: "Bio-Available",
-                    desc: "Formulated for 99% absorption rate to fuel your muscles instantly.",
-                  },
-                  {
-                    icon: <FaHeart className="w-5 h-5 sm:w-6 sm:h-6" />,
-                    title: "Gut Friendly",
-                    desc: "Enriched with digestive enzymes for zero bloating, every time.",
-                  },
-                  {
-                    icon: <FaTruck className="w-5 h-5 sm:w-6 sm:h-6" />,
-                    title: "Free Global Shipping",
-                    desc: "Elite nutrition delivered to your doorstep within 3-5 business days.",
-                  },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ y: -8 }}
-                    className="bg-white p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-primary/5 shadow-xs transition-all duration-500 hover:shadow-[0_20px_50px_rgba(27,67,50,0.04)] flex flex-col gap-3 sm:gap-6"
-                  >
-                    <div className="w-10 h-10 sm:w-14 sm:h-14 bg-[#f4f3ee] rounded-xl sm:rounded-2xl flex items-center justify-center text-primary transition-all duration-500 shrink-0">
-                      {item.icon}
-                    </div>
-                    <div className="flex flex-col gap-1 sm:gap-2">
-                      <h3 className="text-xs sm:text-base font-semibold text-[#1e2925] font-serif leading-tight">
-                        {item.title}
-                      </h3>
-                      <p className="text-stone-400 text-[10px] sm:text-[13px] leading-relaxed font-light">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Promotional Banner / Newsletter */}
-          <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-20px" }}
-            variants={revealVariants}
-            className="py-8 md:py-16 bg-linear-to-br from-[#102517] via-[#0c1810] to-[#060b07] text-white overflow-hidden relative border-y border-accent-gold/10"
-          >
-            <div className="absolute inset-0 opacity-15">
-              <img
-                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200"
-                className="w-full h-full object-cover"
-                alt="Newsletter Background"
+            <div className="relative rounded-[2.5rem] overflow-hidden border border-border bg-black aspect-video lg:aspect-[4/3] flex items-center justify-center group">
+              <img 
+                src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=800" 
+                alt="Molecular Laboratory" 
+                className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" 
               />
-            </div>
-            <div className="container mx-auto px-6 relative z-10 text-center space-y-6">
-              <h4 className="text-accent-gold font-bold uppercase tracking-wider text-[10px] font-sans">
-                Exclusive Access
-              </h4>
-              <h2 className="text-4xl md:text-5xl font-medium tracking-tight font-serif italic text-white leading-none my-3">
-                Join the Elite Club
-              </h2>
-              <p className="max-w-xl mx-auto text-stone-300 text-sm font-light leading-relaxed">
-                Subscribe to receive early access to new premium drops, limited
-                restocks, and expert performance nutrition tips.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-3 pt-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="ENTER YOUR EMAIL ADDRESS"
-                  className="bg-white/10 backdrop-blur-md border border-white/10 px-6 py-3.5 rounded-full text-xs font-semibold outline-none focus:border-accent-gold transition-all w-full sm:flex-1 placeholder:text-stone-500"
-                />
-                <button className="bg-accent-gold hover:bg-accent-gold/90 text-stone-900 px-8 py-3.5 rounded-full font-bold uppercase tracking-wider text-[10px] transition-all shadow-md active:scale-95 cursor-pointer">
-                  Subscribe
-                </button>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+              <div className="absolute bottom-8 left-8 flex gap-4 items-center">
+                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-background">
+                  <FileText size={20} />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold uppercase text-white tracking-wider">Whitepaper Published</h4>
+                  <p className="text-[10px] text-stone-400 font-medium">Read our double-blind clinical trials on NAD+ restoration.</p>
+                </div>
               </div>
             </div>
-          </motion.section>
+          </div>
+        </div>
+      </motion.section>
 
-          {/* Testimonial Section */}
-          <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-20px" }}
-            variants={revealVariants}
-            className="py-8 md:py-16 bg-white"
-          >
-            <div className="container mx-auto px-6 max-w-5xl text-center">
-              <FaQuoteLeft className="text-[#f4f3ee] w-20 h-20 mx-auto mb-8" />
-              <div className="space-y-8">
-                <p className="text-xl md:text-3xl font-medium italic tracking-normal leading-relaxed text-stone-700 font-serif max-w-3xl mx-auto">
-                  "Finally, a plant protein that doesn't taste like sand. The
-                  recovery speed I've seen with PurePlant is honestly
-                  revolutionary."
+      {/* Scientific Advisory / Doctor recommendations */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-20px" }}
+        variants={revealVariants}
+        className="py-16 md:py-24 max-w-7xl mx-auto px-6"
+      >
+        <div className="text-center mb-16 space-y-2">
+          <span className="text-primary font-bold uppercase tracking-widest text-[9px]">EXPERT ADVISORY BOARD</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white uppercase tracking-tight">Doctors & Experts</h2>
+          <p className="text-xs sm:text-sm text-stone-400 font-medium max-w-lg mx-auto">Backed by world-renowned longevity researchers, molecular biologists, and sports medicine physicians.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              name: "Dr. Aris Thorne",
+              role: "PHD IN CELLULAR BIOCHEMISTRY",
+              bio: "Pioneered clinical research in mitochondrial dysfunction and NAD+ restoration protocols at Oxford Labs.",
+              img: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=400"
+            },
+            {
+              name: "Dr. Elena Rostova",
+              role: "REGENERATIVE ENDOCRINOLOGIST",
+              bio: "Anti-aging clinic director specializing in cellular longevity programs and customized nutritional therapies.",
+              img: "https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&q=80&w=400"
+            },
+            {
+              name: "Prof. Marcus Vance",
+              role: "DIRECTOR OF SPORTS BIOLOGY",
+              bio: "Advises elite performance athletes on biohacking, cellular hydration, and circadian recovery engines.",
+              img: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=400"
+            }
+          ].map((doc, i) => (
+            <div key={i} className="bg-card border border-border rounded-[2rem] overflow-hidden group">
+              <div className="aspect-[4/3] bg-black overflow-hidden relative border-b border-border">
+                <img src={doc.img} alt={doc.name} className="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-700" />
+              </div>
+              <div className="p-8 space-y-3">
+                <span className="text-primary font-bold tracking-widest text-[9px] uppercase">{doc.role}</span>
+                <h3 className="text-xl font-bold text-white uppercase tracking-wider">{doc.name}</h3>
+                <p className="text-xs text-stone-400 leading-relaxed font-medium">{doc.bio}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Testimonials section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-20px" }}
+        variants={revealVariants}
+        className="py-16 md:py-24 bg-card/45 border-y border-border"
+      >
+        <div className="container mx-auto px-6 max-w-5xl text-center">
+          <FaQuoteLeft className="text-primary/10 w-20 h-20 mx-auto mb-8" />
+          <div className="space-y-8">
+            <p className="text-xl md:text-3xl font-extrabold italic tracking-normal leading-relaxed text-white max-w-3xl mx-auto">
+              "The cognitive clarity and recovery acceleration I've achieved with their NMN stacks is honestly revolutionary. I track my biometric age, and my scores are the best they've been in a decade."
+            </p>
+            <div className="flex flex-col items-center gap-1.5">
+              <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                Alex Rivera
+              </span>
+              <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider">
+                Professional CrossFit Athlete & Human Performance Coach
+              </span>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* FAQ Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-20px" }}
+        variants={revealVariants}
+        className="py-16 md:py-24 max-w-3xl mx-auto px-6"
+      >
+        <div className="text-center mb-16">
+          <span className="text-primary font-bold uppercase tracking-widest text-[9px]">CLINICAL PROTOCOLS</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mt-1 uppercase tracking-tight">Frequently Asked Questions</h2>
+        </div>
+        <div className="space-y-4">
+          {[
+            {
+              q: "What makes Biohacker's Fuel NAD+ precursors different from standard supplements?",
+              a: "Unlike typical supplements, our NMN is encapsulated in enteric-resistant liposomal vesicles. This protects the compound from gastric enzymes, achieving up to 15x higher bioavailability in blood plasma."
+            },
+            {
+              q: "How does the personalized longevity program function?",
+              a: "Based on your clinical quiz, our board of longevity experts crafts a targeted stack schedule. This is adjusted dynamically as you track biomarkers, sleep efficiency, and mental stamina."
+            },
+            {
+              q: "Are the formulations third-party certified?",
+              a: "Absolutely. Every molecular batch undergoes independent HPLC, heavy metals, and toxicity testing in ISO-certified laboratories. You can view the Certificate of Analysis (COA) directly on our Science Hub."
+            },
+            {
+              q: "How quickly can I expect changes in my biometric markers?",
+              a: "Initial improvements in ATP production and cognitive stamina are typically noticed within 7-14 days. DNA repair mechanisms and anti-aging markers display clinically significant shifts at the 3-6 month mark."
+            }
+          ].map((faq, index) => (
+            <div
+              key={index}
+              className="bg-card rounded-[1.5rem] border border-border overflow-hidden transition-all duration-300"
+            >
+              <button
+                onClick={() =>
+                  setActiveFaq(activeFaq === index ? null : index)
+                }
+                className="w-full flex items-center justify-between p-6 text-left focus:outline-none cursor-pointer"
+              >
+                <span className="font-bold text-white text-xs uppercase tracking-wider">
+                  {faq.q}
+                </span>
+                <span
+                  className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${activeFaq === index ? "bg-primary text-background rotate-180" : "bg-secondary text-stone-400"}`}
+                >
+                  <i className="fa-solid fa-chevron-down text-[8px]"></i>
+                </span>
+              </button>
+              <div
+                className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${activeFaq === index ? "max-h-40 pb-6 opacity-100" : "max-h-0 opacity-0"}`}
+              >
+                <p className="text-stone-400 text-xs leading-relaxed font-medium">
+                  {faq.a}
                 </p>
-                <div className="flex flex-col items-center gap-1.5">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-accent-gold font-sans">
-                    Alex Rivera
-                  </span>
-                  <span className="text-[10px] text-stone-400 font-semibold uppercase tracking-wider font-sans">
-                    Professional CrossFit Athlete
-                  </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Instagram Feed Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-20px" }}
+        variants={revealVariants}
+        className="py-16 md:py-24 bg-card/20 border-t border-border"
+      >
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="flex items-center justify-between mb-12">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white">
+              @BIOHACKERSFUEL_OFFICIAL
+            </h3>
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary cursor-pointer hover:text-white transition-colors">
+              <FaInstagram size={14} /> Join Community
+            </div>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
+              "https://images.unsplash.com/photo-1549476464-37392f717541",
+              "https://images.unsplash.com/photo-1490645935967-10de6ba17061",
+              "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5",
+            ].map((img, i) => (
+              <div
+                key={i}
+                className="aspect-square rounded-[2rem] overflow-hidden group relative border border-border shadow-xs bg-black"
+              >
+                <img
+                  src={`${img}?auto=format&fit=crop&q=80&w=400`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-75 group-hover:opacity-90"
+                  alt="Instagram Feed"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <FaInstagram className="text-white text-xl" />
                 </div>
               </div>
-            </div>
-          </motion.section>
+            ))}
+          </div>
+        </div>
+      </motion.section>
 
-          {/* FAQ Section */}
-          <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-20px" }}
-            variants={revealVariants}
-            className="py-8 md:py-16 bg-[#faf9f6] border-t border-primary/5"
-          >
-            <div className="container mx-auto px-6 max-w-3xl">
-              <div className="text-center mb-8 md:mb-16">
-                <h4 className="text-accent-gold font-bold uppercase tracking-wider text-[10px] mb-3 font-sans">
-                  Support
-                </h4>
-                <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#1e2925] font-serif leading-none">
-                  Frequently Asked Questions
-                </h2>
-              </div>
-              <div className="space-y-4">
-                {[
-                  {
-                    q: "What makes your protein different from others?",
-                    a: "Our formula is 100% plant-based, lab-tested for purity, and includes digestive enzymes for maximum absorption without bloating. No artificial fillers.",
-                  },
-                  {
-                    q: "How long does shipping take?",
-                    a: "We offer free global shipping on all orders. Standard delivery takes 3-5 business days within the US, and 7-10 business days internationally.",
-                  },
-                  {
-                    q: "Are your products safe for athletes?",
-                    a: "Yes. All our products are third-party tested and certified free of banned substances, making them completely safe for professional athletes.",
-                  },
-                  {
-                    q: "What is your return policy?",
-                    a: "We stand by our products with a 30-day money-back guarantee. If you're not satisfied, simply contact support to initiate a return.",
-                  },
-                ].map((faq, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-[1.5rem] border border-primary/5 shadow-xs overflow-hidden transition-all duration-300"
-                  >
-                    <button
-                      onClick={() =>
-                        setActiveFaq(activeFaq === index ? null : index)
-                      }
-                      className="w-full flex items-center justify-between p-6 text-left focus:outline-none cursor-pointer"
-                    >
-                      <span className="font-semibold text-stone-850 text-sm font-sans">
-                        {faq.q}
-                      </span>
-                      <span
-                        className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${activeFaq === index ? "bg-primary text-white rotate-180" : "bg-[#f4f3ee] text-stone-400"}`}
-                      >
-                        <i className="fa-solid fa-chevron-down text-[8px]"></i>
-                      </span>
-                    </button>
-                    <div
-                      className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${activeFaq === index ? "max-h-40 pb-6 opacity-100" : "max-h-0 opacity-0"}`}
-                    >
-                      <p className="text-stone-400 text-[13px] leading-relaxed font-light font-sans">
-                        {faq.a}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Instagram Feed Section */}
-          <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-20px" }}
-            variants={revealVariants}
-            className="bg-white py-8 md:py-16"
-          >
-            <div className="container mx-auto px-6 max-w-7xl">
-              <div className="flex items-center justify-between mb-12">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-[#1e2925] font-sans">
-                  @PUREPLANT_OFFICIAL
-                </h3>
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary cursor-pointer hover:text-accent-gold transition-colors font-sans">
-                  <FaInstagram size={14} /> Follow Us
-                </div>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {[
-                  "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
-                  "https://images.unsplash.com/photo-1549476464-37392f717541",
-                  "https://images.unsplash.com/photo-1490645935967-10de6ba17061",
-                  "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5",
-                ].map((img, i) => (
-                  <div
-                    key={i}
-                    className="aspect-square rounded-[2rem] overflow-hidden group relative border border-primary/5 shadow-xs"
-                  >
-                    <img
-                      src={`${img}?auto=format&fit=crop&q=80&w=600`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                      alt="Instagram"
-                    />
-                    <div className="absolute inset-0 bg-[#0f1b11]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <FaInstagram className="text-white text-xl" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.section>
-
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-20px" }}
-            variants={revealVariants}
-          >
-            <AppDownloadSection/>
-          </motion.div>
-        </>
-      )}
+      {/* App Companion Section */}
+      <AppDownloadSection />
+      
     </div>
   );
 };

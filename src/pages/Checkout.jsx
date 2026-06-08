@@ -121,6 +121,24 @@ const Checkout = () => {
               contact: formData.phone,
             },
             theme: { color: "#000000" },
+            config: {
+              display: {
+                blocks: {
+                  upi: {
+                    name: "Pay via UPI",
+                    instruments: [
+                      {
+                        method: "upi",
+                      },
+                    ],
+                  },
+                },
+                sequence: ["block.upi", "block.other"],
+                preferences: {
+                  show_default_blocks: true,
+                },
+              },
+            },
           };
 
           const rzp = new window.Razorpay(options);

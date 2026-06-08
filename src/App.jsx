@@ -18,7 +18,7 @@ import Checkout from './pages/Checkout';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import AnnouncementBar from './components/AnnouncementBar';
+// import AnnouncementBar from './components/AnnouncementBar';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
 import ScrollToTop from './components/ScrollToTop';
@@ -27,6 +27,9 @@ import BlogPost from './pages/BlogPost';
 import Wishlist from './pages/Wishlist';
 import Chatbot from './components/Chatbot';
 import MobileBottomNav from './components/MobileBottomNav';
+import Science from './pages/Science';
+import LongevityPrograms from './pages/LongevityPrograms';
+import BiohackingQuiz from './pages/BiohackingQuiz';
 
 
 const ReferralTracker = () => {
@@ -48,41 +51,44 @@ function App() {
     <CartProvider>
       <WishlistProvider>
         <Router>
-          <ScrollToTop/>
+          <ScrollToTop />
           <ReferralTracker />
-          <div className="min-h-screen bg-white flex flex-col w-full">
-        {/* Fixed Header Group */}
-        <header className="fixed top-0 left-0 w-full z-1000">
-          <AnnouncementBar />
-          <Navbar />
-        </header>
-        
-        <main className="flex-1 flex flex-col w-full pt-[80px] md:pt-[120px]  md:pb-0">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/product/:slug" element={<ProductDetail />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/doctor/join" element={<DoctorJoin />} />
-            <Route path="/doctor/login" element={<DoctorLogin />} />
-            <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
-            <Route path="/dr/:referralCode" element={<DoctorProfile />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:id" element={<BlogPost />} />
-            <Route path="/wishlist" element={<Wishlist />} />
-          </Routes>
-        </main>
-        
-          <Footer />
-           <Chatbot />
-           <MobileBottomNav />
-        </div>
+          <div className="min-h-screen bg-background text-foreground flex flex-col w-full">
+            {/* Fixed Header Group */}
+            <header className="fixed top-0 left-0 w-full z-1000">
+
+              <Navbar />
+            </header>
+
+            <main className="flex-1 flex flex-col w-full pt-[80px] md:pt-[120px]  md:pb-0">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/product/:slug" element={<ProductDetail />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/doctor/join" element={<DoctorJoin />} />
+                <Route path="/doctor/login" element={<DoctorLogin />} />
+                <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+                <Route path="/dr/:referralCode" element={<DoctorProfile />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:id" element={<BlogPost />} />
+                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/science" element={<Science />} />
+                <Route path="/longevity-programs" element={<LongevityPrograms />} />
+                <Route path="/quiz" element={<BiohackingQuiz />} />
+              </Routes>
+            </main>
+
+            <Footer />
+            <Chatbot />
+            <MobileBottomNav />
+          </div>
         </Router>
       </WishlistProvider>
     </CartProvider>

@@ -3,36 +3,36 @@ import React from 'react';
 
 const Contact = () => {
   return (
-    <div className="container mx-auto px-6 max-w-6xl py-12 md:py-16">
+    <div className="container mx-auto px-6 max-w-6xl py-20 text-foreground bg-background">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
         <div className="space-y-10">
           <div>
-            <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Connect</span>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight uppercase">Get in Touch</h1>
+            <span className="text-primary font-bold uppercase tracking-[0.2em] text-[9px] mb-4 block">Connect</span>
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight uppercase text-white">Get in Touch</h1>
           </div>
-          <p className="text-lg text-gray-400 font-light max-w-md leading-relaxed">
-            Have questions about our products or your order? Our team of nutrition experts is ready to help you reach your goals.
+          <p className="text-sm sm:text-base text-stone-300 font-medium max-w-md leading-relaxed">
+            Have questions about our clinical protocols, molecular stacks, or your subscription stack? Our diagnostic assistance team is available.
           </p>
           <div className="space-y-6">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Email Us</p>
-              <p className="text-xl font-bold">support@pureplant.com</p>
+              <p className="text-[9px] font-bold uppercase tracking-widest text-stone-400 mb-2">Protocol Email Support</p>
+              <p className="text-xl font-bold text-white uppercase font-sans">support@biohackersfuel.com</p>
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Call Us</p>
-              <p className="text-xl font-bold">+91 98765 43210</p>
+              <p className="text-[9px] font-bold uppercase tracking-widest text-stone-400 mb-2">Advisory Hotline</p>
+              <p className="text-xl font-bold text-white uppercase font-sans">+91 98765 43210</p>
             </div>
           </div>
         </div>
-        <div className="bg-gray-50 p-10 rounded-3xl space-y-6">
+        <div className="bg-card border border-border p-10 rounded-[2.5rem] space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <input type="text" placeholder="First Name" className="w-full bg-white p-4 rounded-xl outline-none font-semibold text-sm border border-transparent focus:border-primary transition-all" />
-            <input type="text" placeholder="Last Name" className="w-full bg-white p-4 rounded-xl outline-none font-semibold text-sm border border-transparent focus:border-primary transition-all" />
+            <input type="text" placeholder="FIRST NAME" className="w-full bg-secondary border border-border p-4 rounded-xl outline-none font-bold text-xs tracking-wider placeholder:text-stone-500 focus:border-primary text-white transition-all" />
+            <input type="text" placeholder="LAST NAME" className="w-full bg-secondary border border-border p-4 rounded-xl outline-none font-bold text-xs tracking-wider placeholder:text-stone-500 focus:border-primary text-white transition-all" />
           </div>
-          <input type="email" placeholder="Email Address" className="w-full bg-white p-4 rounded-xl outline-none font-semibold text-sm border border-transparent focus:border-primary transition-all" />
-          <textarea placeholder="How can we help?" className="w-full bg-white p-4 rounded-xl outline-none font-semibold text-sm border border-transparent focus:border-primary transition-all h-32"></textarea>
-          <button className="w-full bg-primary hover:bg-primary-dark text-white py-5 rounded-xl font-bold uppercase tracking-widest text-[10px] shadow-lg transition-all transform hover:-translate-y-1">
-            Send Message
+          <input type="email" placeholder="EMAIL ADDRESS" className="w-full bg-secondary border border-border p-4 rounded-xl outline-none font-bold text-xs tracking-wider placeholder:text-stone-500 focus:border-primary text-white transition-all" />
+          <textarea placeholder="HOW CAN WE HELP YOU OPTIMIZE?" className="w-full bg-secondary border border-border p-4 rounded-xl outline-none font-bold text-xs tracking-wider placeholder:text-stone-500 focus:border-primary text-white transition-all h-32"></textarea>
+          <button className="w-full bg-primary hover:opacity-90 text-background py-5 rounded-xl font-bold uppercase tracking-widest text-[10px] shadow-lg transition-all active:scale-95 cursor-pointer">
+            Transmit Inquiry
           </button>
         </div>
       </div>
