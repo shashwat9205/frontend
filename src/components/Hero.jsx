@@ -81,7 +81,7 @@ const Hero = () => {
   return (
     <>
       {/* 1. CINEMATIC HERO (DESKTOP VIEW) */}
-      <section className="hidden md:flex relative h-[calc(100vh-120px)] w-full items-center justify-center overflow-hidden bg-background text-center">
+      <section className="hidden md:flex relative h-[calc(100vh-80px)] w-full items-center justify-center overflow-hidden bg-background text-center">
         {/* Background Layer */}
         <div className="absolute inset-0 z-0">
           {heroData?.video ? (
@@ -98,18 +98,18 @@ const Hero = () => {
 
         {/* Content Layer */}
         <div className="relative z-10 container mx-auto px-6 max-w-7xl flex flex-col items-center ">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.15] text-white mb-8 font-serif max-w-4xl mx-auto px-4 drop-shadow-md">
+          <h1 className="text-7xl sm:text-6xl lg:text-8xl font-semibold tracking-tight leading-[1.15] text-white mb-8 font-serif max-w-4xl mx-auto px-4 drop-shadow-md">
             {displayData.title}
           </h1>
           <p className="text-sm sm:text-base mb-12 text-stone-200/95 font-medium max-w-xl mx-auto leading-relaxed px-4 font-sans tracking-wide">
             {displayData.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-10 sm:px-0 justify-center">
-            <a href="/shop" className="bg-primary hover:opacity-90 text-background px-10 py-4 rounded-full font-bold uppercase tracking-wider text-[10px] transition-all shadow-xl hover:-translate-y-1 inline-block no-underline duration-300">
-              {displayData.btn_text}
+            <a href="/quiz" className="bg-primary hover:opacity-90 text-background px-10 py-4 rounded-full font-bold uppercase tracking-wider text-[10px] transition-all shadow-xl hover:-translate-y-1 inline-block no-underline duration-300">
+              Assess Biological Age
             </a>
-            <a href="/science" className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/15 px-10 py-4 rounded-full font-bold uppercase tracking-wider text-[10px] transition-all shadow-xl hover:-translate-y-1 inline-block no-underline duration-300">
-              Explore Science
+            <a href="/doctor/join" className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/15 px-10 py-4 rounded-full font-bold uppercase tracking-wider text-[10px] transition-all shadow-xl hover:-translate-y-1 inline-block no-underline duration-300">
+              Consult Advisory Board
             </a>
           </div>
         </div>
@@ -134,52 +134,75 @@ const Hero = () => {
           {/* Left Text details */}
           <div className="relative z-10 flex-1 flex flex-col justify-center pr-24">
             <span className="text-primary font-bold uppercase tracking-wider text-[7px] mb-1 font-sans">
-              BIOHACKER'S FUEL
+              CLINICAL LONGEVITY PORTAL
             </span>
             <h2 className="text-white text-base font-bold font-serif leading-tight mb-1.5">
               Upgrade Cellular Performance
             </h2>
             <p className="text-stone-300 text-[9px] leading-normal font-sans font-medium">
-              Premium clinical-grade molecular optimization formulas.
+              Physician-formulated protocols based on clinical diagnostic baselines.
             </p>
             <Link
-              to="/shop"
+              to="/quiz"
               className="mt-3.5 bg-accent-gold text-stone-950 px-5 py-2.5 rounded-full font-extrabold uppercase tracking-widest text-[9px] inline-block no-underline shadow-md active:scale-95 transition-all self-start border border-accent-gold/25 hover:brightness-105"
             >
-              Shop Now
+              Start Assessment
             </Link>
           </div>
 
           {/* Right Floating FLAGSHIP Image Spotlight Circle */}
           <div className="absolute right-4 top-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-white/95 shadow-[0_8px_20px_rgba(0,0,0,0.08)] border border-stone-100 flex items-center justify-center p-2 z-10 pointer-events-none select-none">
             <img
-              src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=300"
-              alt="Flagship supplement"
-              className="w-[85%] h-[85%] object-contain mix-blend-multiply"
+              src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=300"
+              alt="Medical laboratory research"
+              className="w-[85%] h-[85%] object-cover rounded-full"
             />
           </div>
         </div>
 
-        {/* Circular Categories Navigation */}
+        {/* Diagnostic & Clinical Navigation */}
         <div className="mt-6">
           <h3 className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-stone-400 font-sans mb-3.5">
-            Shop By Category
+            Diagnostic & Clinical Pathways
           </h3>
           <div className="flex items-center gap-4 overflow-x-auto no-scrollbar pb-1">
-            {mobileCatList.map((cat, index) => (
+            {[
+              {
+                name: 'Bio-Quiz',
+                path: '/quiz',
+                icon: <Zap size={16} className="text-primary" />,
+                bgImage: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=150'
+              },
+              {
+                name: 'Science Hub',
+                path: '/science',
+                icon: <Layers size={16} className="text-primary" />,
+                bgImage: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=150'
+              },
+              {
+                name: 'Advisory Board',
+                path: '/doctor/join',
+                icon: <RefreshCw size={16} className="text-primary" />,
+                bgImage: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=150'
+              },
+              {
+                name: 'Clinical Blog',
+                path: '/blog',
+                icon: <Flame size={16} className="text-primary" />,
+                bgImage: 'https://images.unsplash.com/photo-1511295742364-92767fa62d9f?auto=format&fit=crop&q=80&w=150'
+              }
+            ].map((cat, index) => (
               <Link
                 key={index}
                 to={cat.path}
                 className="flex flex-col items-center shrink-0 no-underline group"
               >
                 <div className="relative w-14 h-14 rounded-full bg-white border border-stone-100/80 shadow-xs flex items-center justify-center overflow-hidden transition-all duration-300 group-active:scale-95 group-hover:border-primary/20">
-                  {/* Category Background Blurred Crop */}
                   <img
                     src={cat.bgImage}
                     alt=""
                     className="absolute inset-0 w-full h-full object-cover brightness-[0.9] opacity-40 blur-[0.5px]"
                   />
-                  {/* Category icon */}
                   <div className="relative z-10 w-8 h-8 rounded-full bg-white/95 flex items-center justify-center shadow-xs">
                     {cat.icon}
                   </div>
