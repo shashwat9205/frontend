@@ -3,7 +3,7 @@ import React from 'react';
 
 const Contact = () => {
   return (
-    <div className="container mx-auto px-6 max-w-6xl py-20 text-foreground bg-background">
+    <div className=" mx-auto px-6 py-20 text-foreground bg-background ">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
         <div className="space-y-10">
           <div>

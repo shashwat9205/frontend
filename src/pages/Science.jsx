@@ -1,5 +1,7 @@
 // src/pages/Science.jsx
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import { Shield, Sparkles, BookOpen, FileText, CheckCircle2, ChevronRight, HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 

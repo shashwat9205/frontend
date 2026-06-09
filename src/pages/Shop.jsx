@@ -4,6 +4,7 @@ import { API_BASE_URL } from '../config';
 import React, { useState, useEffect } from 'react';
 import ProductList from '../components/ProductList';
 import BrandTeaser from '../components/BrandTeaser';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import PriceFilter from "../components/PriceFilter";

@@ -81,114 +81,137 @@ const Hero = () => {
   return (
     <>
       {/* 1. CINEMATIC HERO (DESKTOP VIEW) */}
-      <section className="hidden md:flex relative h-[calc(100vh-80px)] w-full items-center justify-center overflow-hidden bg-background text-center">
-        {/* Background Layer */}
+      <section className="hidden md:flex relative h-[calc(100vh-80px)] w-full items-center justify-center overflow-hidden bg-[#0a192f] text-center border-b border-white/5 shadow-md">
+        {/* Background Layer with Dark cinematic overlays */}
         <div className="absolute inset-0 z-0">
           {heroData?.video ? (
-            <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-50">
+            <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-75 scale-102 transition-transform duration-1000">
               <source src={heroData.video} type="video/mp4" />
             </video>
           ) : heroData?.image ? (
-            <img src={heroData.image} alt="" className="w-full h-full object-cover opacity-50" />
+            <img src={heroData.image} alt="" className="w-full h-full object-cover opacity-75 scale-102 transition-transform duration-1000" />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#0c0d0e] via-[#131416] to-[#000000] opacity-95"></div>
+            <div className="w-full h-full bg-[#0a192f]"></div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/35"></div>
+          {/* Multi-stage Luxury Dark Gradient Mask */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f] via-[#0a192f]/45 to-black/25"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(184,144,71,0.12),transparent_65%)]"></div>
         </div>
 
+        {/* Ambient Glows */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#b89047]/10 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-[#b89047]/10 rounded-full blur-[100px] pointer-events-none"></div>
+
         {/* Content Layer */}
-        <div className="relative z-10 container mx-auto px-6 max-w-7xl flex flex-col items-center ">
-          <h1 className="text-7xl sm:text-6xl lg:text-8xl font-semibold tracking-tight leading-[1.15] text-white mb-8 font-serif max-w-4xl mx-auto px-4 drop-shadow-md">
-            {displayData.title}
+        <div className="relative z-10 container mx-auto px-6 max-w-5xl flex flex-col items-center">
+          {/* Subtle Tagline */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 shadow-sm mb-8 animate-fade-in">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#b89047] animate-ping"></span>
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white">
+              Board-Led Longevity Portal
+            </span>
+          </div>
+
+          {/* Luxury Serif Title */}
+          <h1 className="text-6xl lg:text-7xl font-bold tracking-tight leading-[1.12] text-white mb-8 font-serif max-w-4xl mx-auto px-4 uppercase">
+            {displayData.title.split(' ').map((word, i) => (
+              <span key={i} className={i % 3 === 2 ? "text-[#b89047] block sm:inline" : ""}>
+                {word}{" "}
+              </span>
+            ))}
           </h1>
-          <p className="text-sm sm:text-base mb-12 text-stone-200/95 font-medium max-w-xl mx-auto leading-relaxed px-4 font-sans tracking-wide">
+
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base mb-12 text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed px-4 font-sans tracking-wide">
             {displayData.subtitle}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-10 sm:px-0 justify-center">
-            <a href="/quiz" className="bg-primary hover:opacity-90 text-background px-10 py-4 rounded-full font-bold uppercase tracking-wider text-[10px] transition-all shadow-xl hover:-translate-y-1 inline-block no-underline duration-300">
+
+          {/* Luxury CTAs */}
+          <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto px-10 sm:px-0 justify-center">
+            <a href="/quiz" className="bg-[#b89047] hover:bg-[#cba463] text-white px-12 py-4.5 rounded-xl font-bold uppercase tracking-wider text-[10px] transition-all shadow-md hover:-translate-y-0.5 active:translate-y-0 duration-300">
               Assess Biological Age
             </a>
-            <a href="/doctor/join" className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/15 px-10 py-4 rounded-full font-bold uppercase tracking-wider text-[10px] transition-all shadow-xl hover:-translate-y-1 inline-block no-underline duration-300">
+            <a href="/doctor/join" className="bg-transparent border border-white/20 text-white hover:bg-white/5 px-12 py-4.5 rounded-xl font-bold uppercase tracking-wider text-[10px] transition-all hover:-translate-y-0.5 active:translate-y-0 duration-300">
               Consult Advisory Board
             </a>
           </div>
         </div>
 
         {/* Scrolling Mouse Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 opacity-60">
-          <span className="text-[8px] font-bold tracking-widest text-stone-300 uppercase font-sans">Scroll</span>
-          <div className="w-4.5 h-8 border border-stone-400 rounded-full flex justify-center p-1">
-            <div className="w-1 h-1.5 bg-primary rounded-full animate-bounce"></div>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-60 hover:opacity-90 transition-opacity">
+          <span className="text-[8px] font-bold tracking-[0.2em] text-white uppercase font-sans">Explore</span>
+          <div className="w-5 h-9 border border-white/20 rounded-full flex justify-center p-1.5">
+            <div className="w-1 h-2 bg-[#b89047] rounded-full animate-bounce"></div>
           </div>
         </div>
       </section>
 
       {/* 2. PREMIUM COMPACT HERO & DYNAMIC CIRCULAR CATEGORIES (MOBILE VIEW) */}
-      <div className="block md:hidden bg-background px-5 pt-4 pb-4">
-
+      <div className="block md:hidden bg-white px-5 pt-6 pb-6">
         {/* Compact Banner slider block */}
-        <div className="relative w-full bg-card rounded-3xl p-5 overflow-hidden flex items-center min-h-[160px] shadow-md border border-border">
+        <div className="relative w-full bg-[#faf9f6] rounded-3xl p-6 overflow-hidden flex items-center min-h-[180px] shadow-sm border border-[#0a192f]/5">
           {/* Background overlay details */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-36 h-36 bg-[#b89047]/5 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/50 to-transparent"></div>
 
           {/* Left Text details */}
-          <div className="relative z-10 flex-1 flex flex-col justify-center pr-24">
-            <span className="text-primary font-bold uppercase tracking-wider text-[7px] mb-1 font-sans">
-              CLINICAL LONGEVITY PORTAL
+          <div className="relative z-10 flex-1 flex flex-col justify-center pr-20">
+            <span className="text-[#b89047] font-bold uppercase tracking-wider text-[8px] mb-1.5 font-sans">
+              CLINICAL LONGEVITY
             </span>
-            <h2 className="text-white text-base font-bold font-serif leading-tight mb-1.5">
+            <h2 className="text-[#0a192f] text-lg font-bold font-serif leading-tight mb-2 uppercase">
               Upgrade Cellular Performance
             </h2>
-            <p className="text-stone-300 text-[9px] leading-normal font-sans font-medium">
+            <p className="text-slate-600 text-[10px] leading-normal font-sans font-medium">
               Physician-formulated protocols based on clinical diagnostic baselines.
             </p>
             <Link
               to="/quiz"
-              className="mt-3.5 bg-accent-gold text-stone-950 px-5 py-2.5 rounded-full font-extrabold uppercase tracking-widest text-[9px] inline-block no-underline shadow-md active:scale-95 transition-all self-start border border-accent-gold/25 hover:brightness-105"
+              className="mt-4 bg-[#0a192f] text-white px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[9px] inline-block no-underline shadow-md active:scale-98 transition-all self-start"
             >
               Start Assessment
             </Link>
           </div>
 
-          {/* Right Floating FLAGSHIP Image Spotlight Circle */}
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-white/95 shadow-[0_8px_20px_rgba(0,0,0,0.08)] border border-stone-100 flex items-center justify-center p-2 z-10 pointer-events-none select-none">
+          {/* Right Floating Image Spotlight Circle */}
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-white shadow-md border border-[#0a192f]/5 flex items-center justify-center p-2.5 z-10 pointer-events-none select-none">
             <img
               src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=300"
               alt="Medical laboratory research"
-              className="w-[85%] h-[85%] object-cover rounded-full"
+              className="w-full h-full object-cover rounded-full opacity-90"
             />
           </div>
         </div>
 
         {/* Diagnostic & Clinical Navigation */}
-        <div className="mt-6">
-          <h3 className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-stone-400 font-sans mb-3.5">
+        <div className="mt-8">
+          <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 font-sans mb-4">
             Diagnostic & Clinical Pathways
           </h3>
-          <div className="flex items-center gap-4 overflow-x-auto no-scrollbar pb-1">
+          <div className="flex items-center gap-4 overflow-x-auto no-scrollbar pb-2">
             {[
               {
                 name: 'Bio-Quiz',
                 path: '/quiz',
-                icon: <Zap size={16} className="text-primary" />,
+                icon: <Zap size={16} className="text-[#b89047]" />,
                 bgImage: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=150'
               },
               {
                 name: 'Science Hub',
                 path: '/science',
-                icon: <Layers size={16} className="text-primary" />,
+                icon: <Layers size={16} className="text-[#b89047]" />,
                 bgImage: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=150'
               },
               {
                 name: 'Advisory Board',
                 path: '/doctor/join',
-                icon: <RefreshCw size={16} className="text-primary" />,
+                icon: <RefreshCw size={16} className="text-[#b89047]" />,
                 bgImage: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=150'
               },
               {
                 name: 'Clinical Blog',
                 path: '/blog',
-                icon: <Flame size={16} className="text-primary" />,
+                icon: <Flame size={16} className="text-[#b89047]" />,
                 bgImage: 'https://images.unsplash.com/photo-1511295742364-92767fa62d9f?auto=format&fit=crop&q=80&w=150'
               }
             ].map((cat, index) => (
@@ -197,24 +220,23 @@ const Hero = () => {
                 to={cat.path}
                 className="flex flex-col items-center shrink-0 no-underline group"
               >
-                <div className="relative w-14 h-14 rounded-full bg-white border border-stone-100/80 shadow-xs flex items-center justify-center overflow-hidden transition-all duration-300 group-active:scale-95 group-hover:border-primary/20">
+                <div className="relative w-15 h-15 rounded-full bg-white border border-[#0a192f]/5 shadow-sm flex items-center justify-center overflow-hidden transition-all duration-300 group-active:scale-95">
                   <img
                     src={cat.bgImage}
                     alt=""
-                    className="absolute inset-0 w-full h-full object-cover brightness-[0.9] opacity-40 blur-[0.5px]"
+                    className="absolute inset-0 w-full h-full object-cover brightness-[0.9] opacity-20 blur-[0.5px]"
                   />
-                  <div className="relative z-10 w-8 h-8 rounded-full bg-white/95 flex items-center justify-center shadow-xs">
+                  <div className="relative z-10 w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-sm border border-[#0a192f]/5">
                     {cat.icon}
                   </div>
                 </div>
-                <span className="text-[9px] font-bold tracking-wider text-stone-500 mt-2 uppercase font-sans transition-colors group-active:text-primary">
+                <span className="text-[9px] font-bold tracking-wider text-slate-500 mt-2.5 uppercase font-sans transition-colors group-active:text-[#b89047]">
                   {cat.name}
                 </span>
               </Link>
             ))}
           </div>
         </div>
-
       </div>
     </>
   );

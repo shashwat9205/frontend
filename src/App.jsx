@@ -25,6 +25,9 @@ import ScrollToTop from './components/ScrollToTop';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Wishlist from './pages/Wishlist';
+import Science from './pages/Science';
+import LongevityPrograms from './pages/LongevityPrograms';
+import BiohackingQuiz from './pages/BiohackingQuiz';
 import Chatbot from './components/Chatbot';
 import MobileBottomNav from './components/MobileBottomNav';
 
@@ -76,6 +79,9 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/science" element={<Science />} />
+            <Route path="/longevity-programs" element={<LongevityPrograms />} />
+            <Route path="/quiz" element={<BiohackingQuiz />} />
           </Routes>
         </main>
         

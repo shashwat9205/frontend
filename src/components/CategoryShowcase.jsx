@@ -2,6 +2,7 @@ import { API_BASE_URL } from '../config';
 // src/components/CategoryShowcase.jsx
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles, Dna, Brain, Shield } from 'lucide-react';
 
 const CategoryShowcase = () => {
   const [categories, setCategories] = useState([]);
@@ -12,7 +13,6 @@ const CategoryShowcase = () => {
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
-          // Display all categories in a slider
           setCategories(data.data);
         }
         setLoading(false);
@@ -25,46 +25,91 @@ const CategoryShowcase = () => {
 
   if (loading || categories.length === 0) return null;
 
-  return (
-    <section className="py-4 md:py-24 bg-white">
-      <style>{`
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
-      <div className="container mx-auto px-6 max-w-7xl">
-        <h2 className="text-3xl md:text-5xl font-black text-center uppercase tracking-tighter mb-4 md:mb-16 italic">
-          Shop Top Categories
-        </h2>
-        
-        <div className="flex overflow-x-auto gap-4 md:gap-8 pb-4 snap-x snap-mandatory hide-scrollbar">
-          {categories.map((cat, i) => (
-            <motion.div 
-              key={cat.id || i}
-              whileHover={{ y: -10 }}
-              className="relative group cursor-pointer overflow-hidden rounded-3xl aspect-[1.4/1] md:aspect-4/5 w-[68vw] md:w-[calc(33.333%-1.33rem)] shrink-0 snap-start"
-            >
-              {/* Background Image - Fallback to a placeholder if user hasn't uploaded one yet */}
-              <img 
-                src={cat.image_url ? `${API_BASE_URL}admin/${cat.image_url}` : "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&q=80&w=800"} 
-                alt={cat.name}
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
+  // Icon mapping fallback for category visual variety
+  const getCategoryIcon = (catName) => {
+    const name = catName.toLowerCase();
+    if (name.includes("nad") || name.includes("mitochondria") || name.includes("energy")) {
+      return <Dna className="w-4 h-4 text-[#b89047]" />;
+    }
+    if (name.includes("sleep") || name.includes("circadian") || name.includes("neuro") || name.includes("brain")) {
+      return <Brain className="w-4 h-4 text-[#b89047]" />;
+    }
+    if (name.includes("dna") || name.includes("repair") || name.includes("shield")) {
+      return <Shield className="w-4 h-4 text-[#b89047]" />;
+    }
+    return <Sparkles className="w-4 h-4 text-[#b89047]" />;
+  };
 
-              {/* Floating Card */}
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] bg-white p-3 sm:p-6 rounded-t-2xl shadow-2xl flex flex-col items-center gap-2 sm:gap-4 transition-all duration-500 group-hover:pb-8">
-                <h3 className="text-[10px] sm:text-sm font-black uppercase tracking-widest text-black text-center">
-                  {cat.name}
-                </h3>
-                <a 
-                  href={`/shop?category=${encodeURIComponent(cat.name)}`}
-                  className="bg-black text-white px-5 sm:px-8 py-2 sm:py-3 rounded-md font-black uppercase tracking-widest text-[8px] sm:text-[9px] hover:bg-primary transition-all no-underline"
-                >
-                  Learn More
-                </a>
-              </div>
-            </motion.div>
-          ))}
+  return (
+    <section className="py-20 bg-[#faf9f6] border-y border-[#0a192f]/5">
+      <div className="container mx-auto px-6 max-w-7xl">
+        
+        {/* Header */}
+        <div className="text-center mb-16 space-y-2">
+          <span className="text-[#b89047] font-bold uppercase tracking-[0.25em] text-[9px] flex items-center justify-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5" /> MOLECULAR TARGETS
+          </span>
+          <h2 className="text-2xl md:text-4xl font-extrabold text-[#0a192f] uppercase tracking-tight font-serif">
+            Shop By Category
+          </h2>
+          <p className="text-xs text-slate-500 font-medium max-w-xl mx-auto font-sans">
+            Select a clinical biomarker vector to filter our flagship range of longevity formulas.
+          </p>
+        </div>
+
+        {/* Categories Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {categories.map((cat, i) => {
+            const catImageUrl = cat.image_url 
+              ? `${API_BASE_URL}admin/${cat.image_url}` 
+              : "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&q=80&w=800";
+
+            return (
+              <a 
+                key={cat.id || i}
+                href={`/shop?category=${encodeURIComponent(cat.name)}`}
+                className="group relative block overflow-hidden rounded-[2.5rem] aspect-[4/5] bg-[#0a192f] border border-[#0a192f]/5 shadow-lg hover:shadow-2xl transition-all duration-500"
+              >
+                {/* Background Category Image */}
+                <img 
+                  src={catImageUrl} 
+                  alt={cat.name}
+                  onError={(e) => {
+                    e.target.src = "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&q=80&w=800";
+                  }}
+                  className="w-full h-full object-cover opacity-65 scale-102 group-hover:scale-108 transition-all duration-[1200ms] ease-out"
+                />
+
+                {/* Dark Vignette Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f] via-[#0a192f]/45 to-transparent z-10"></div>
+
+                {/* Card Top: Floating Icon */}
+                <div className="absolute top-5 left-5 z-20 w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-[#b89047]/20 group-hover:border-[#b89047]/30 transition-all duration-300">
+                  {getCategoryIcon(cat.name)}
+                </div>
+
+                {/* Card Bottom: Content Overlay */}
+                <div className="absolute bottom-6 left-6 right-6 z-20 flex flex-col gap-2">
+                  <div className="flex justify-between items-end">
+                    <div className="space-y-1">
+                      <h3 className="text-xs sm:text-base font-extrabold text-white font-serif uppercase tracking-wide leading-tight group-hover:text-[#b89047] transition-colors">
+                        {cat.name}
+                      </h3>
+                      <span className="text-[8px] font-bold text-white/50 uppercase tracking-widest block">
+                        Explore Formulas
+                      </span>
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-[#b89047] group-hover:border-[#b89047] transition-all duration-300 transform group-hover:translate-x-0.5">
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Subtle Internal Highlight Border */}
+                <div className="absolute inset-0 border border-white/10 rounded-[2.5rem] pointer-events-none z-30 transition-colors group-hover:border-[#b89047]/30"></div>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -66,12 +66,12 @@ export default function CylinderCarousel() {
   };
 
   return (
-    <div className="relative min-h-[480px] md:min-h-screen w-full overflow-hidden bg-[#050505] text-white flex items-center justify-center py-10 md:py-20">
+    <div className="relative min-h-[480px] md:min-h-screen w-full overflow-hidden bg-[#0a192f] text-white flex items-center justify-center py-10 md:py-20">
 
       {/* Background Ambience */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_70%)]" />
-        <div className="h-full w-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[64px_64px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
+        <div className="h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[64px_64px]" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center -mt-10 md:-mt-24">
@@ -123,8 +123,8 @@ export default function CylinderCarousel() {
                     // WebkitBoxReflect: isFront ? "below 10px linear-gradient(transparent, transparent 60%, rgba(255,255,255,0.15))" : "none",
                     opacity: isFront ? 1 : Math.max(0.5, 1 - (distanceFromFront / 200)),
                     filter: isFront ? 'brightness(1) blur(0px)' : `brightness(${Math.max(0.5, 1 - (distanceFromFront / 120))}) blur(${distanceFromFront / 60}px)`,
-                    boxShadow: isFront ? "0 0 50px rgba(255,255,255,0.1), 0 20px 40px rgba(0,0,0,0.8)" : "0 0 30px rgba(255,255,255,0.08), 0 10px 20px rgba(0,0,0,0.9)",
-                    border: isFront ? "1px solid rgba(255,255,255,0.3)" : "1px solid rgba(255,255,255,0.02)",
+                    boxShadow: isFront ? "0 10px 40px rgba(0,0,0,0.5), 0 20px 40px rgba(184,144,71,0.2)" : "0 5px 20px rgba(0,0,0,0.3)",
+                    border: isFront ? "2px solid rgba(184,144,71,0.8)" : "1px solid rgba(255,255,255,0.1)",
                   }}
                 >
                   <video
@@ -142,8 +142,8 @@ export default function CylinderCarousel() {
 
                   {/* Card Content */}
                   <div className={`absolute bottom-4 sm:bottom-8 left-4 sm:left-6 right-4 sm:right-6 transition-all duration-1000 transform ${isFront ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    <div className={`h-1 bg-primary mb-2 sm:mb-3 rounded-full transition-all duration-1000 delay-100 ${isFront ? 'w-8 sm:w-10' : 'w-3'}`}></div>
-                    <h3 className="text-xs sm:text-xl font-black uppercase tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(0,0,0,1)]">
+                    <div className={`h-1 bg-[#b89047] mb-2 sm:mb-3 rounded-full transition-all duration-1000 delay-100 ${isFront ? 'w-8 sm:w-10' : 'w-3'}`}></div>
+                    <h3 className="text-xs sm:text-xl font-black uppercase tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(0,0,0,1)] font-serif">
                       {card.title}
                     </h3>
                   </div>

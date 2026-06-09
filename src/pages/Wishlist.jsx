@@ -1,4 +1,5 @@
 import { API_BASE_URL } from '../config';
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
