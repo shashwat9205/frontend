@@ -5,7 +5,7 @@ import app from "../../public/app.png";
 
 const AppDownloadSection = () => {
   return (
-    <section className="w-full bg-card text-foreground py-14 px-6 border-y border-border">
+    <section className="w-full bg-black text-foreground py-14 px-6 border-y border-border">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
         
         {/* Left Image */}

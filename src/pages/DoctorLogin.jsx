@@ -46,7 +46,7 @@ const DoctorLogin = () => {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-20 px-6">
       <div className="max-w-md w-full bg-white rounded-3xl shadow-xl overflow-hidden">
         {/* Header */}
-        <div className="bg-black text-white p-10 text-center">
+        <div className="bg-[#111D30] text-white p-10 text-center">
           <h2 className="text-3xl font-black uppercase tracking-tighter mb-2">Doctor Portal</h2>
           <p className="text-gray-400 text-sm font-medium tracking-wide">
             Sign in to access your referral dashboard.
@@ -71,7 +71,7 @@ const DoctorLogin = () => {
                 onChange={handleChange}
                 required
                 placeholder="jane@example.com"
-                className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
+                className="w-full bg-gray-50 text-black border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
               />
             </div>
 
@@ -84,7 +84,7 @@ const DoctorLogin = () => {
                 onChange={handleChange}
                 required
                 placeholder="••••••••"
-                className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
+                className="w-full bg-gray-50 text-black border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
               />
             </div>
 

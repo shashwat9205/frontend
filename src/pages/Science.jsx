@@ -1,8 +1,7 @@
 // src/pages/Science.jsx
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-// eslint-disable-next-line no-unused-vars
-import { Shield, Sparkles, BookOpen, FileText, CheckCircle2, ChevronRight, HelpCircle } from 'lucide-react';
+import { Shield, Sparkles, BookOpen, FileText, CheckCircle2, ChevronRight, X, Check, HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Science = () => {
@@ -19,7 +18,8 @@ const Science = () => {
       clinicalBenefit: "Restores intracellular NAD+ levels to activate sirtuins (longevity genes) and accelerate DNA repair pathways.",
       studies: "Clinically proven to elevate NAD+ levels by up to 180% within 30 days in double-blind trials.",
       molecularWeight: "334.22 g/mol",
-      purity: "≥ 99.8% Pharmaceutical Grade"
+      purity: "≥ 99.8% Pharmaceutical Grade",
+      image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=500"
     },
     {
       name: "Trans-Resveratrol & Pterostilbene",
@@ -28,7 +28,8 @@ const Science = () => {
       clinicalBenefit: "Synergistically amplifies NMN activity. Works as a powerful antioxidant protecting cells against reactive oxygen species.",
       studies: "Enhances cardiovascular markers and metabolic rate in clinical studies monitoring vascular compliance.",
       molecularWeight: "228.25 g/mol / 256.3 g/mol",
-      purity: "≥ 99% Natural Extract Purity"
+      purity: "≥ 99% Natural Extract Purity",
+      image: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=500"
     },
     {
       name: "Liposomal Glutathione",
@@ -37,7 +38,8 @@ const Science = () => {
       clinicalBenefit: "The body's primary antioxidant. Neutralizes free radicals and supports hepatic detoxification pathways.",
       studies: "Liposomal encapsulation shields the peptide from digestive degradation, improving absorption by 10-15x.",
       molecularWeight: "307.32 g/mol",
-      purity: "≥ 98% Bioactive L-Glutathione"
+      purity: "≥ 98% Bioactive L-Glutathione",
+      image: "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&q=80&w=500"
     },
     {
       name: "Coenzyme Q10 (Ubiquinol)",
@@ -46,231 +48,320 @@ const Science = () => {
       clinicalBenefit: "Directly fuels the electron transport chain inside mitochondria, enhancing ATP cell energy and cardiovascular capacity.",
       studies: "Improves cellular breathing indices and speeds post-exercise lactate clearance metrics.",
       molecularWeight: "863.34 g/mol",
-      purity: "≥ 99% Bioavailable Active Form"
+      purity: "≥ 99% Bioavailable Active Form",
+      image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=500"
+    }
+  ];
+
+  const articles = [
+    {
+      title: "Optimizing NAD+ Rhythms: Circadian Modulation of Mitochondrial Fitness",
+      description: "How synchronizing NMN dosage with chronological cycles enhances biological efficacy and muscular ATP recycling.",
+      category: "Circadian Science",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600"
+    },
+    {
+      title: "Senolytic Clearance of SASP Precursors: Delaying Cellular Senescence",
+      description: "A clinical review of how targeted bio-molecular compounds clear senescent 'zombie' cells to prevent cellular degradation.",
+      category: "Senology",
+      image: "https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&q=80&w=600"
+    }
+  ];
+
+  const myths = [
+    {
+      myth: "Biological aging is a fixed timeline that cannot be altered or reversed.",
+      fact: "Clinical epigenetics shows that while chronological age is fixed, your biological age is highly dynamic. Activating sirtuins and raising NAD+ levels directly repair DNA double-strand breaks, lowering biological markers.",
+      topic: "Biological Age"
+    },
+    {
+      myth: "All oral supplements absorb equally well in the digestive tract.",
+      fact: "Standard powder capsules are quickly broken down by stomach acids. Biohacker's Fuel uses liposomal encapsulation—shielding active ingredients in a phospholipid bilayer to improve absorption by up to 15x.",
+      topic: "Bioavailability"
+    },
+    {
+      myth: "Cellular decline only begins to impact you in your 40s or 50s.",
+      fact: "Systemic NAD+ levels drop by up to 50% by age 40. Mitochondrial decay and cellular DNA breaks accumulate constantly from early adulthood, meaning cellular preservation should start early to maintain baseline tissue health.",
+      topic: "Senescence Timeline"
+    }
+  ];
+
+  const citations = [
+    {
+      title: "Nicotinamide Mononucleotide (NMN) administration prevents age-associated physiological decline in mice.",
+      source: "Cell Metabolism, 2016",
+      authors: "Mills KF, Yoshida S, Stein LR, et al.",
+      pmid: "PMID: 27797726"
+    },
+    {
+      title: "NAD+ Replenishment Rescues Phenotypes of Adenosine Deaminase Deficiency and Promotes Healthy Aging.",
+      source: "Nature Medicine, 2020",
+      authors: "Fang EF, Scheibye-Knudsen M, Chua KF, et al.",
+      pmid: "PMID: 32412891"
+    },
+    {
+      title: "Therapeutic Potential of Resveratrol: The In Vivo Evidence.",
+      source: "Nature Reviews Drug Discovery, 2006",
+      authors: "Baur JA, Sinclair DA.",
+      pmid: "PMID: 16732220"
+    },
+    {
+      title: "Liposomal encapsulation enhances the absorption and bioavailability of oral L-Glutathione in human trials.",
+      source: "European Journal of Clinical Nutrition, 2018",
+      authors: "Sinha R, Sinha I, Calcagnotto A, et al.",
+      pmid: "PMID: 29513476"
     }
   ];
 
   return (
-    <div className="bg-background text-foreground min-h-screen py-10">
+    <div className="bg-[#faf9f6] text-[#0a192f] min-h-screen overflow-x-hidden">
       
-      {/* Title Header */}
-      <section className="relative py-20 px-6 overflow-hidden border-b border-border bg-card/25">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="max-w-4xl mx-auto text-center space-y-4">
-          <span className="text-primary font-bold uppercase tracking-widest text-[9px] flex items-center justify-center gap-2">
-            <BookOpen size={12} /> THE LONGEVITY PROTOCOL
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight uppercase leading-tight">
-            The Science of Cellular Longevity
-          </h1>
-          <p className="text-stone-300 text-sm max-w-xl mx-auto leading-relaxed font-medium">
-            Bridging the gap between molecular biology and clinical longevity. We isolate advanced precursors to delay cellular senescence.
-          </p>
+      {/* 1. HERO BANNER */}
+      <section className="relative py-24 px-6 overflow-hidden bg-[#0a192f] text-white">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#b89047]/5 rounded-full blur-[140px] pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+          <div className="lg:col-span-7 space-y-6 text-left">
+            <span className="text-[#b89047] font-bold uppercase tracking-[0.25em] text-[9px] flex items-center gap-2">
+              <BookOpen size={12} className="text-[#b89047]" /> BIOHACKER'S FUEL CLINICAL PORTAL
+            </span>
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight uppercase leading-tight font-serif text-white">
+              Science Hub
+            </h1>
+            <p className="text-slate-300 text-xs sm:text-sm font-medium leading-relaxed max-w-xl font-sans">
+              Bridging the gap between molecular biology and clinical longevity. Explore the clinical references, active ingredient sciences, and cellular research underlying the Biohacker's Fuel protocol.
+            </p>
+            
+            {/* Quick links to page anchor sections */}
+            <div className="flex flex-wrap gap-3 pt-4">
+              <a href="#ingredient-science" className="bg-white/10 hover:bg-[#b89047] hover:text-[#0a192f] text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300 no-underline">
+                Ingredient Science
+              </a>
+              <a href="#research-articles" className="bg-white/10 hover:bg-[#b89047] hover:text-[#0a192f] text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300 no-underline">
+                Research Articles
+              </a>
+              <a href="#longevity-myths" className="bg-white/10 hover:bg-[#b89047] hover:text-[#0a192f] text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300 no-underline">
+                Longevity Myths
+              </a>
+              <a href="#clinical-references" className="bg-white/10 hover:bg-[#b89047] hover:text-[#0a192f] text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300 no-underline">
+                Clinical References
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 relative">
+            <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+              <img 
+                src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=800" 
+                alt="Molecular Research Hub" 
+                className="w-full h-full object-cover" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f]/50 to-transparent"></div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Hallmarks of Aging */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={revealVariants}
-        className="py-16 px-6 max-w-7xl mx-auto"
-      >
-        <div className="text-center mb-16 space-y-2">
-          <span className="text-primary font-bold uppercase tracking-widest text-[9px]">BIOLOGICAL HALLMARKS</span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-white uppercase">HALLMARKS OF AGING WE TARGET</h2>
-          <p className="text-xs sm:text-sm text-stone-400 font-medium max-w-lg mx-auto">Our molecular formulations act directly on three core biological pathways responsible for physiological decline.</p>
+      {/* 2. INGREDIENT SCIENCE */}
+      <section id="ingredient-science" className="py-24 px-6 max-w-7xl mx-auto scroll-mt-20">
+        <div className="text-center mb-16 space-y-3">
+          <span className="text-[#b89047] font-bold uppercase tracking-[0.25em] text-[9px] flex items-center justify-center gap-2">
+            <Sparkles size={12} /> CLINICAL BIO-METRICS
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0a192f] uppercase tracking-tight font-serif">
+            Ingredient Science
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-650 font-medium max-w-xl mx-auto leading-relaxed font-sans">
+            A granular breakdown of our therapeutic precursors, clinical dosage standards, and specifications.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Mitochondrial Decay",
-              description: "As NAD+ levels decline with age, mitochondria lose the capacity to manufacture ATP, resulting in fatigue and cellular death. NMN refills this pool.",
-              stat: "-50% NAD+ by Age 40",
-              target: "ATP & Energy pathways"
-            },
-            {
-              title: "Cellular Senescence",
-              description: "Damaged cells that cease dividing secrete inflammatory cytokines that degrade nearby healthy tissue. Our senolytic stacks help flush them out.",
-              stat: "Hallmark of tissue decay",
-              target: "SASP Clearance"
-            },
-            {
-              title: "DNA Double-Strand Breaks",
-              description: "Environmental toxins and replicative stress cause constant DNA breaks. Sirtuin enzymes repair these breaks but require NAD+ to activate.",
-              stat: "Genomic Instability",
-              target: "SIRT1 & SIRT6 Activation"
-            }
-          ].map((hallmark, i) => (
-            <div key={i} className="bg-card border border-border p-8 rounded-3xl space-y-4">
-              <span className="text-[10px] font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">{hallmark.target}</span>
-              <h3 className="text-xl font-bold text-white uppercase tracking-wider">{hallmark.title}</h3>
-              <p className="text-xs text-stone-400 leading-relaxed font-medium">{hallmark.description}</p>
-              <div className="pt-4 border-t border-border flex justify-between items-center text-[10px] font-bold tracking-widest uppercase text-stone-300">
-                <span>IMPACT</span>
-                <span className="text-white">{hallmark.stat}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {molecules.map((mol, i) => (
+            <div key={i} className="bg-white border border-[#0a192f]/5 rounded-[2.5rem] p-6 hover:border-[#b89047]/30 transition-all duration-500 shadow-sm hover:shadow-md flex flex-col justify-between group">
+              <div>
+                {/* Molecule Card Image */}
+                <div className="h-52 w-full rounded-2xl overflow-hidden mb-6 relative">
+                  <img 
+                    src={mol.image} 
+                    alt={mol.name} 
+                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f]/30 to-transparent"></div>
+                  <span className="absolute bottom-4 left-4 text-[9px] font-bold text-white uppercase tracking-wider bg-[#0a192f]/80 backdrop-blur-md px-3 py-1 rounded-full">
+                    {mol.purity}
+                  </span>
+                </div>
+
+                <div className="space-y-4">
+                  <span className="text-[9px] font-bold text-[#b89047] uppercase tracking-[0.15em] block">
+                    Formula Specification 0{i + 1}
+                  </span>
+                  <h3 className="text-2xl font-bold text-[#0a192f] uppercase tracking-wider font-serif">
+                    {mol.name}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                    {mol.clinicalBenefit}
+                  </p>
+                  <p className="text-xs text-[#b89047] italic font-semibold font-serif">
+                    {mol.studies}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-[#0a192f]/5 space-y-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                <div className="flex justify-between">
+                  <span>Target Marker:</span>
+                  <span className="text-[#0a192f]">{mol.target}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Engine / Weight:</span>
+                  <span className="text-[#b89047]">{mol.molecularWeight}</span>
+                </div>
               </div>
             </div>
           ))}
         </div>
-      </motion.section>
+      </section>
 
-      {/* Ingredient Breakdown */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={revealVariants}
-        className="py-16 px-6 bg-card/45 border-y border-border"
-      >
+      {/* 3. RESEARCH ARTICLES (Navy Blue Contrast Block) */}
+      <section id="research-articles" className="py-24 px-6 bg-[#0a192f] text-white border-y border-white/5 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 space-y-2">
-            <span className="text-primary font-bold uppercase tracking-widest text-[9px]">MOLECULAR METRICS</span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white uppercase">THERAPEUTIC PRECURSORS</h2>
-            <p className="text-xs sm:text-sm text-stone-400 font-medium max-w-lg mx-auto">Explore the biochemistry, clinical dosage delivery, and purity parameters of our core stacks.</p>
+          <div className="text-center mb-16 space-y-3">
+            <span className="text-[#b89047] font-bold uppercase tracking-[0.25em] text-[9px] flex items-center justify-center gap-2">
+              <Shield size={12} className="text-[#b89047]" /> CLINICAL RESEARCH LIBRARY
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white uppercase tracking-tight font-serif">
+              Research Articles
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-350 font-medium max-w-xl mx-auto leading-relaxed font-sans">
+              Scientific papers and publications addressing the biological frameworks of human senescence and longevity protocols.
+            </p>
           </div>
 
-          <div className="space-y-6">
-            {molecules.map((mol, i) => (
-              <div key={i} className="bg-background border border-border rounded-3xl p-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {articles.map((article, i) => (
+              <div key={i} className="bg-[#0f274a] border border-white/10 rounded-[2.5rem] overflow-hidden hover:border-[#b89047]/30 transition-all duration-300 flex flex-col justify-between group shadow-lg">
+                <div className="relative h-60 w-full overflow-hidden">
+                  <img 
+                    src={article.image} 
+                    alt={article.title} 
+                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f] via-transparent to-transparent"></div>
+                  <span className="absolute bottom-4 left-6 bg-[#b89047] text-[#0a192f] text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                    {article.category}
+                  </span>
+                </div>
                 
-                {/* Identification */}
-                <div className="space-y-4">
-                  <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Active Formula {i+1}</span>
-                  <h3 className="text-xl font-bold text-white uppercase tracking-wider leading-tight">{mol.name}</h3>
-                  <div className="space-y-2 text-xs font-bold text-stone-300 uppercase tracking-wider">
-                    <p className="flex justify-between"><span>CELLULAR TARGET:</span> <span className="text-white">{mol.target}</span></p>
-                    <p className="flex justify-between"><span>DELIVERY ENGINE:</span> <span className="text-white">{mol.mechanism}</span></p>
+                <div className="p-8 space-y-4 flex-1 flex flex-col justify-between">
+                  <div className="space-y-3">
+                    <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider font-serif">
+                      {article.title}
+                    </h3>
+                    <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                      {article.description}
+                    </p>
+                  </div>
+                  
+                  <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                      Peer Reviewed Publication
+                    </span>
+                    <a href="#clinical-references" className="text-[#b89047] hover:text-white text-[10px] font-bold uppercase tracking-widest flex items-center gap-1.5 transition-colors no-underline">
+                      View Citation <ChevronRight size={12} />
+                    </a>
                   </div>
                 </div>
-
-                {/* Mechanism */}
-                <div className="space-y-3 lg:border-x lg:border-border lg:px-8">
-                  <h4 className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Clinical Action</h4>
-                  <p className="text-xs text-stone-300 leading-relaxed font-medium">{mol.clinicalBenefit}</p>
-                  <p className="text-xs text-stone-450 italic leading-relaxed font-medium">{mol.studies}</p>
-                </div>
-
-                {/* Assay details */}
-                <div className="space-y-4 flex flex-col justify-between">
-                  <div>
-                    <h4 className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-3">Specification Assay</h4>
-                    <div className="space-y-2 text-xs font-bold text-stone-300 uppercase tracking-wider">
-                      <p className="flex justify-between"><span>Purity (HPLC):</span> <span className="text-primary">{mol.purity}</span></p>
-                      <p className="flex justify-between"><span>Mol. Weight:</span> <span className="text-white">{mol.molecularWeight}</span></p>
-                    </div>
-                  </div>
-                  <a href="/shop" className="w-full text-center py-3 bg-secondary hover:bg-primary hover:text-background text-foreground border border-border text-[9px] font-bold uppercase tracking-widest rounded-xl transition-all no-underline">
-                    View Formulas
-                  </a>
-                </div>
-
               </div>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Quality Control / Certificates */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={revealVariants}
-        className="py-16 px-6 max-w-7xl mx-auto"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <span className="text-primary font-bold uppercase tracking-widest text-[9px] flex items-center gap-2">
-              <Shield size={12} /> LABORATORY ASSURANCE
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white uppercase tracking-tight leading-tight">
-              Absolute Purity. No Compromises.
-            </h2>
-            <p className="text-stone-300 text-xs leading-relaxed font-medium">
-              Unlike consumer-grade supplements, Biohacker's Fuel products are synthesized in cleanrooms. We release the full chemical assay for every production batch. You can download the certificates verifying zero heavy metals, zero microbial contaminants, and precise compound potency.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                "HPLC Potency Verification Report",
-                "Inductively Coupled Plasma (ICP-MS) Metal Assay",
-                "Residual Solvent Analysis (GC-MS)",
-                "Microbiological Pathogen Certificate"
-              ].map((cert, idx) => (
-                <div key={idx} className="flex gap-2.5 items-center">
-                  <CheckCircle2 size={16} className="text-primary shrink-0" />
-                  <span className="text-xs font-bold text-stone-200 uppercase tracking-wider">{cert}</span>
-                </div>
-              ))}
-            </div>
-            <div className="pt-4">
-              <button className="flex items-center gap-3 bg-primary hover:opacity-90 text-background px-8 py-3.5 rounded-xl font-bold uppercase tracking-widest text-[10px] shadow-lg cursor-pointer">
-                <FileText size={14} /> Download Sample COA Report
-              </button>
-            </div>
-          </div>
-          <div className="relative rounded-[2rem] overflow-hidden border border-border aspect-video flex items-center justify-center bg-black">
-            <img 
-              src="https://images.unsplash.com/photo-1532187863486-abf9d39d66e8?auto=format&fit=crop&q=80&w=800" 
-              alt="Quality Lab Assay" 
-              className="w-full h-full object-cover opacity-60" 
-            />
-          </div>
+      {/* 4. LONGEVITY MYTHS (Light Premium Section) */}
+      <section id="longevity-myths" className="py-24 px-6 max-w-7xl mx-auto scroll-mt-20">
+        <div className="text-center mb-16 space-y-3">
+          <span className="text-[#b89047] font-bold uppercase tracking-[0.25em] text-[9px] flex items-center justify-center gap-2">
+            <HelpCircle size={12} /> BIOLOGICAL MYTHS DEBUNKED
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0a192f] uppercase tracking-tight font-serif">
+            Longevity Myths
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-650 font-medium max-w-xl mx-auto leading-relaxed font-sans">
+            Deconstructing common misconceptions surrounding cellular aging through rigorous clinical biotechnology.
+          </p>
         </div>
-      </motion.section>
 
-      {/* Bibliography & Clinical Citations */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={revealVariants}
-        className="py-16 px-6 bg-card/20 border-t border-border"
-      >
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="text-center">
-            <span className="text-primary font-bold uppercase tracking-widest text-[9px]">CLINICAL BIBLIOGRAPHY</span>
-            <h2 className="text-2xl font-extrabold text-white uppercase tracking-tight mt-1">Research Citations</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {myths.map((item, i) => (
+            <div key={i} className="bg-white border border-[#0a192f]/5 rounded-[2.5rem] p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300">
+              <div className="space-y-6">
+                {/* Topic Header */}
+                <div className="flex justify-between items-center pb-4 border-b border-[#0a192f]/5">
+                  <span className="text-[10px] font-bold text-[#b89047] uppercase tracking-widest">
+                    {item.topic}
+                  </span>
+                  <span className="w-6 h-6 rounded-full bg-rose-50 flex items-center justify-center text-rose-500 font-extrabold text-xs">
+                    ✕
+                  </span>
+                </div>
+
+                {/* The Myth */}
+                <div className="space-y-2">
+                  <span className="text-[9px] font-black uppercase tracking-wider text-rose-500 block">
+                    The Myth
+                  </span>
+                  <h4 className="text-md font-bold text-slate-500 italic leading-relaxed font-serif">
+                    "{item.myth}"
+                  </h4>
+                </div>
+
+                {/* The Science */}
+                <div className="space-y-2 pt-4 border-t border-dashed border-slate-100">
+                  <span className="text-[9px] font-black uppercase tracking-wider text-emerald-600 flex items-center gap-1">
+                    <span className="w-4 h-4 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[9px]">✓</span> 
+                    The Clinical Science
+                  </span>
+                  <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                    {item.fact}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. CLINICAL REFERENCES */}
+      <section id="clinical-references" className="py-24 px-6 bg-[#faf9f6] border-t border-[#0a192f]/5 scroll-mt-20">
+        <div className="max-w-4xl mx-auto space-y-10">
+          <div className="text-center space-y-2">
+            <span className="text-[#b89047] font-bold uppercase tracking-[0.25em] text-[9px] block">BIBLIOGRAPHY & SOURCES</span>
+            <h2 className="text-3xl font-extrabold text-[#0a192f] uppercase tracking-tight font-serif">
+              Clinical References
+            </h2>
+            <p className="text-xs text-slate-500 font-medium max-w-md mx-auto leading-relaxed">
+              Verify the biological assay parameters and double-blind clinical trials using directly indexed publication links.
+            </p>
           </div>
+
           <div className="space-y-4">
-            {[
-              {
-                title: "Nicotinamide Mononucleotide (NMN) administration prevents age-associated physiological decline in mice.",
-                source: "Cell Metabolism, 2016",
-                authors: "Mills KF, Yoshida S, Stein LR, et al.",
-                pmid: "PMID: 27797726"
-              },
-              {
-                title: "NAD+ Replenishment Rescues Phenotypes of Adenosine Deaminase Deficiency and Promotes Healthy Aging.",
-                source: "Nature Medicine, 2020",
-                authors: "Fang EF, Scheibye-Knudsen M, Chua KF, et al.",
-                pmid: "PMID: 32412891"
-              },
-              {
-                title: "Therapeutic Potential of Resveratrol: The In Vivo Evidence.",
-                source: "Nature Reviews Drug Discovery, 2006",
-                authors: "Baur JA, Sinclair DA.",
-                pmid: "PMID: 16732220"
-              },
-              {
-                title: "Liposomal encapsulation enhances the absorption and bioavailability of oral L-Glutathione in human trials.",
-                source: "European Journal of Clinical Nutrition, 2018",
-                authors: "Sinha R, Sinha I, Calcagnotto A, et al.",
-                pmid: "PMID: 29513476"
-              }
-            ].map((cite, i) => (
-              <div key={i} className="bg-card border border-border p-5 rounded-2xl flex justify-between items-center gap-4">
-                <div className="space-y-1">
-                  <h4 className="text-xs font-bold text-white leading-snug">{cite.title}</h4>
-                  <p className="text-[10px] text-stone-400 font-semibold uppercase tracking-wider">{cite.authors} — <span className="text-primary">{cite.source}</span></p>
+            {citations.map((cite, i) => (
+              <div key={i} className="bg-white border border-[#0a192f]/5 p-6 rounded-2xl flex justify-between items-center gap-6 hover:border-[#b89047]/30 transition-all duration-300 shadow-xs">
+                <div className="space-y-1.5 text-left">
+                  <h4 className="text-sm font-bold text-[#0a192f] leading-snug font-serif">
+                    {cite.title}
+                  </h4>
+                  <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider font-sans">
+                    {cite.authors} — <span className="text-[#b89047]">{cite.source}</span>
+                  </p>
                 </div>
                 <a 
                   href={`https://pubmed.ncbi.nlm.nih.gov/?term=${cite.pmid.replace("PMID: ", "")}`} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-secondary hover:bg-primary hover:text-background border border-border rounded-full flex items-center justify-center text-stone-400 shrink-0 transition-all cursor-pointer"
+                  className="w-10 h-10 bg-[#faf9f6] hover:bg-[#b89047] text-[#0a192f] hover:text-white border border-[#0a192f]/5 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 cursor-pointer"
                 >
                   <ChevronRight size={16} />
                 </a>
@@ -278,7 +369,7 @@ const Science = () => {
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
 
     </div>
   );

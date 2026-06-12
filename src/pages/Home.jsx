@@ -1,4 +1,5 @@
 // src/pages/Home.jsx
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import { motion, AnimatePresence } from "framer-motion";
@@ -6,13 +7,9 @@ import { API_BASE_URL } from "../config";
 import {
   FaInstagram,
   FaQuoteLeft,
-  FaShieldAlt,
-  FaBolt,
-  FaHeart,
-  FaClock,
+ 
   FaFileMedical,
   FaBookOpen,
-  FaRegHospital,
   FaStar,
 } from "react-icons/fa";
 import {
@@ -24,7 +21,6 @@ import {
   Dna,
   FileText,
   Calendar,
-  Award,
   Clock,
   Sun,
   Moon,
@@ -133,6 +129,7 @@ const Home = () => {
 
   const {
     estimatedBioAge,
+    // eslint-disable-next-line no-unused-vars
     nadPercent,
     longevityScore,
     recommendation,
@@ -247,7 +244,7 @@ const Home = () => {
       desc: "High-potency 99.8% pure nicotinamide mononucleotide enclosed in liposomal carrier spheres for maximum systemic bioavailability.",
       biomarkers: "NAD+ Levels, Glycation, Epigenetic Index",
       price: "$89.00",
-      bg: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400",
+      bg: "https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&q=80&w=400",
     },
     {
       title: "Circadian Regulator",
@@ -255,7 +252,7 @@ const Home = () => {
       desc: "Advanced neuromodulators designed to optimize deep delta-sleep wave patterns and lower nightly cortisol spikes.",
       biomarkers: "HRV Profile, Sleep Latency, Diurnal Cortisol",
       price: "$75.00",
-      bg: "https://images.unsplash.com/photo-1511295742364-92767fa62d9f?auto=format&fit=crop&q=80&w=400",
+      bg: "https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&q=80&w=400",
     },
     {
       title: "Senolytic Cleanse",
@@ -263,7 +260,7 @@ const Home = () => {
       desc: "Targeted bio-molecular compounds certified to selectively clear 'zombie' senescent cells to prevent inflammatory aging.",
       biomarkers: "IL-6 Markers, Inflammatory Cytokines",
       price: "$95.00",
-      bg: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&q=80&w=400",
+      bg: "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&q=80&w=400",
     },
   ];
 
@@ -347,8 +344,8 @@ const Home = () => {
             </div>
 
             {/* Right Image Content Container */}
-            <div className="relative z-10 flex-1 flex items-center justify-center min-h-[450px] md:min-h-0 select-none group w-full">
-              <div className="relative w-full max-w-[590px] aspect-[4/3] rounded-[2rem] overflow-hidden  transition-all duration-500 md:translate-x-8">
+            <div className="relative z-10 flex-1 flex items-center justify-center min-h-[450px] select-none group w-full">
+              <div className="relative w-full max-w-[1090px] aspect-[4/3]  overflow-hidden  transition-all duration-500 md:translate-x-8">
                 <img
                   src={
                     heroProduct.image_url
@@ -947,7 +944,7 @@ const Home = () => {
                   <img
                     src={prod.bg}
                     alt={prod.title}
-                    className="w-full h-full object-cover opacity-40 group-hover:scale-103 group-hover:opacity-50 transition-all duration-700"
+                    className="w-full h-full object-cover opacity-85 group-hover:scale-103 group-hover:opacity-100 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0f274a] to-transparent"></div>
                   <span className="absolute top-6 left-6 text-[8px] font-bold text-[#b89047] bg-[#0a192f]/90 border border-[#b89047]/30 px-3 py-1 rounded-full uppercase tracking-wider">

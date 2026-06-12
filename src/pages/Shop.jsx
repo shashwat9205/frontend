@@ -121,7 +121,7 @@ const Shop = () => {
       </section>
 
       {/* Category Filter Bar */}
-      <section className="sticky top-[132px] z-40 bg-white/75 backdrop-blur-md border-b border-primary/5 py-4">
+      <section className="sticky top-[80px] z-40 bg-white/75 rounded-4xl backdrop-blur-md border-b border-primary/5 py-4">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="flex items-center gap-4 overflow-x-auto no-scrollbar">
             <button

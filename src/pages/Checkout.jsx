@@ -373,7 +373,7 @@ const Checkout = () => {
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                      className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
+                      className="w-full bg-gray-50 text-black border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
                     />
                   </div>
                   <div className="space-y-2">
@@ -385,7 +385,7 @@ const Checkout = () => {
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
-                      className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
+                      className="w-full bg-gray-50 text-black border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
                     />
                   </div>
                 </div>
@@ -400,7 +400,7 @@ const Checkout = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
+                    className="w-full bg-gray-50 text-black border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
                   />
                 </div>
 
@@ -413,7 +413,7 @@ const Checkout = () => {
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
-                    className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
+                    className="w-full bg-gray-50 text-black border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
                   />
                 </div>
 
@@ -427,7 +427,7 @@ const Checkout = () => {
                       name="city"
                       value={formData.city}
                       onChange={handleChange}
-                      className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
+                      className="w-full bg-gray-50 text-black border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
                     />
                   </div>
                   <div className="space-y-2">
@@ -439,7 +439,7 @@ const Checkout = () => {
                       name="zip"
                       value={formData.zip}
                       onChange={handleChange}
-                      className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
+                      className="w-full bg-gray-50 text-black border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
                     />
                   </div>
                 </div>
@@ -453,7 +453,7 @@ const Checkout = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
+                    className="w-full bg-gray-50 text-black border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
                   />
                 </div>
               </form>
@@ -470,7 +470,7 @@ const Checkout = () => {
               <div className="space-y-4 mb-8 max-h-[300px] overflow-y-auto custom-scrollbar pr-2">
                 {cart.map((item) => (
                   <div key={item.id} className="flex gap-4 items-center">
-                    <div className="w-16 h-16 bg-gray-50 rounded-xl p-2 shrink-0 border border-gray-100">
+                    <div className="w-16  h-16 bg-gray-50 rounded-xl p-2 shrink-0 border border-gray-100">
                       <img
                         src={
                           item.image_url
@@ -480,18 +480,18 @@ const Checkout = () => {
                             : "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=600"
                         }
                         alt={item.name}
-                        className="w-full h-full object-contain mix-blend-multiply"
+                        className="w-full h-full  object-contain mix-blend-multiply"
                       />
                     </div>
                     <div className="flex-1">
-                      <p className="text-xs font-black uppercase truncate">
+                      <p className="text-xs text-black font-black uppercase truncate">
                         {item.name}
                       </p>
                       <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">
                         Qty: {item.qty}
                       </p>
                     </div>
-                    <p className="text-sm font-bold">
+                    <p className="text-sm font-bold text-black">
                       ₹{(item.price * item.qty).toLocaleString("en-IN")}
                     </p>
                   </div>

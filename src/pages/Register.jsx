@@ -131,7 +131,7 @@ const Register = () => {
                 onChange={handleChange}
                 required
                 disabled={otpSent}
-                className="w-full bg-white border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium disabled:opacity-50 disabled:bg-gray-100"
+                className="w-full bg-white text-black border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium disabled:opacity-50 disabled:bg-gray-100"
               />
             </div>
 
@@ -144,7 +144,7 @@ const Register = () => {
                 onChange={handleChange}
                 required
                 disabled={otpSent}
-                className="w-full bg-white border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium disabled:opacity-50 disabled:bg-gray-100"
+                className="w-full bg-white text-black border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium disabled:opacity-50 disabled:bg-gray-100"
               />
             </div>
 
@@ -157,7 +157,7 @@ const Register = () => {
                 onChange={handleChange}
                 required
                 disabled={otpSent}
-                className="w-full bg-white border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium disabled:opacity-50 disabled:bg-gray-100"
+                className="w-full bg-white border text-black border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium disabled:opacity-50 disabled:bg-gray-100"
               />
             </div>
 
@@ -166,12 +166,12 @@ const Register = () => {
               <input 
                 type="tel" 
                 name="phone"
-                placeholder="+17623363571"
+                placeholder="+91 76233 63571"
                 value={formData.phone}
                 onChange={handleChange}
                 required
                 disabled={otpSent}
-                className="w-full bg-white border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium disabled:opacity-50 disabled:bg-gray-100"
+                className="w-full bg-white border text-black border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium disabled:opacity-50 disabled:bg-gray-100"
               />
               <p className="text-[9px] text-gray-400 font-bold uppercase tracking-wider">Must include + and country code (e.g. +17623363571)</p>
             </div>

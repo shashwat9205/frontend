@@ -10,23 +10,25 @@ const About = () => {
   };
 
   return (
-    <div className="bg-background text-foreground min-h-screen">
+    <div className=" bg-white text-background min-h-screen">
       
       {/* Intro block */}
-      <section className="container mx-auto px-6 max-w-4xl py-20 text-center space-y-6">
-        <span className="text-primary font-bold uppercase tracking-[0.2em] text-[9px] block">THE BIOHACKER'S PROTOCOL</span>
-        <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight uppercase text-white leading-tight">
-          Engineered for Human Lifespan Extension
-        </h1>
-        <p className="text-sm sm:text-base text-stone-300 font-medium max-w-2xl mx-auto leading-relaxed">
-          Biohacker's Fuel was founded to address cellular decay at the root. We do not design consumer supplements; we engineer advanced molecular precursors and delivery vehicles to support cellular integrity and physical stamina.
-        </p>
+      <section className="w-full bg-[#0a192f] min-h-screen py-20 text-center">
+        <div className="container mx-auto px-6 max-w-4xl space-y-6">
+          <span className="text-primary font-bold uppercase tracking-[0.2em] text-[9px] block">THE BIOHACKER'S PROTOCOL</span>
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight uppercase text-white leading-tight">
+            Engineered for Human Lifespan Extension
+          </h1>
+          <p className="text-sm sm:text-base text-stone-200 font-medium leading-relaxed">
+            Biohacker's Fuel was founded to address cellular decay at the root. We do not design consumer supplements; we engineer advanced molecular precursors and delivery vehicles to support cellular integrity and physical stamina.
+          </p>
+        </div>
       </section>
 
       {/* Visual Break Image */}
       <div className="h-[400px] w-full overflow-hidden border-y border-border relative">
         <img
-          src="https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&q=80&w=1200"
+          src="https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&q=80&w=1200"
           alt="Biohacking Clinic Lab"
           className="w-full h-full object-cover opacity-60"
         />
@@ -59,7 +61,7 @@ const About = () => {
               desc: "We focus on extending cellular survival capacity, slowing chronological aging metrics, and maximizing active energy years."
             }
           ].map((val, idx) => (
-            <div key={idx} className="bg-card border border-border p-8 rounded-3xl space-y-4">
+            <div key={idx} className="bg-[#0a192f] border border-border p-8 rounded-3xl space-y-4">
               <div className="w-12 h-12 bg-secondary border border-border rounded-xl flex items-center justify-center">
                 {val.icon}
               </div>

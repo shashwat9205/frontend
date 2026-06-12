@@ -32,7 +32,7 @@ const Login = () => {
       if (data.status === 'success') {
         localStorage.setItem('customer_user', JSON.stringify(data.data));
         window.dispatchEvent(new Event('storage')); // Trigger navbar update
-        
+
         const params = new URLSearchParams(location.search);
         const redirect = params.get('redirect');
         if (redirect) {
@@ -56,8 +56,8 @@ const Login = () => {
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-black uppercase tracking-tighter mb-2">Welcome Back</h2>
-          <p className="text-gray-500 text-sm font-medium">Sign in to your Pure Plant account</p>
+          <h2 className="text-3xl font-black uppercase tracking-tighter mb-2 text-primary">Welcome Back</h2>
+          <p className="text-gray-500 text-sm font-medium text-primary">Sign in to your Pure Plant account</p>
         </div>
 
         {/* Form */}
@@ -71,13 +71,13 @@ const Login = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-gray-500">Email Address</label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full bg-white border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
+                className="text-black w-full bg-white border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
               />
             </div>
 
@@ -86,18 +86,18 @@ const Login = () => {
                 <label className="text-[10px] font-black uppercase tracking-widest text-gray-500">Password</label>
                 <a href="#" className="text-[10px] font-bold text-gray-400 hover:text-primary">Forgot?</a>
               </div>
-              <input 
-                type="password" 
+              <input
+                type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="w-full bg-white border border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
+                className="w-full bg-white border text-black border-gray-200 p-4 rounded-xl outline-none focus:border-primary transition-all text-sm font-medium"
               />
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={loading}
               className={`w-full bg-black text-white py-5 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-primary transition-all shadow-xl mt-4 ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
