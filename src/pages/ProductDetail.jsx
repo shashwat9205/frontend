@@ -5,7 +5,7 @@ import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaExpandAlt, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { Heart } from 'lucide-react';
+import { Heart, ChevronDown } from 'lucide-react';
 
 const ProductDetail = () => {
   const { slug } = useParams();
@@ -18,6 +18,7 @@ const ProductDetail = () => {
   const [added, setAdded] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   useEffect(() => {
     fetch(`${API_BASE_URL}api/products.php?slug=${slug}`)
@@ -228,12 +229,33 @@ const ProductDetail = () => {
 
               {/* Product Details & Directions Section */}
               <div className="space-y-3 pt-2">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-[#0a192f]">
-                  Product Details & Directions
-                </h3>
-                <div className="text-gray-600 text-sm font-normal leading-relaxed">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-[#0a192f]">
+                    Product Details & Directions
+                  </h3>
+                  {product.description && product.description.length > 160 && (
+                    <button
+                      type="button"
+                      onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:text-black uppercase tracking-wider transition-colors cursor-pointer"
+                    >
+                      <span>{isDescriptionExpanded ? 'Read Less' : 'Read More'}</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                          isDescriptionExpanded ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                  )}
+                </div>
+
+                <div className="relative">
                   <div 
-                    className="whitespace-pre-line leading-relaxed space-y-2 bg-[#faf9f6] p-5 rounded-2xl border border-gray-100 text-xs sm:text-sm font-sans"
+                    className={`whitespace-pre-line leading-relaxed space-y-2 bg-[#faf9f6] p-5 rounded-2xl border border-gray-100 text-xs sm:text-sm font-sans transition-all duration-300 ${
+                      !isDescriptionExpanded && (product.description?.length > 160)
+                        ? 'max-h-28 overflow-hidden'
+                        : ''
+                    }`}
                     dangerouslySetInnerHTML={{
                       __html: product.description 
                         ? (product.description.includes('<p>') || product.description.includes('<br>') || product.description.includes('<ul>')
@@ -242,6 +264,18 @@ const ProductDetail = () => {
                         : 'Premium performance nutrition designed for elite athletes.'
                     }}
                   />
+
+                  {/* Soft Gradient Fade when collapsed */}
+                  {!isDescriptionExpanded && (product.description?.length > 160) && (
+                    <div 
+                      onClick={() => setIsDescriptionExpanded(true)}
+                      className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#faf9f6] via-[#faf9f6]/90 to-transparent rounded-b-2xl cursor-pointer flex items-end justify-center pb-2"
+                    >
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-primary hover:text-black">
+                        + Read full details
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
 
