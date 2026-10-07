@@ -136,7 +136,7 @@ const ProductDetail = () => {
           {/* Right: Focused Product Info */}
           <div className="w-full lg:w-[50%] lg:sticky lg:top-24">
             <div className="space-y-6">
-              <div className="space-y-3 border-b border-gray-100 pb-8">
+              <div className="space-y-3 border-b border-gray-100 pb-6">
                 <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px] opacity-80">
                   {product.category || 'Nutrition'}
                 </p>
@@ -153,55 +153,20 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              <div className="text-gray-600 text-sm font-normal leading-relaxed max-w-lg">
-                <div 
-                  className="whitespace-pre-line leading-relaxed space-y-2"
-                  dangerouslySetInnerHTML={{
-                    __html: product.description 
-                      ? (product.description.includes('<p>') || product.description.includes('<br>') || product.description.includes('<ul>')
-                          ? product.description
-                          : product.description.replace(/\n/g, '<br/>'))
-                      : 'Premium performance nutrition designed for elite athletes.'
-                  }}
-                />
-              </div>
-
-              {/* Authenticity Badges */}
-              <div className="flex items-center justify-between py-6 border-y border-gray-100 my-6">
-                <div className="flex flex-col items-center gap-3 text-center w-1/3 group cursor-default">
-                  <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
-                    <i className="fa-solid fa-certificate text-xl"></i>
-                  </div>
-                  <p className="text-[8px] font-black uppercase tracking-widest text-gray-500 leading-tight group-hover:text-black transition-colors">100%<br/>Authentic</p>
-                </div>
-                <div className="flex flex-col items-center gap-3 text-center w-1/3 border-x border-gray-100 group cursor-default">
-                  <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
-                    <i className="fa-solid fa-truck-fast text-xl"></i>
-                  </div>
-                  <p className="text-[8px] font-black uppercase tracking-widest text-gray-500 leading-tight group-hover:text-black transition-colors">Fast<br/>Delivery</p>
-                </div>
-                <div className="flex flex-col items-center gap-3 text-center w-1/3 group cursor-default">
-                  <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
-                    <i className="fa-solid fa-lock text-xl"></i>
-                  </div>
-                  <p className="text-[8px] font-black uppercase tracking-widest text-gray-500 leading-tight group-hover:text-black transition-colors">Secure<br/>Checkout</p>
-                </div>
-              </div>
-
-              {/* Actions - More compact */}
-              <div className="space-y-4 pt-2">
+              {/* Purchase Actions - Above the fold for instant conversion */}
+              <div className="space-y-4 pt-1">
                 <div className="flex items-center justify-between bg-gray-50 p-4 rounded-2xl border border-gray-100">
                   <div className="flex items-center gap-4">
                     <span className="text-[9px] font-black uppercase tracking-widest text-gray-400">Qty</span>
                     <div className="flex items-center bg-white rounded-lg p-1 border border-gray-100">
                       <button
                         onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                        className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-black transition-colors"
+                        className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-black transition-colors cursor-pointer"
                       ><FaChevronLeft size={8} /></button>
                       <span className="w-8 text-center font-black text-black text-xs">{quantity}</span>
                       <button
                         onClick={() => setQuantity(q => q + 1)}
-                        className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-black transition-colors"
+                        className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-black transition-colors cursor-pointer"
                       ><FaChevronRight size={8} /></button>
                     </div>
                   </div>
@@ -209,26 +174,26 @@ const ProductDetail = () => {
                   {isOutOfStock ? (
                     <span className="text-red-500 font-black uppercase tracking-widest text-[10px] bg-red-50 px-4 py-2 rounded-full">Sold Out</span>
                   ) : (
-                    <span className="text-green-500 font-black uppercase tracking-widest text-[10px] bg-green-50 px-4 py-2 rounded-full">In Stock </span>
+                    <span className="text-green-600 font-black uppercase tracking-widest text-[10px] bg-green-50 px-4 py-2 rounded-full">In Stock</span>
                   )}
                 </div>
 
                 <button
                   onClick={handleAddToCart}
                   disabled={isOutOfStock}
-                  className={`w-full py-6 rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] transition-all shadow-xl flex items-center justify-center gap-3 ${isOutOfStock
+                  className={`w-full py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] transition-all shadow-xl flex items-center justify-center gap-3 cursor-pointer ${isOutOfStock
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                     : added
                       ? 'bg-green-500 text-white shadow-green-100'
                       : 'bg-black text-white hover:bg-primary shadow-gray-100'
                     }`}
                 >
-                  {isOutOfStock ? 'Currently Unavailable' : added ? 'Added to Selection ✓' : 'Add to Cart'}
+                  {isOutOfStock ? 'Currently Unavailable' : added ? 'Added to Cart ✓' : 'Add to Cart'}
                 </button>
                 
                 <button
                   onClick={handleWishlist}
-                  className={`w-full py-4 rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] transition-all border-2 flex items-center justify-center gap-3 ${
+                  className={`w-full py-3.5 rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] transition-all border-2 flex items-center justify-center gap-3 cursor-pointer ${
                     wishlisted 
                       ? 'border-primary text-primary bg-primary/5 hover:bg-primary/10' 
                       : 'border-gray-200 text-gray-600 hover:border-black hover:text-black'
@@ -237,6 +202,47 @@ const ProductDetail = () => {
                   <Heart size={16} className={wishlisted ? "fill-current" : ""} />
                   {wishlisted ? 'Saved to Wishlist' : 'Add to Wishlist'}
                 </button>
+              </div>
+
+              {/* Authenticity Badges */}
+              <div className="flex items-center justify-between py-5 border-y border-gray-100 my-2">
+                <div className="flex flex-col items-center gap-2 text-center w-1/3 group cursor-default">
+                  <div className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-primary transition-transform duration-300 group-hover:scale-110">
+                    <i className="fa-solid fa-certificate text-base"></i>
+                  </div>
+                  <p className="text-[8px] font-black uppercase tracking-widest text-gray-500 leading-tight">100%<br/>Authentic</p>
+                </div>
+                <div className="flex flex-col items-center gap-2 text-center w-1/3 border-x border-gray-100 group cursor-default">
+                  <div className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-primary transition-transform duration-300 group-hover:scale-110">
+                    <i className="fa-solid fa-truck-fast text-base"></i>
+                  </div>
+                  <p className="text-[8px] font-black uppercase tracking-widest text-gray-500 leading-tight">Fast<br/>Delivery</p>
+                </div>
+                <div className="flex flex-col items-center gap-2 text-center w-1/3 group cursor-default">
+                  <div className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-primary transition-transform duration-300 group-hover:scale-110">
+                    <i className="fa-solid fa-lock text-base"></i>
+                  </div>
+                  <p className="text-[8px] font-black uppercase tracking-widest text-gray-500 leading-tight">Secure<br/>Checkout</p>
+                </div>
+              </div>
+
+              {/* Product Details & Directions Section */}
+              <div className="space-y-3 pt-2">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-[#0a192f]">
+                  Product Details & Directions
+                </h3>
+                <div className="text-gray-600 text-sm font-normal leading-relaxed">
+                  <div 
+                    className="whitespace-pre-line leading-relaxed space-y-2 bg-[#faf9f6] p-5 rounded-2xl border border-gray-100 text-xs sm:text-sm font-sans"
+                    dangerouslySetInnerHTML={{
+                      __html: product.description 
+                        ? (product.description.includes('<p>') || product.description.includes('<br>') || product.description.includes('<ul>')
+                            ? product.description
+                            : product.description.replace(/\n/g, '<br/>'))
+                        : 'Premium performance nutrition designed for elite athletes.'
+                    }}
+                  />
+                </div>
               </div>
 
               {/* Dynamic Trust Section */}
