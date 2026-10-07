@@ -153,8 +153,17 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              <div className="text-gray-400 text-sm font-medium leading-relaxed max-w-lg">
-                <p>{product.description || 'Premium performance nutrition designed for elite athletes.'}</p>
+              <div className="text-gray-600 text-sm font-normal leading-relaxed max-w-lg">
+                <div 
+                  className="whitespace-pre-line leading-relaxed space-y-2"
+                  dangerouslySetInnerHTML={{
+                    __html: product.description 
+                      ? (product.description.includes('<p>') || product.description.includes('<br>') || product.description.includes('<ul>')
+                          ? product.description
+                          : product.description.replace(/\n/g, '<br/>'))
+                      : 'Premium performance nutrition designed for elite athletes.'
+                  }}
+                />
               </div>
 
               {/* Authenticity Badges */}
