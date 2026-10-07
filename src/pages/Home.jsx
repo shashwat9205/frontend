@@ -291,7 +291,7 @@ const Home = () => {
                 <Sparkles className="w-3 h-3" /> INTRODUCING THE HERO PROTOCOL
               </span>
 
-              <h2 className="text-3xl md:text-5xl font-extrabold text-white uppercase tracking-tight font-serif leading-tight">
+              <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight font-serif leading-tight">
                 {heroProduct.name}
               </h2>
 

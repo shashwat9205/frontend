@@ -85,7 +85,7 @@ const ProductDetail = () => {
           <span>/</span>
           <Link to="/shop" className="hover:text-primary transition-colors no-underline">Shop</Link>
           <span>/</span>
-          <span className="text-black">{product.name}</span>
+          <span className="text-black normal-case font-medium">{product.name}</span>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-16 items-start">
@@ -140,7 +140,7 @@ const ProductDetail = () => {
                 <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px] opacity-80">
                   {product.category || 'Nutrition'}
                 </p>
-                <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-black leading-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold tracking-tight text-black leading-snug">
                   {product.name}
                 </h1>
                 <div className="flex items-center gap-4">

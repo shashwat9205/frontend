@@ -87,26 +87,23 @@ const ProductCard = ({ product }) => {
       </Link>
 
       {/* Product Details */}
-      <div className="space-y-1 sm:space-y-1.5 px-1 sm:px-2 pb-1 sm:pb-2">
+      <div className="space-y-1 px-1 sm:px-2 pb-1 sm:pb-2">
         <p className="text-primary font-bold uppercase tracking-wider text-[8px] sm:text-[9px] font-sans">
           {product.category || "General"}
         </p>
-        <div className="flex flex-col sm:flex-row justify-between items-start gap-1 sm:gap-4">
-          <Link
-            to={`/product/${product.slug}`}
-            className="no-underline flex-1 min-w-0 w-full overflow-hidden"
-          >
-            <h3 className="text-xs sm:text-base font-semibold text-background leading-tight font-sans break-words group-hover:text-primary transition-colors">
-              {product.name}
-            </h3>
-          </Link>
-          <p className="text-primary font-bold text-xs sm:text-sm font-sans shrink-0">
+        <Link
+          to={`/product/${product.slug}`}
+          className="no-underline block min-w-0"
+        >
+          <h3 className="text-xs sm:text-sm font-semibold text-background leading-snug font-sans line-clamp-2 min-h-[2.2rem] sm:min-h-[2.5rem] group-hover:text-primary transition-colors">
+            {product.name}
+          </h3>
+        </Link>
+        <div className="flex items-center justify-between pt-0.5">
+          <p className="text-primary font-bold text-xs sm:text-sm font-sans">
             ₹{parseFloat(product.price).toLocaleString("en-IN")}
           </p>
         </div>
-        <p className="hidden sm:block text-stone-400 text-[11px] font-medium leading-relaxed line-clamp-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          Scientifically backed cellular optimization stack.
-        </p>
       </div>
     </div>
   );
