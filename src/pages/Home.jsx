@@ -1,6 +1,7 @@
 // src/pages/Home.jsx
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 import { motion, AnimatePresence } from "framer-motion";
 import { API_BASE_URL } from "../config";
@@ -28,6 +29,12 @@ import {
   TrendingUp,
   Zap,
   ShoppingCart,
+  Stethoscope,
+  Award,
+  CheckCircle2,
+  Users,
+  ArrowUpRight,
+  ShieldCheck,
 } from "lucide-react";
 import AppDownloadSection from "../components/AppDownloadSection";
 import CylinderCarousel from "../components/CylinderCarousel";
@@ -1132,6 +1139,207 @@ const Home = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* SECTION 6B: DOCTOR & PRACTITIONER COMMUNITY PORTAL */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={revealVariants}
+        className="py-20 md:py-28 bg-[#faf9f6] border-t border-[#0a192f]/5"
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="relative rounded-[2.5rem] md:rounded-[3.5rem] bg-gradient-to-br from-[#071324] via-[#0a192f] to-[#0d2242] text-white p-8 sm:p-12 md:p-16 lg:p-20 overflow-hidden shadow-2xl border border-[#b89047]/30">
+            {/* Ambient Background Glows */}
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#b89047]/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(#b89047_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.04] pointer-events-none" />
+
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+              {/* Left Column: Value Proposition & Call to Actions */}
+              <div className="lg:col-span-7 space-y-6">
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#b89047]/15 border border-[#b89047]/30 text-[#d4af37] text-[10px] sm:text-xs font-bold tracking-[0.22em] uppercase backdrop-blur-sm shadow-sm">
+                  <Stethoscope className="w-3.5 h-3.5 text-[#d4af37]" />
+                  <span>Healthcare Practitioner Network</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+                </div>
+
+                <div className="space-y-3">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.15] font-serif">
+                    Empower Your Practice With{" "}
+                    <span className="bg-gradient-to-r from-[#b89047] via-[#f3e5ab] to-[#b89047] bg-clip-text text-transparent italic font-serif">
+                      Precision Longevity
+                    </span>
+                  </h2>
+                  <p className="text-xs sm:text-sm md:text-base text-slate-300 font-medium leading-relaxed max-w-xl font-sans">
+                    Partner with Pure Plant to prescribe clinical-grade, third-party verified cellular longevity protocols. Give your patients seamless direct-to-door access while tracking adherence and earning recurring practitioner commissions.
+                  </p>
+                </div>
+
+                {/* 4 Feature Pillars */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/5 backdrop-blur-xs space-y-2 hover:border-[#b89047]/30 transition-colors">
+                    <div className="w-8 h-8 rounded-xl bg-[#b89047]/20 flex items-center justify-center text-[#d4af37]">
+                      <Award className="w-4 h-4" />
+                    </div>
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-white font-serif">
+                      Clinical-Grade Purity
+                    </h4>
+                    <p className="text-[11px] text-slate-300 leading-relaxed font-sans">
+                      100% bioavailable liposomal NAD+, NMN, and cellular stacks with zero synthetic binders or fillers.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/5 backdrop-blur-xs space-y-2 hover:border-[#b89047]/30 transition-colors">
+                    <div className="w-8 h-8 rounded-xl bg-[#b89047]/20 flex items-center justify-center text-[#d4af37]">
+                      <Users className="w-4 h-4" />
+                    </div>
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-white font-serif">
+                      Custom Referral Link
+                    </h4>
+                    <p className="text-[11px] text-slate-300 leading-relaxed font-sans">
+                      Provide patients with your clinic link (<code className="text-[#d4af37] font-mono">/dr/your-code</code>) with preferred patient pricing.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/5 backdrop-blur-xs space-y-2 hover:border-[#b89047]/30 transition-colors">
+                    <div className="w-8 h-8 rounded-xl bg-[#b89047]/20 flex items-center justify-center text-[#d4af37]">
+                      <TrendingUp className="w-4 h-4" />
+                    </div>
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-white font-serif">
+                      Real-Time Commission Portal
+                    </h4>
+                    <p className="text-[11px] text-slate-300 leading-relaxed font-sans">
+                      Monitor patient refill compliance and receive transparent recurring commissions via direct deposit.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/5 backdrop-blur-xs space-y-2 hover:border-[#b89047]/30 transition-colors">
+                    <div className="w-8 h-8 rounded-xl bg-[#b89047]/20 flex items-center justify-center text-[#d4af37]">
+                      <ShieldCheck className="w-4 h-4" />
+                    </div>
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-white font-serif">
+                      Verified Practitioner Status
+                    </h4>
+                    <p className="text-[11px] text-slate-300 leading-relaxed font-sans">
+                      Access exclusive clinical monographs, laboratory COAs, and patient education resources.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Call-to-Action Buttons */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+                  <Link
+                    to="/doctor/join"
+                    className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#b89047] via-[#cbb06d] to-[#b89047] text-[#0a192f] font-bold text-xs uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-[#b89047]/20 hover:shadow-[#b89047]/40 cursor-pointer"
+                  >
+                    <span>Apply to Join Network</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+
+                  <Link
+                    to="/doctor/login"
+                    className="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full border border-white/20 hover:border-[#b89047]/60 text-white hover:text-white font-bold text-xs uppercase tracking-widest bg-white/5 hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm cursor-pointer"
+                  >
+                    <span>Practitioner Sign In</span>
+                    <ArrowUpRight className="w-4 h-4 text-[#d4af37]" />
+                  </Link>
+                </div>
+
+                {/* Trust Badges */}
+                <div className="flex flex-wrap items-center gap-y-2 gap-x-6 pt-2 text-[10px] text-slate-400 font-medium">
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Open to MD, DO, ND, DC & Licensed Dietitians
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Zero Minimum Orders or Inventory
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Automated Patient Drop-Shipping
+                  </span>
+                </div>
+              </div>
+
+              {/* Right Column: Interactive Portal Showcase Card */}
+              <div className="lg:col-span-5">
+                <div className="relative rounded-3xl bg-white/[0.05] border border-white/15 backdrop-blur-xl p-6 sm:p-7 space-y-5 shadow-2xl shadow-black/40">
+                  {/* Decorative Header */}
+                  <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                    <div className="flex items-center gap-3">
+                      <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#b89047] to-[#78591f] flex items-center justify-center text-[#0a192f] font-black text-sm tracking-tighter shadow-md">
+                        DR
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <h4 className="font-bold text-sm text-white font-serif">
+                            Dr. Elena Vance, MD
+                          </h4>
+                          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" title="Active Verified" />
+                        </div>
+                        <p className="text-[10px] text-slate-300 font-mono tracking-wide">
+                          Longevity & Regenerative Medicine
+                        </p>
+                      </div>
+                    </div>
+                    <span className="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[9px] font-bold uppercase tracking-wider">
+                      Verified
+                    </span>
+                  </div>
+
+                  {/* Referral Link Box Mockup */}
+                  <div className="p-3.5 rounded-2xl bg-black/30 border border-white/5 space-y-1.5">
+                    <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium">
+                      <span>Clinic Patient Referral URL</span>
+                      <span className="text-[#d4af37] font-semibold text-[9px] uppercase tracking-wider">10% Patient Discount</span>
+                    </div>
+                    <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-slate-200">
+                      <span className="truncate">pureplant.com/dr/dr-vance-md</span>
+                      <span className="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider ml-2 shrink-0">Active</span>
+                    </div>
+                  </div>
+
+                  {/* Quick Metrics */}
+                  <div className="grid grid-cols-3 gap-2.5">
+                    <div className="p-3 rounded-2xl bg-white/5 border border-white/5 text-center">
+                      <div className="text-base sm:text-lg font-black text-white font-serif">142</div>
+                      <div className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">Active Patients</div>
+                    </div>
+                    <div className="p-3 rounded-2xl bg-white/5 border border-white/5 text-center">
+                      <div className="text-base sm:text-lg font-black text-emerald-400 font-serif">96.4%</div>
+                      <div className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">Adherence</div>
+                    </div>
+                    <div className="p-3 rounded-2xl bg-white/5 border border-white/5 text-center">
+                      <div className="text-base sm:text-lg font-black text-[#d4af37] font-serif">$3,840</div>
+                      <div className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">Mo. Revenue</div>
+                    </div>
+                  </div>
+
+                  {/* Recommended Stack Snippet */}
+                  <div className="p-3.5 rounded-2xl bg-white/5 border border-white/5 space-y-1">
+                    <div className="text-[9px] uppercase tracking-widest text-[#d4af37] font-bold">
+                      Prescribed Longevity Stack
+                    </div>
+                    <div className="text-xs text-white font-medium flex items-center justify-between">
+                      <span>Cellular NAD+ & Longevity Matrix</span>
+                      <span className="text-[10px] text-emerald-400 font-mono">1,000mg Daily</span>
+                    </div>
+                    <p className="text-[10px] text-slate-400 leading-relaxed font-sans">
+                      Targeted protocol for mitochondrial respiration and cellular NAD+ restoration.
+                    </p>
+                  </div>
+
+                  {/* Practitioner Testimonial Quote */}
+                  <div className="pt-2 text-center">
+                    <p className="text-[11px] text-slate-300 italic font-serif leading-relaxed">
+                      "Our patients experience remarkable adherence with Pure Plant. The clinician referral engine makes prescribing seamless."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </motion.section>
