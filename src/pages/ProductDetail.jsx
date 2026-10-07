@@ -237,9 +237,9 @@ const ProductDetail = () => {
                     <button
                       type="button"
                       onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
-                      className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:text-black uppercase tracking-wider transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#b89047] hover:text-[#0a192f] uppercase tracking-wider transition-colors cursor-pointer"
                     >
-                      <span>{isDescriptionExpanded ? 'Read Less' : 'Read More'}</span>
+                      <span>{isDescriptionExpanded ? 'Show Less' : 'Read More'}</span>
                       <ChevronDown
                         className={`w-3.5 h-3.5 transition-transform duration-300 ${
                           isDescriptionExpanded ? 'rotate-180' : ''
@@ -249,11 +249,11 @@ const ProductDetail = () => {
                   )}
                 </div>
 
-                <div className="relative">
+                <div className="bg-[#faf9f6] p-5 rounded-2xl border border-gray-200/80">
                   <div 
-                    className={`whitespace-pre-line leading-relaxed space-y-2 bg-[#faf9f6] p-5 rounded-2xl border border-gray-100 text-xs sm:text-sm font-sans transition-all duration-300 ${
+                    className={`whitespace-pre-line leading-relaxed text-slate-800 text-xs sm:text-sm font-sans ${
                       !isDescriptionExpanded && (product.description?.length > 160)
-                        ? 'max-h-28 overflow-hidden'
+                        ? 'line-clamp-3'
                         : ''
                     }`}
                     dangerouslySetInnerHTML={{
@@ -265,15 +265,23 @@ const ProductDetail = () => {
                     }}
                   />
 
-                  {/* Soft Gradient Fade when collapsed */}
-                  {!isDescriptionExpanded && (product.description?.length > 160) && (
-                    <div 
-                      onClick={() => setIsDescriptionExpanded(true)}
-                      className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#faf9f6] via-[#faf9f6]/90 to-transparent rounded-b-2xl cursor-pointer flex items-end justify-center pb-2"
-                    >
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-primary hover:text-black">
-                        + Read full details
+                  {product.description && product.description.length > 160 && (
+                    <div className="pt-3 mt-3 border-t border-gray-200/60 flex justify-between items-center">
+                      <span className="text-[10px] text-slate-500 font-medium">
+                        {isDescriptionExpanded ? 'Showing full clinical directions' : 'Dosage & administration at a glance'}
                       </span>
+                      <button
+                        type="button"
+                        onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                        className="text-xs font-bold text-[#b89047] hover:text-[#0a192f] inline-flex items-center gap-1 cursor-pointer transition-colors"
+                      >
+                        <span>{isDescriptionExpanded ? 'Show Less' : 'Read More'}</span>
+                        <ChevronDown
+                          className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                            isDescriptionExpanded ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
                     </div>
                   )}
                 </div>
