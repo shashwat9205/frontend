@@ -104,7 +104,7 @@ const Register = () => {
         {/* Header */}
         <div className="text-center mb-10">
           <h2 className="text-3xl font-black uppercase tracking-tighter mb-2">Create Account</h2>
-          <p className="text-gray-500 text-sm font-medium">Join the Pure Plant community</p>
+          <p className="text-gray-500 text-sm font-medium">Join the Biohackerz community</p>
         </div>
 
         {/* Form */}

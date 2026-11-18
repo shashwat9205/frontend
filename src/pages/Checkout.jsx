@@ -104,7 +104,7 @@ const Checkout = () => {
             key: "rzp_test_SwHDwTn8mGkDmv",
             amount: finalTotal * 100,
             currency: "INR",
-            name: "Pure Plant",
+            name: "Biohackerz",
             description: "Premium Marketplace Checkout",
             order_id: data.razorpay_order_id,
             handler: function (response) {

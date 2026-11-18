@@ -2,11 +2,12 @@ import { API_BASE_URL } from '../config';
 // src/components/Hero.jsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LayoutGrid, Flame, Zap, RefreshCw, Layers } from 'lucide-react';
+import { Zap, Layers, Stethoscope, FlaskConical, ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   const [heroData, setHeroData] = useState(null);
   const [categories, setCategories] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const Hero = () => {
         setLoading(false);
       });
 
-    // Fetch dynamic categories fromcategories.php
+    // Fetch dynamic categories
     fetch(API_BASE_URL + 'api/categories.php')
       .then(res => res.json())
       .then(data => {
@@ -42,78 +43,83 @@ const Hero = () => {
     btn_link: "/shop"
   };
 
-  // Map dynamic categories for mobile category navigation
-  const mobileCatList = [
+  const pathways = [
     {
-      name: 'All Stacks',
-      path: '/shop',
-      icon: <LayoutGrid size={16} className="text-primary" />,
-      bgImage: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=150'
+      title: "Biohacking Quiz",
+      subtitle: "Biomarker Assessment",
+      path: "/quiz",
+      icon: <Zap size={18} className="text-[#b89047]" />
     },
-    ...categories.map(cat => {
-      // Map dynamic icons based on keywords
-      let icon = <Layers size={16} className="text-primary" />;
-      const name = cat.name.toLowerCase();
-
-      if (name.includes('protein') || name.includes('nmn')) {
-        icon = <Layers size={16} className="text-primary" />;
-      } else if (name.includes('recovery') || name.includes('reco')) {
-        icon = <RefreshCw size={16} className="text-primary" />;
-      } else if (name.includes('pre') || name.includes('energ') || name.includes('perform')) {
-        icon = <Zap size={16} className="text-primary" />;
-      } else if (name.includes('wellness') || name.includes('health') || name.includes('women')) {
-        icon = <Flame size={16} className="text-primary" />;
-      }
-
-      const bgImage = cat.image_url
-        ? `${API_BASE_URL}admin/${cat.image_url}`
-        : 'https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&q=80&w=150';
-
-      return {
-        name: cat.name,
-        path: `/shop?category=${encodeURIComponent(cat.name)}`,
-        icon,
-        bgImage
-      };
-    })
+    {
+      title: "Science Hub",
+      subtitle: "Clinical Trials & Data",
+      path: "/science",
+      icon: <FlaskConical size={18} className="text-[#b89047]" />
+    },
+    {
+      title: "Advisory Board",
+      subtitle: "Doctor Network",
+      path: "/doctor/join",
+      icon: <Stethoscope size={18} className="text-[#b89047]" />
+    },
+    {
+      title: "Longevity Stacks",
+      subtitle: "Full Catalog",
+      path: "/shop",
+      icon: <Layers size={18} className="text-[#b89047]" />
+    }
   ];
 
   return (
     <>
-      {/* 1. CINEMATIC HERO (DESKTOP VIEW) */}
-      <section className="hidden md:flex relative h-[calc(100vh-80px)] w-full items-center justify-center overflow-hidden bg-[#0a192f] text-center border-b border-white/5 shadow-md">
-        {/* Background Layer with Dark cinematic overlays */}
-        <div className="absolute inset-0 z-0">
+      {/* UNIFIED CINEMATIC HERO (MOBILE & DESKTOP RESPONSIVE WITH VIDEO) */}
+      <section className="relative min-h-[82vh] md:h-[calc(100vh-80px)] w-full flex items-center justify-center overflow-hidden bg-[#071324] text-center border-b border-white/5 shadow-2xl py-14 sm:py-20 md:py-0">
+        
+        {/* Background Layer with Autoplaying Video & Dark Luxury Overlays */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           {heroData?.video ? (
-            <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-75 scale-102 transition-transform duration-1000">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="w-full h-full object-cover opacity-65 md:opacity-75 scale-102 transition-transform duration-1000"
+            >
               <source src={heroData.video} type="video/mp4" />
             </video>
           ) : heroData?.image ? (
-            <img src={heroData.image} alt="" className="w-full h-full object-cover opacity-75 scale-102 transition-transform duration-1000" />
+            <img
+              src={heroData.image}
+              alt="Hero Background"
+              className="w-full h-full object-cover opacity-60 md:opacity-75 scale-102 transition-transform duration-1000"
+            />
           ) : (
-            <div className="w-full h-full bg-[#0a192f]"></div>
+            <div className="w-full h-full bg-[#071324]"></div>
           )}
+
           {/* Multi-stage Luxury Dark Gradient Mask */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f] via-[#0a192f]/45 to-black/25"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(184,144,71,0.12),transparent_65%)]"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#071324] via-[#071324]/60 to-black/45"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(184,144,71,0.14),transparent_70%)]"></div>
         </div>
 
         {/* Ambient Glows */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#b89047]/10 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-[#b89047]/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute top-1/4 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-[#b89047]/10 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-60 sm:w-80 h-60 sm:h-80 bg-[#b89047]/10 rounded-full blur-[90px] pointer-events-none"></div>
 
         {/* Content Layer */}
-        <div className="relative z-10 container mx-auto px-6 max-w-5xl flex flex-col items-center">
-          {/* Subtle Tagline */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 shadow-sm mb-8 animate-fade-in">
+        <div className="relative z-10 container mx-auto px-5 sm:px-6 max-w-5xl flex flex-col items-center">
+          
+          {/* Subtle Tagline Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 border border-white/15 shadow-sm mb-5 sm:mb-8 backdrop-blur-md">
             <span className="w-1.5 h-1.5 rounded-full bg-[#b89047] animate-ping"></span>
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white">
+            <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.22em] uppercase text-white font-sans">
               Board-Led Longevity Portal
             </span>
           </div>
 
           {/* Luxury Serif Title */}
-          <h1 className="text-6xl lg:text-7xl font-bold tracking-tight leading-[1.12] text-white mb-8 font-serif max-w-4xl mx-auto px-4 uppercase">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.14] text-white mb-4 sm:mb-6 md:mb-8 font-serif max-w-4xl mx-auto px-2 uppercase drop-shadow-md">
             {displayData.title.split(' ').map((word, i) => (
               <span key={i} className={i % 3 === 2 ? "text-[#b89047] block sm:inline" : ""}>
                 {word}{" "}
@@ -122,122 +128,77 @@ const Hero = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-sm sm:text-base mb-12 text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed px-4 font-sans tracking-wide">
+          <p className="text-xs sm:text-sm md:text-base mb-8 sm:mb-10 md:mb-12 text-slate-300 font-medium max-w-xl sm:max-w-2xl mx-auto leading-relaxed px-4 font-sans tracking-wide">
             {displayData.subtitle}
           </p>
 
-          {/* Luxury CTAs */}
-          <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto px-10 sm:px-0 justify-center">
-            <a href="/quiz" className="bg-[#b89047] hover:bg-[#cba463] text-white px-12 py-4.5 rounded-xl font-bold uppercase tracking-wider text-[10px] transition-all shadow-md hover:-translate-y-0.5 active:translate-y-0 duration-300">
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-5 w-full sm:w-auto px-4 sm:px-0 justify-center max-w-xs sm:max-w-none mx-auto">
+            <Link
+              to="/quiz"
+              className="bg-gradient-to-r from-[#b89047] to-[#cba463] hover:from-[#cba463] hover:to-[#b89047] text-[#071324] font-black uppercase tracking-widest text-[10px] sm:text-[11px] px-8 sm:px-12 py-3.5 sm:py-4.5 rounded-xl shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-center no-underline"
+            >
               Assess Biological Age
-            </a>
-            <a href="/doctor/join" className="bg-transparent border border-white/20 text-white hover:bg-white/5 px-12 py-4.5 rounded-xl font-bold uppercase tracking-wider text-[10px] transition-all hover:-translate-y-0.5 active:translate-y-0 duration-300">
+            </Link>
+            <Link
+              to="/doctor/join"
+              className="bg-white/5 border border-white/20 text-white hover:bg-white/10 hover:border-[#b89047]/50 font-bold uppercase tracking-widest text-[10px] sm:text-[11px] px-8 sm:px-12 py-3.5 sm:py-4.5 rounded-xl backdrop-blur-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-center no-underline"
+            >
               Consult Advisory Board
-            </a>
+            </Link>
           </div>
         </div>
 
-        {/* Scrolling Mouse Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-60 hover:opacity-90 transition-opacity">
+        {/* Desktop Scrolling Mouse Indicator */}
+        <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-1.5 opacity-60 hover:opacity-90 transition-opacity pointer-events-none">
           <span className="text-[8px] font-bold tracking-[0.2em] text-white uppercase font-sans">Explore</span>
-          <div className="w-5 h-9 border border-white/20 rounded-full flex justify-center p-1.5">
-            <div className="w-1 h-2 bg-[#b89047] rounded-full animate-bounce"></div>
+          <div className="w-4 h-7 border border-white/25 rounded-full flex justify-center p-1">
+            <div className="w-1 h-1.5 bg-[#b89047] rounded-full animate-bounce"></div>
           </div>
         </div>
       </section>
 
-      {/* 2. PREMIUM COMPACT HERO & DYNAMIC CIRCULAR CATEGORIES (MOBILE VIEW) */}
-      <div className="block md:hidden bg-white px-5 pt-6 pb-6">
-        {/* Compact Banner slider block */}
-        <div className="relative w-full bg-[#faf9f6] rounded-3xl p-6 overflow-hidden flex items-center min-h-[180px] shadow-sm border border-[#0a192f]/5">
-          {/* Background overlay details */}
-          <div className="absolute top-0 right-0 w-36 h-36 bg-[#b89047]/5 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/50 to-transparent"></div>
-
-          {/* Left Text details */}
-          <div className="relative z-10 flex-1 flex flex-col justify-center pr-20">
-            <span className="text-[#b89047] font-bold uppercase tracking-wider text-[8px] mb-1.5 font-sans">
-              CLINICAL LONGEVITY
-            </span>
-            <h2 className="text-[#0a192f] text-lg font-bold font-serif leading-tight mb-2 uppercase">
-              Upgrade Cellular Performance
-            </h2>
-            <p className="text-slate-600 text-[10px] leading-normal font-sans font-medium">
-              Physician-formulated protocols based on clinical diagnostic baselines.
-            </p>
+      {/* DIAGNOSTIC & CLINICAL PATHWAYS (RESPONSIVE GLASS CARDS) */}
+      <section className="bg-[#050e1d] border-b border-white/10 py-6 sm:py-8 px-4 sm:px-6 relative z-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between mb-4 px-2">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#b89047]" />
+              <h3 className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.22em] text-[#b89047] font-sans">
+                Diagnostic & Clinical Pathways
+              </h3>
+            </div>
             <Link
-              to="/quiz"
-              className="mt-4 bg-[#0a192f] text-white px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[9px] inline-block no-underline shadow-md active:scale-98 transition-all self-start"
+              to="/shop"
+              className="text-[9px] font-bold uppercase tracking-widest text-slate-400 hover:text-white flex items-center gap-1 transition-colors no-underline"
             >
-              Start Assessment
+              All Stacks <ArrowRight size={10} />
             </Link>
           </div>
 
-          {/* Right Floating Image Spotlight Circle */}
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-white shadow-md border border-[#0a192f]/5 flex items-center justify-center p-2.5 z-10 pointer-events-none select-none">
-            <img
-              src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=300"
-              alt="Medical laboratory research"
-              className="w-full h-full object-cover rounded-full opacity-90"
-            />
-          </div>
-        </div>
-
-        {/* Diagnostic & Clinical Navigation */}
-        <div className="mt-8">
-          <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 font-sans mb-4">
-            Diagnostic & Clinical Pathways
-          </h3>
-          <div className="flex items-center gap-4 overflow-x-auto no-scrollbar pb-2">
-            {[
-              {
-                name: 'Bio-Quiz',
-                path: '/quiz',
-                icon: <Zap size={16} className="text-[#b89047]" />,
-                bgImage: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=150'
-              },
-              {
-                name: 'Science Hub',
-                path: '/science',
-                icon: <Layers size={16} className="text-[#b89047]" />,
-                bgImage: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=150'
-              },
-              {
-                name: 'Advisory Board',
-                path: '/doctor/join',
-                icon: <RefreshCw size={16} className="text-[#b89047]" />,
-                bgImage: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=150'
-              },
-              {
-                name: 'Clinical Blog',
-                path: '/blog',
-                icon: <Flame size={16} className="text-[#b89047]" />,
-                bgImage: 'https://images.unsplash.com/photo-1511295742364-92767fa62d9f?auto=format&fit=crop&q=80&w=150'
-              }
-            ].map((cat, index) => (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {pathways.map((item, index) => (
               <Link
                 key={index}
-                to={cat.path}
-                className="flex flex-col items-center shrink-0 no-underline group"
+                to={item.path}
+                className="group p-3.5 sm:p-4 rounded-2xl bg-[#0a192f]/70 border border-white/10 hover:border-[#b89047]/40 hover:bg-[#0a192f] transition-all duration-300 flex items-center gap-3 no-underline shadow-sm active:scale-[0.98]"
               >
-                <div className="relative w-15 h-15 rounded-full bg-white border border-[#0a192f]/5 shadow-sm flex items-center justify-center overflow-hidden transition-all duration-300 group-active:scale-95">
-                  <img
-                    src={cat.bgImage}
-                    alt=""
-                    className="absolute inset-0 w-full h-full object-cover brightness-[0.9] opacity-20 blur-[0.5px]"
-                  />
-                  <div className="relative z-10 w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-sm border border-[#0a192f]/5">
-                    {cat.icon}
-                  </div>
+                <div className="w-10 h-10 rounded-xl bg-[#b89047]/15 border border-[#b89047]/30 flex items-center justify-center shrink-0 group-hover:bg-[#b89047] group-hover:text-[#071324] transition-all duration-300">
+                  {item.icon}
                 </div>
-                <span className="text-[9px] font-bold tracking-wider text-slate-500 mt-2.5 uppercase font-sans transition-colors group-active:text-[#b89047]">
-                  {cat.name}
-                </span>
+                <div className="min-w-0 flex-1">
+                  <h4 className="text-xs font-bold text-white uppercase tracking-wider font-serif truncate group-hover:text-[#b89047] transition-colors">
+                    {item.title}
+                  </h4>
+                  <p className="text-[9px] text-slate-400 font-sans truncate font-medium mt-0.5">
+                    {item.subtitle}
+                  </p>
+                </div>
               </Link>
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

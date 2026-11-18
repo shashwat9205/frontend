@@ -57,7 +57,7 @@ const Login = () => {
         {/* Header */}
         <div className="text-center mb-10">
           <h2 className="text-3xl font-black uppercase tracking-tighter mb-2 text-primary">Welcome Back</h2>
-          <p className="text-gray-500 text-sm font-medium text-primary">Sign in to your Pure Plant account</p>
+          <p className="text-gray-500 text-sm font-medium text-primary">Sign in to your Biohackerz account</p>
         </div>
 
         {/* Form */}

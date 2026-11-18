@@ -1,13 +1,15 @@
 import { API_BASE_URL } from '../config';
 // src/components/MobileBottomNav.jsx
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Home, Search, Heart, ShoppingCart, User, X } from 'lucide-react';
+import { Home, Search, Heart, ShoppingBag, User, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 
 const MobileBottomNav = () => {
   const location = useLocation();
+  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
   const { cart } = useCart();
   const { wishlist } = useWishlist();
@@ -71,12 +73,12 @@ const MobileBottomNav = () => {
     return location.pathname.startsWith(path) && !isSearchOpen;
   };
 
-  const popularTags = ['Proteins', 'Creatine', 'Recovery', 'Pre-Workout'];
+  const popularTags = ['NMN', 'Liposomal', 'Longevity', 'Cellular', 'Mitochondria'];
 
   return (
     <>
-      {/* Mobile Bottom Tab Bar */}
-      <div className="fixed bottom-0 left-0 right-0 w-full bg-white/90 backdrop-blur-xl border-t border-stone-100/80 shadow-[0_-5px_30px_rgba(0,0,0,0.03)] z-[9999] md:hidden px-2 pb-safe">
+      {/* Mobile Bottom Tab Bar with Dark Luxury Glassmorphism */}
+      <div className="fixed bottom-0 left-0 right-0 w-full bg-[#071324]/95 backdrop-blur-xl border-t border-white/10 shadow-[0_-10px_35px_rgba(0,0,0,0.5)] z-[9999] md:hidden px-2 pb-safe">
         <div className="h-16 flex items-center justify-around relative">
           
           {/* Home Tab */}
@@ -86,12 +88,12 @@ const MobileBottomNav = () => {
             onClick={() => setIsSearchOpen(false)}
           >
             <div className={`relative flex items-center justify-center p-1 transition-all duration-300 ${
-              isActive('/') ? 'text-[#1b4332]' : 'text-stone-500'
+              isActive('/') ? 'text-[#b89047]' : 'text-slate-400'
             }`}>
-              <Home size={22} className="transition-transform duration-300 group-active:scale-95" />
+              <Home size={20} className="transition-transform duration-300 group-active:scale-95" />
             </div>
-            <span className={`text-[9.5px] tracking-wider uppercase mt-0.5 transition-colors duration-300 ${
-              isActive('/') ? 'text-[#1b4332] font-black' : 'text-stone-500 font-extrabold'
+            <span className={`text-[9px] tracking-wider uppercase mt-0.5 transition-colors duration-300 ${
+              isActive('/') ? 'text-[#b89047] font-bold' : 'text-slate-400 font-semibold'
             }`}>
               Home
             </span>
@@ -103,12 +105,12 @@ const MobileBottomNav = () => {
             className="flex-1 flex flex-col items-center justify-center h-full relative group no-underline border-none bg-transparent cursor-pointer"
           >
             <div className={`relative flex items-center justify-center p-1 transition-all duration-300 ${
-              isSearchOpen ? 'text-[#1b4332]' : 'text-stone-500'
+              isSearchOpen ? 'text-[#b89047]' : 'text-slate-400'
             }`}>
-              <Search size={22} className="transition-transform duration-300 group-active:scale-95" />
+              <Search size={20} className="transition-transform duration-300 group-active:scale-95" />
             </div>
-            <span className={`text-[9.5px] tracking-wider uppercase mt-0.5 transition-colors duration-300 ${
-              isSearchOpen ? 'text-[#1b4332] font-black' : 'text-stone-500 font-extrabold'
+            <span className={`text-[9px] tracking-wider uppercase mt-0.5 transition-colors duration-300 ${
+              isSearchOpen ? 'text-[#b89047] font-bold' : 'text-slate-400 font-semibold'
             }`}>
               Search
             </span>
@@ -121,17 +123,17 @@ const MobileBottomNav = () => {
             onClick={() => setIsSearchOpen(false)}
           >
             <div className={`relative flex items-center justify-center p-1 transition-all duration-300 ${
-              isActive('/wishlist') ? 'text-[#1b4332]' : 'text-stone-500'
+              isActive('/wishlist') ? 'text-[#b89047]' : 'text-slate-400'
             }`}>
-              <Heart size={22} className="transition-transform duration-300 group-active:scale-95" />
+              <Heart size={20} className="transition-transform duration-300 group-active:scale-95" />
               {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-2 text-[8px] font-extrabold text-white w-4 h-4 bg-red-500 rounded-full flex items-center justify-center shadow-sm animate-pulse">
+                <span className="absolute -top-1 -right-2 text-[8px] font-extrabold text-white w-4 h-4 bg-rose-500 rounded-full flex items-center justify-center shadow-sm">
                   {wishlistCount}
                 </span>
               )}
             </div>
-            <span className={`text-[9.5px] tracking-wider uppercase mt-0.5 transition-colors duration-300 ${
-              isActive('/wishlist') ? 'text-[#1b4332] font-black' : 'text-stone-500 font-extrabold'
+            <span className={`text-[9px] tracking-wider uppercase mt-0.5 transition-colors duration-300 ${
+              isActive('/wishlist') ? 'text-[#b89047] font-bold' : 'text-slate-400 font-semibold'
             }`}>
               Wishlist
             </span>
@@ -144,17 +146,17 @@ const MobileBottomNav = () => {
             onClick={() => setIsSearchOpen(false)}
           > 
             <div className={`relative flex items-center justify-center p-1 transition-all duration-300 ${
-              isActive('/cart') ? 'text-[#1b4332]' : 'text-stone-500'
+              isActive('/cart') ? 'text-[#b89047]' : 'text-slate-400'
             }`}>
-              <ShoppingCart size={22} className="transition-transform duration-300 group-active:scale-95" />
+              <ShoppingBag size={20} className="transition-transform duration-300 group-active:scale-95" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-2 text-[8px] font-extrabold text-white w-4 h-4 bg-emerald-600 rounded-full flex items-center justify-center shadow-sm animate-pulse">
+                <span className="absolute -top-1 -right-2 text-[8px] font-black text-[#0a192f] w-4 h-4 bg-[#b89047] rounded-full flex items-center justify-center shadow-sm">
                   {cartCount}
                 </span>
               )}
             </div>
-            <span className={`text-[9.5px] tracking-wider uppercase mt-0.5 transition-colors duration-300 ${
-              isActive('/cart') ? 'text-[#1b4332] font-black' : 'text-stone-500 font-extrabold'
+            <span className={`text-[9px] tracking-wider uppercase mt-0.5 transition-colors duration-300 ${
+              isActive('/cart') ? 'text-[#b89047] font-bold' : 'text-slate-400 font-semibold'
             }`}>
               Cart
             </span>
@@ -167,12 +169,12 @@ const MobileBottomNav = () => {
             onClick={() => setIsSearchOpen(false)}
           >
             <div className={`relative flex items-center justify-center p-1 transition-all duration-300 ${
-              isActive('/profile') ? 'text-[#1b4332]' : 'text-stone-500'
+              isActive('/profile') ? 'text-[#b89047]' : 'text-slate-400'
             }`}>
-              <User size={22} className="transition-transform duration-300 group-active:scale-95" />
+              <User size={20} className="transition-transform duration-300 group-active:scale-95" />
             </div>
-            <span className={`text-[9.5px] tracking-wider uppercase mt-0.5 transition-colors duration-300 ${
-              isActive('/profile') ? 'text-[#1b4332] font-black' : 'text-stone-500 font-extrabold'
+            <span className={`text-[9px] tracking-wider uppercase mt-0.5 transition-colors duration-300 ${
+              isActive('/profile') ? 'text-[#b89047] font-bold' : 'text-slate-400 font-semibold'
             }`}>
               Account
             </span>
@@ -181,16 +183,16 @@ const MobileBottomNav = () => {
         </div>
       </div>
 
-      {/* Global Mobile Search Overlay Sheet */}
+      {/* Global Mobile Search Overlay Sheet (Dark Theme) */}
       {isSearchOpen && (
-        <div className="fixed inset-0 bg-white z-[10001] md:hidden p-6 flex flex-col overflow-y-auto animate-in fade-in slide-in-from-bottom-5 duration-300">
+        <div className="fixed inset-0 bg-[#071324] z-[10001] md:hidden p-6 flex flex-col overflow-y-auto animate-in fade-in slide-in-from-bottom-5 duration-300 text-white">
           
           {/* Header Controls */}
-          <div className="flex items-center justify-between mb-8">
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-stone-400">Search Products</span>
+          <div className="flex items-center justify-between mb-6">
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#b89047]">Search Stacks</span>
             <button 
               onClick={() => setIsSearchOpen(false)}
-              className="w-10 h-10 rounded-full bg-stone-50 border border-stone-100 flex items-center justify-center text-[#1e2925] hover:bg-stone-100 cursor-pointer"
+              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 cursor-pointer"
             >
               <X size={18} />
             </button>
@@ -201,16 +203,16 @@ const MobileBottomNav = () => {
             <input 
               ref={searchInputRef}
               type="text"
-              placeholder="What are you looking for?"
+              placeholder="Search molecular formulas, NMN, stacks..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#f4f3ee] border border-transparent focus:border-primary/20 focus:bg-white p-4 pl-12 rounded-2xl outline-none transition-all text-sm font-semibold placeholder:text-gray-400 text-[#1e2925] shadow-xs"
+              className="w-full bg-white/5 border border-white/15 focus:border-[#b89047] focus:bg-white/10 p-4 pl-12 rounded-2xl outline-none transition-all text-sm font-semibold placeholder:text-slate-400 text-white shadow-xs"
             />
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-450">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
               {isSearching ? (
-                <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-4 h-4 border-2 border-[#b89047] border-t-transparent rounded-full animate-spin"></div>
               ) : (
-                <Search size={16} className="text-stone-400" />
+                <Search size={16} className="text-[#b89047]" />
               )}
             </div>
           </div>
@@ -218,13 +220,13 @@ const MobileBottomNav = () => {
           {/* Popular Tag Quick Suggestions */}
           {searchQuery.length === 0 && (
             <div className="mb-8">
-              <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-stone-400 mb-3.5">Popular Searches</h4>
+              <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 mb-3">Popular Searches</h4>
               <div className="flex flex-wrap gap-2">
                 {popularTags.map((tag) => (
                   <button
                     key={tag}
                     onClick={() => setSearchQuery(tag)}
-                    className="text-xs font-semibold px-4 py-2 bg-stone-50 border border-stone-100 text-[#1e2925] rounded-full hover:bg-stone-100 hover:border-stone-200 transition-all cursor-pointer"
+                    className="text-xs font-semibold px-4 py-2 bg-white/5 border border-white/10 text-slate-200 rounded-full hover:bg-[#b89047]/20 hover:border-[#b89047]/40 transition-all cursor-pointer"
                   >
                     {tag}
                   </button>
@@ -236,8 +238,8 @@ const MobileBottomNav = () => {
           {/* Dynamic Search Results */}
           <div className="flex-1">
             {searchResults.length > 0 ? (
-              <div className="flex flex-col gap-4">
-                <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-stone-400 mb-1">Found Products ({searchResults.length})</h4>
+              <div className="flex flex-col gap-3">
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#b89047] mb-1">Found Protocols ({searchResults.length})</h4>
                 {searchResults.map((product) => {
                   const itemImageUrl = product.image_url 
                     ? (product.image_url.startsWith('http') 
@@ -250,19 +252,19 @@ const MobileBottomNav = () => {
                       key={product.id}
                       to={`/product/${product.slug}`}
                       onClick={() => setIsSearchOpen(false)}
-                      className="flex items-center gap-4 p-3 bg-white border border-stone-100 hover:bg-[#faf9f6] rounded-2xl transition-all duration-300 no-underline shadow-xs"
+                      className="flex items-center gap-4 p-3.5 bg-white/5 border border-white/10 hover:border-[#b89047]/40 rounded-2xl transition-all duration-300 no-underline shadow-xs"
                     >
-                      <div className="w-12 h-12 bg-stone-50 border border-stone-100/50 rounded-xl p-1 shrink-0 flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#0a192f] border border-white/10 rounded-xl p-1 shrink-0 flex items-center justify-center overflow-hidden">
                         <img 
                           src={itemImageUrl} 
                           alt={product.name} 
-                          className="w-full h-full object-contain mix-blend-multiply" 
+                          className="w-full h-full object-cover" 
                         />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <span className="text-[9px] font-extrabold uppercase tracking-widest text-accent-gold">{product.category || 'General'}</span>
-                        <h4 className="text-xs font-semibold text-[#1e2925] leading-tight truncate mt-0.5">{product.name}</h4>
-                        <p className="text-primary font-bold text-xs mt-1">₹{parseFloat(product.price).toLocaleString('en-IN')}</p>
+                        <span className="text-[9px] font-extrabold uppercase tracking-widest text-[#b89047]">{product.category || 'Longevity'}</span>
+                        <h4 className="text-xs font-semibold text-white leading-tight truncate mt-0.5">{product.name}</h4>
+                        <p className="text-[#b89047] font-bold text-xs mt-1 font-mono">₹{parseFloat(product.price).toLocaleString('en-IN')}</p>
                       </div>
                     </Link>
                   );
@@ -270,9 +272,9 @@ const MobileBottomNav = () => {
               </div>
             ) : (
               searchQuery.trim().length > 1 && !isSearching && (
-                <div className="py-20 text-center text-stone-400">
+                <div className="py-20 text-center text-slate-400">
                   <p className="text-sm font-semibold">No results match "{searchQuery}"</p>
-                  <p className="text-xs font-light mt-1">Double check your spelling or search another item</p>
+                  <p className="text-xs font-light mt-1 text-slate-500">Double check spelling or search another biomarker term</p>
                 </div>
               )
             )}

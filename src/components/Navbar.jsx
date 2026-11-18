@@ -95,10 +95,10 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center max-w-7xl w-full">
         {/* Left Block: Logo + Navigation Links */}
-        <div className="flex items-center gap-6 lg:gap-10 shrink-0">
+        <div className="flex items-center gap-4 lg:gap-10 shrink-0">
           {/* Logo */}
-          <Link to="/" className="text-xl tracking-tight no-underline hover:opacity-90 transition-opacity flex items-center shrink-0 border-none">
-            <span className="text-foreground font-black font-sans  uppercase">BIOHACKER'S</span>
+          <Link to="/" className="text-lg sm:text-xl tracking-tight no-underline hover:opacity-90 transition-opacity flex items-center shrink-0 border-none">
+            <span className="text-foreground font-black font-sans uppercase">BIOHACKER'S</span>
             <span className="text-primary font-sans font-light ml-1.5 uppercase">FUEL</span>
           </Link>
 
@@ -183,7 +183,7 @@ const Navbar = () => {
         </div>
 
         {/* Icons */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3.5 sm:gap-6">
           
           {/* User / Login */}
           <div className="relative">
@@ -191,11 +191,11 @@ const Navbar = () => {
               <div className="relative group">
                 {/* The trigger */}
                 <div 
-                  className="flex items-center gap-2 cursor-pointer mt-1"
+                  className="flex items-center gap-2 cursor-pointer"
                   onClick={() => navigate('/profile')}
                 >
-                  <div className="w-8 h-8 bg-secondary border border-border rounded-full flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-colors relative z-10">
-                    <span className="font-extrabold text-xs text-foreground group-hover:text-background">{customerUser.name.charAt(0).toUpperCase()}</span>
+                  <div className="w-8 h-8 bg-[#b89047]/15 border border-[#b89047]/50 rounded-full flex items-center justify-center hover:bg-[#b89047] hover:text-[#0a192f] transition-all relative z-10 shadow-xs">
+                    <span className="font-extrabold text-xs text-[#b89047] group-hover:text-[#0a192f]">{customerUser.name.charAt(0).toUpperCase()}</span>
                   </div>
                 </div>
 

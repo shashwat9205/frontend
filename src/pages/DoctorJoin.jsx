@@ -54,7 +54,7 @@ const DoctorJoin = () => {
         <div className="bg-[#111D30] text-white p-10 text-center">
           <h2 className="text-3xl font-black uppercase tracking-tighter mb-2">Join the Elite</h2>
           <p className="text-gray-400 text-sm font-medium tracking-wide">
-            Apply to become a verified Pure Plant practitioner and earn through your recommendations.
+            Apply to become a verified Biohackerz practitioner and earn through your recommendations.
           </p>
         </div>
 

@@ -4,8 +4,8 @@
 @import "shadcn/tailwind.css";
 
 @theme {
-  --color-primary: #1b4332;
-  --color-primary-dark: #081c15;
+  --color-primary: #b89047;
+  --color-primary-dark: #8c6a28;
   --color-accent-gold: #c5a059;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-serif: 'Cormorant Garamond', serif;

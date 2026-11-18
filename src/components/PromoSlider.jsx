@@ -13,7 +13,7 @@ const slides = [
     id: 1,
     image: "https://images.unsplash.com/photo-1549476464-37392f717541?auto=format&fit=crop&q=80&w=1600",
     badge: "Premium Quality",
-    title: "100% Pure Plant Isolate",
+    title: "100% Biohackerz Cellular Isolate",
     subtitle: "Fuel your muscles with 25g of clean, organic allergen-free protein. Zero bloating, complete amino acid profile.",
     ctaText: "Shop Vegan Protein",
     ctaLink: "/shop",
